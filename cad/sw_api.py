@@ -1,186 +1,233 @@
-"""Thin helpers around the SolidWorks COM API (SolidWorks 2026 / 3DEXPERIENCE), via pywin32.
+"""A thin wrapper around the SolidWorks COM API (SolidWorks 2026, driven through pywin32).
 
-All lengths passed to the API are in METERS and masses in KG, regardless of document display units.
+It offers just enough to build the Part 2 satellite: parts made of boxes, cylinders and
+square tubes; assemblies that place saved parts at a position and rotation; and mass
+properties read back from either.
 
-Model frame used throughout the Part 2 CAD (matches SolidWorks' default axes):
-    +X = velocity (ram direction)
+Units are SI throughout (meters, kilograms), whatever the document displays.
+
+Model axes, matching SolidWorks' defaults:
+    +X = direction of travel
     +Y = zenith (away from Earth); also the Starship axis when stowed
     +Z = orbit normal = toward the Sun in a dawn-dusk orbit
 """
-from __future__ import annotations
-
 import math
 import os
+from typing import NamedTuple
 
 import pythoncom
-import win32com.client as w
-from win32com.client import gencache, VARIANT
+import win32com.client
+from win32com.client import VARIANT, gencache
 
-SW_TLB = ("{83A33D31-27C5-11CE-BFD4-00400513BB57}", 0, 34, 0)  # SolidWorks 2026 type library
-swmod = gencache.EnsureModule(*SW_TLB)
+# SolidWorks 2026 type library. Loading it gives early-bound classes (see _typed below).
+_sw = gencache.EnsureModule("{83A33D31-27C5-11CE-BFD4-00400513BB57}", 0, 34, 0)
 
-# SolidWorks enum values used here
-SW_END_BLIND = 0
-SW_START_SKETCH_PLANE = 0
-SW_START_OFFSET = 3
-SW_SAVE_AS_CURRENT = 0
-SW_SAVE_SILENT = 1
-SW_DOC_PART, SW_DOC_ASSEMBLY = 1, 2
-SW_PREF_DENSITY = 7  # swMaterialPropertyDensity: document density used when no material is assigned
-
-# Sketch-plane conventions: name, model axis of the extrude direction, and how sketch (u, v)
-# map onto model coordinates. Verified by center-of-mass checks in self_test().
-PLANES = {
-    "Front": dict(name="Front Plane", normal="z"),  # sketch (u,v) -> model (x, y)
-    "Top":   dict(name="Top Plane",   normal="y"),  # sketch (u,v) -> model (x, -z)
-    "Right": dict(name="Right Plane", normal="x"),  # sketch (u,v) -> model (-z, y)
-}
+# SolidWorks API constants used below
+_END_BLIND = 0                          # extrude a fixed distance
+_START_AT_SKETCH, _START_AT_OFFSET = 0, 3
+_SAVE_AS_CURRENT_VERSION, _SAVE_SILENTLY = 0, 1
+_DOC_ASSEMBLY = 2
+_DENSITY_PREFERENCE = 7                 # document density, used when no library material is assigned
+_TRANSPARENCY = 7                       # index of transparency in a document's appearance values
 
 
-def typed(obj, iface: str):
-    """Wrap a raw COM object in the generated early-bound class for `iface`."""
+# ---- Shapes: the whole satellite is drawn from these three primitives ---------------------
+class Box(NamedTuple):
+    center: tuple          # (x, y, z)
+    size: tuple            # (size_x, size_y, size_z)
+
+
+class Cylinder(NamedTuple):
+    axis: str              # "x", "y" or "z"
+    center: tuple
+    radius: float
+    length: float
+    inner_radius: float = 0.0   # > 0 makes a round tube
+
+
+class SquareTube(NamedTuple):
+    axis: str
+    center: tuple
+    outer: float           # outside width
+    wall: float            # wall thickness
+    length: float
+
+
+# ---- COM plumbing --------------------------------------------------------------------------
+def _typed(obj, interface: str):
+    """Cast a COM object to a named SolidWorks interface (pywin32 can't always infer it)."""
     if obj is None:
         return None
-    raw = obj._oleobj_ if hasattr(obj, "_oleobj_") else obj
-    return getattr(swmod, iface)(raw)
+    return getattr(_sw, interface)(getattr(obj, "_oleobj_", obj))
+
+
+def _doubles(values):
+    """Pack numbers the way SolidWorks expects array arguments."""
+    return VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, [float(v) for v in values])
 
 
 def connect():
-    return typed(w.GetActiveObject("SldWorks.Application"), "ISldWorks")
+    """Attach to the SolidWorks session that is already open."""
+    return _typed(win32com.client.GetActiveObject("SldWorks.Application"), "ISldWorks")
 
 
-def _to_sketch(plane: str, a: float, b: float) -> tuple[float, float]:
-    """Map in-plane model coordinates to sketch (u, v).
-    Front: (a,b)=(x,y);  Top: (a,b)=(x,z);  Right: (a,b)=(z,y)."""
-    if plane == "Front":
-        return a, b
-    if plane == "Top":
-        return a, -b
-    if plane == "Right":
-        return -a, b
-    raise ValueError(plane)
+def _save(model, path) -> str:
+    """Save a document; the file extension picks the format (.SLDPRT, .SLDASM, .jpg)."""
+    path = os.path.abspath(path)
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    extension = _typed(model.Extension, "IModelDocExtension")
+    extension.SaveAs3(path, _SAVE_AS_CURRENT_VERSION, _SAVE_SILENTLY, None, None, 0, 0)
+    if not os.path.exists(path):
+        raise RuntimeError(f"SolidWorks did not save {path}")
+    return path
+
+
+def mass_properties(model) -> dict:
+    """Mass [kg], volume [m³], center of mass [m], and inertia about it [kg·m²] in model axes."""
+    props = _typed(_typed(model.Extension, "IModelDocExtension").CreateMassProperty(), "IMassProperty")
+    props.UseSystemUnits = True
+    inertia = list(props.GetMomentOfInertia(0))     # 3×3 tensor, row by row
+    return dict(mass=props.Mass, volume=props.Volume, com=list(props.CenterOfMass),
+                Ixx=inertia[0], Iyy=inertia[4], Izz=inertia[8],
+                Ixy=inertia[1], Ixz=inertia[2], Iyz=inertia[5])
+
+
+# To extrude along a model axis, we sketch on the principal plane perpendicular to it. Each
+# entry names that plane and maps a model point to (sketch u, sketch v, depth along the axis).
+_SKETCH_PLANE = {
+    "z": ("Front Plane", lambda x, y, z: (x, y, z)),
+    "y": ("Top Plane",   lambda x, y, z: (x, -z, y)),
+    "x": ("Right Plane", lambda x, y, z: (-z, y, x)),
+}
 
 
 class Part:
-    """A new part document with primitive-building helpers."""
+    """A new part document, built up by adding shapes."""
 
     def __init__(self, sw):
-        self.sw = sw
-        self.model = typed(sw.NewPart(), "IModelDoc2")
+        self.model = _typed(sw.NewPart(), "IModelDoc2")
         if self.model is None:
-            raise RuntimeError("NewPart failed")
-        self.ext = typed(self.model.Extension, "IModelDocExtension")
-        self.skm = typed(self.model.SketchManager, "ISketchManager")
-        self.fm = typed(self.model.FeatureManager, "IFeatureManager")
-        self.part = typed(self.model, "IPartDoc")
-        self.skm.AddToDB = True  # skip snapping/inference while sketching
+            raise RuntimeError("SolidWorks could not create a part")
+        self._sketch = _typed(self.model.SketchManager, "ISketchManager")
+        self._sketch.AddToDB = True     # write sketch geometry directly, with no snapping
 
-    # ---- core: extrude closed profiles drawn on a principal plane -------------------------
-    def _extrude(self, plane: str, draw, start: float, length: float):
+    def add(self, shape):
+        """Add a Box, Cylinder or SquareTube. Overlapping shapes merge into one solid."""
+        if isinstance(shape, Box):
+            (x, y, z), (sx, sy, sz) = shape.center, shape.size
+            self._extrude("z", (x, y, z), sz, lambda u, v: self._rectangle(u, v, sx / 2, sy / 2))
+        elif isinstance(shape, Cylinder):
+            def profile(u, v):
+                self._sketch.CreateCircleByRadius(u, v, 0, shape.radius)
+                if shape.inner_radius > 0:
+                    self._sketch.CreateCircleByRadius(u, v, 0, shape.inner_radius)
+            self._extrude(shape.axis, shape.center, shape.length, profile)
+        elif isinstance(shape, SquareTube):
+            def profile(u, v):
+                for half_width in (shape.outer / 2, shape.outer / 2 - shape.wall):
+                    self._rectangle(u, v, half_width, half_width)
+            self._extrude(shape.axis, shape.center, shape.length, profile)
+        else:
+            raise TypeError(f"unknown shape: {shape!r}")
+
+    def _rectangle(self, u, v, half_u, half_v):
+        self._sketch.CreateCornerRectangle(u - half_u, v - half_v, 0, u + half_u, v + half_v, 0)
+
+    def _extrude(self, axis, center, length, draw_profile):
+        """Sketch a closed profile on the plane normal to `axis`, then extrude it `length`,
+        centered on `center`."""
+        plane, to_sketch = _SKETCH_PLANE[axis]
+        u, v, depth = to_sketch(*center)
+        start = depth - length / 2      # the extrusion starts this far from the sketch plane
         self.model.ClearSelection2(True)
-        ok = self.ext.SelectByID2(PLANES[plane]["name"], "PLANE", 0, 0, 0, False, 0, None, 0)
-        if not ok:
+        if not _typed(self.model.Extension, "IModelDocExtension").SelectByID2(
+                plane, "PLANE", 0, 0, 0, False, 0, None, 0):
             raise RuntimeError(f"could not select {plane}")
-        self.skm.InsertSketch(True)
-        draw()
-        self.skm.InsertSketch(True)  # close sketch; it stays selected
-        flip = start < 0
-        t0 = SW_START_OFFSET if abs(start) > 1e-12 else SW_START_SKETCH_PLANE
-        feat = self.fm.FeatureExtrusion3(
-            True, False, False, SW_END_BLIND, SW_END_BLIND, float(length), 0.0,
+        self._sketch.InsertSketch(True)                 # open a sketch on the selected plane
+        draw_profile(u, v)
+        self._sketch.InsertSketch(True)                 # close it; the sketch stays selected
+        start_type = _START_AT_OFFSET if abs(start) > 1e-12 else _START_AT_SKETCH
+        feature = _typed(self.model.FeatureManager, "IFeatureManager").FeatureExtrusion3(
+            True, False, False, _END_BLIND, _END_BLIND, float(length), 0.0,
             False, False, False, False, 0.0, 0.0, False, False, False, False,
-            True, True, True, t0, float(abs(start)), flip)
-        if feat is None:
-            raise RuntimeError(f"extrude failed on {plane}")
+            True, True, True, start_type, abs(start), start < 0)
+        if feature is None:
+            raise RuntimeError(f"extrude along {axis} failed")
         self.model.ClearSelection2(True)
-        return feat
 
-    def box(self, center, size):
-        """Axis-aligned box. center=(x,y,z), size=(sx,sy,sz)."""
-        cx, cy, cz = center
-        sx, sy, sz = size
-        u0, v0 = _to_sketch("Front", cx - sx / 2, cy - sy / 2)
-        u1, v1 = _to_sketch("Front", cx + sx / 2, cy + sy / 2)
-        return self._extrude("Front", lambda: self.skm.CreateCornerRectangle(u0, v0, 0, u1, v1, 0),
-                             cz - sz / 2, sz)
-
-    def cylinder(self, axis: str, center, radius: float, length: float, inner_radius: float = 0.0):
-        """Cylinder (or tube if inner_radius>0) along model axis 'x', 'y', or 'z', centered at center."""
-        cx, cy, cz = center
-        plane, a, b, s = {"z": ("Front", cx, cy, cz), "y": ("Top", cx, cz, cy), "x": ("Right", cz, cy, cx)}[axis]
-        u, v = _to_sketch(plane, a, b)
-
-        def draw():
-            self.skm.CreateCircleByRadius(u, v, 0, radius)
-            if inner_radius > 0:
-                self.skm.CreateCircleByRadius(u, v, 0, inner_radius)
-        return self._extrude(plane, draw, s - length / 2, length)
-
-    def square_tube(self, axis: str, center, outer: float, wall: float, length: float):
-        """Square tube along a model axis (structural member)."""
-        cx, cy, cz = center
-        plane, a, b, s = {"z": ("Front", cx, cy, cz), "y": ("Top", cx, cz, cy), "x": ("Right", cz, cy, cx)}[axis]
-
-        def draw():
-            for half in (outer / 2, outer / 2 - wall):
-                u0, v0 = _to_sketch(plane, a - half, b - half)
-                u1, v1 = _to_sketch(plane, a + half, b + half)
-                self.skm.CreateCornerRectangle(u0, v0, 0, u1, v1, 0)
-        return self._extrude(plane, draw, s - length / 2, length)
-
-    # ---- material, mass --------------------------------------------------------------------
-    def material(self, name: str, db: str = "SOLIDWORKS Materials.sldmat"):
-        self.part.SetMaterialPropertyName2("", db, name)
-
-    def density(self, rho_kg_m3: float):
-        """Uniform document density (no library material), e.g. CFRP at 1,600 kg/m³."""
-        self.model.SetUserPreferenceDoubleValue(SW_PREF_DENSITY, float(rho_kg_m3))
+    def set_density(self, kg_per_m3: float):
+        """Uniform density, so the mass follows from the drawn geometry (used for structure)."""
+        self.model.SetUserPreferenceDoubleValue(_DENSITY_PREFERENCE, float(kg_per_m3))
         self.model.ForceRebuild3(False)
 
-    def set_mass(self, mass_kg: float):
-        """Hit a target mass by setting the document density (no library material assigned),
-        so mass is spread uniformly over the drawn geometry and inertia stays physical.
-        (SolidWorks' mass override zeroes inertia, so it is not used.)"""
-        self.model.SetUserPreferenceDoubleValue(SW_PREF_DENSITY, 1000.0)
+    def set_mass(self, kg: float):
+        """Hit a target mass by choosing the density that gives it. The mass is then spread
+        evenly over the drawn shapes, which keeps the part's inertia realistic. (SolidWorks'
+        own mass override would zero the inertia.)"""
+        self.set_density(kg / self.mass_properties()["volume"])
+
+    def set_color(self, rgb, transparency: float = 0.0):
+        """Display color, with r, g, b and transparency each in 0..1."""
+        appearance = list(self.model.MaterialPropertyValues or [0.5] * 9)
+        appearance[0:3] = rgb
+        appearance[_TRANSPARENCY] = transparency
+        self.model.MaterialPropertyValues = _doubles(appearance)
+
+    def mass_properties(self) -> dict:
+        return mass_properties(self.model)
+
+    def save(self, path) -> str:
         self.model.ForceRebuild3(False)
-        vol = self.mass_props()["volume"]
-        self.model.SetUserPreferenceDoubleValue(SW_PREF_DENSITY, float(mass_kg) / vol)
+        return _save(self.model, path)
+
+
+class Assembly:
+    """A new assembly document: saved parts (or sub-assemblies) placed by position and rotation."""
+
+    def __init__(self, sw):
+        self.model = _typed(sw.NewAssembly(), "IModelDoc2")
+        if self.model is None:
+            raise RuntimeError("SolidWorks could not create an assembly")
+        self._assembly = _typed(self.model, "IAssemblyDoc")
+        self._math = _typed(sw.GetMathUtility(), "IMathUtility")
+
+    def add(self, path, position=(0, 0, 0), rotation=None):
+        """Insert the file at `path` with its origin at `position`. `rotation` is a 3×3 matrix
+        (see `rotation()` below); None leaves the component's axes aligned with the assembly's."""
+        path = os.path.abspath(path)
+        component = _typed(self._assembly.AddComponent5(path, 0, "", False, "", 0, 0, 0), "IComponent2")
+        if component is None:
+            raise RuntimeError(f"could not insert {path}")
+        r = rotation or [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+        # SolidWorks wants 16 numbers: the rotation column by column, the translation,
+        # a scale factor, and three unused values.
+        transform = [r[0][0], r[1][0], r[2][0], r[0][1], r[1][1], r[2][1], r[0][2], r[1][2], r[2][2],
+                     *position, 1, 0, 0, 0]
+        component.Transform2 = self._math.CreateTransform(_doubles(transform))
+
+    def bounding_box(self) -> dict:
+        """Axis-aligned bounding box of everything in the assembly: min, max and size [m]."""
+        x0, y0, z0, x1, y1, z1 = self._assembly.GetBox(0)
+        return dict(min=[x0, y0, z0], max=[x1, y1, z1], size=[x1 - x0, y1 - y0, z1 - z0])
+
+    def mass_properties(self) -> dict:
         self.model.ForceRebuild3(False)
+        return mass_properties(self.model)
 
-    def color(self, rgb):
-        """Set display color (r,g,b in 0..1)."""
-        vals = self.model.MaterialPropertyValues
-        vals = list(vals) if vals else [0.5] * 9
-        vals[0:3] = rgb
-        self.model.MaterialPropertyValues = VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, vals)
-
-    def mass_props(self) -> dict:
-        return mass_props(self.model)
-
-    def save(self, path: str):
-        path = os.path.normpath(os.path.abspath(path))
-        os.makedirs(os.path.dirname(path), exist_ok=True)
+    def save(self, path) -> str:
         self.model.ForceRebuild3(False)
-        res = self.ext.SaveAs3(path, SW_SAVE_AS_CURRENT, SW_SAVE_SILENT, None, None, 0, 0)
-        ok = res[0] if isinstance(res, tuple) else res
-        if not ok or not os.path.exists(path):
-            raise RuntimeError(f"save failed: {path} {res}")
-        return path
+        return _save(self.model, path)
+
+    def save_image(self, path, view: str = "*Isometric") -> str:
+        """Save a picture of the assembly from a standard view."""
+        self.model.ShowNamedView2(view, -1)
+        self.model.ViewZoomtofit2()
+        return _save(self.model, path)
 
 
-def mass_props(model) -> dict:
-    ext = typed(typed(model, "IModelDoc2").Extension, "IModelDocExtension")
-    mp = typed(ext.CreateMassProperty(), "IMassProperty")
-    mp.UseSystemUnits = True
-    moi = list(mp.GetMomentOfInertia(0))  # about center of mass, aligned with model axes
-    return dict(
-        mass=mp.Mass, volume=mp.Volume, com=list(mp.CenterOfMass),
-        Ixx=moi[0], Iyy=moi[4], Izz=moi[8], Ixy=moi[1], Ixz=moi[2], Iyz=moi[5],
-    )
-
-
-def rot_matrix(axis: str, deg: float):
-    c, s = math.cos(math.radians(deg)), math.sin(math.radians(deg))
+def rotation(axis: str, degrees: float) -> list:
+    """3×3 matrix for a right-handed rotation about a model axis."""
+    c, s = math.cos(math.radians(degrees)), math.sin(math.radians(degrees))
     return {
         "x": [[1, 0, 0], [0, c, -s], [0, s, c]],
         "y": [[c, 0, s], [0, 1, 0], [-s, 0, c]],
@@ -188,68 +235,13 @@ def rot_matrix(axis: str, deg: float):
     }[axis]
 
 
-def matmul(a, b):
-    return [[sum(a[i][k] * b[k][j] for k in range(3)) for j in range(3)] for i in range(3)]
-
-
-class Assembly:
-    def __init__(self, sw):
-        self.sw = sw
-        self.model = typed(sw.NewAssembly(), "IModelDoc2")
-        if self.model is None:
-            raise RuntimeError("NewAssembly failed")
-        self.assy = typed(self.model, "IAssemblyDoc")
-        self.ext = typed(self.model.Extension, "IModelDocExtension")
-        self.mu = typed(sw.GetMathUtility(), "IMathUtility")
-
-    def add(self, part_path: str, pos=(0, 0, 0), rot=None):
-        """Insert a saved part/assembly with its origin at `pos` and 3x3 rotation `rot`
-        (columns = component axes expressed in assembly frame)."""
-        part_path = os.path.normpath(os.path.abspath(part_path))
-        comp = typed(self.assy.AddComponent5(part_path, 0, "", False, "", 0.0, 0.0, 0.0), "IComponent2")
-        if comp is None:
-            raise RuntimeError(f"AddComponent5 failed: {part_path}")
-        r = rot or [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
-        # SolidWorks transform array: 9 rotation terms (row-major of R^T), 3 translation, scale, 3 unused
-        data = [r[0][0], r[1][0], r[2][0], r[0][1], r[1][1], r[2][1], r[0][2], r[1][2], r[2][2],
-                float(pos[0]), float(pos[1]), float(pos[2]), 1.0, 0.0, 0.0, 0.0]
-        xf = self.mu.CreateTransform(VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, data))
-        comp.Transform2 = xf
-        return comp
-
-    def box(self):
-        b = list(self.assy.GetBox(0))
-        return dict(min=b[0:3], max=b[3:6], size=[b[3] - b[0], b[4] - b[1], b[5] - b[2]])
-
-    def mass_props(self) -> dict:
-        self.model.ForceRebuild3(False)
-        return mass_props(self.model)
-
-    def save(self, path: str):
-        path = os.path.normpath(os.path.abspath(path))
-        self.model.ForceRebuild3(False)
-        res = self.ext.SaveAs3(path, SW_SAVE_AS_CURRENT, SW_SAVE_SILENT, None, None, 0, 0)
-        ok = res[0] if isinstance(res, tuple) else res
-        if not ok:
-            raise RuntimeError(f"save failed: {path} {res}")
-        return path
-
-
-def close_all(sw, titles):
-    for t in titles:
-        sw.CloseDoc(t)
-
-
-def close_matching(sw, folder: str | None = None, untitled: bool = True) -> list[str]:
-    """Close open docs saved under `folder` and/or untitled new docs. Assemblies first so parts release."""
-    folder = os.path.normcase(os.path.normpath(folder)) if folder else None
-    docs = [typed(d, "IModelDoc2") for d in (sw.GetDocuments() or [])]
-    docs.sort(key=lambda d: 0 if d.GetType() == SW_DOC_ASSEMBLY else 1)
-    closed = []
-    for d in docs:
-        path, title = d.GetPathName(), d.GetTitle()
-        mine = (folder and path and os.path.normcase(path).startswith(folder)) or (untitled and not path)
-        if mine:
-            sw.CloseDoc(title)
-            closed.append(title)
-    return closed
+def close_documents_in(sw, folder) -> None:
+    """Close open documents saved under `folder`, so a rebuild can overwrite their files.
+    Assemblies go first, because they hold their parts open."""
+    folder = os.path.normcase(os.path.abspath(folder))
+    documents = [_typed(d, "IModelDoc2") for d in (sw.GetDocuments() or [])]
+    documents.sort(key=lambda d: d.GetType() != _DOC_ASSEMBLY)
+    # Collect the titles before closing anything: closing an assembly also closes its parts.
+    titles = [d.GetTitle() for d in documents if os.path.normcase(d.GetPathName()).startswith(folder)]
+    for title in titles:
+        sw.CloseDoc(title)

@@ -1,6 +1,6 @@
 # Part 2 Research Notes (first pass, 2026-11-15)
 
-Convention: **"Optimistic pick"** is the value the Part 2 notebook will use by default, following the optimism principle in `PART2_PLAN.md`. "Range" is what sources support. Items marked ⚠️ come from weak or secondary sources, or are my own estimates; check them before publishing.
+Convention: **"Optimistic pick"** is the value the Part 2 notebook will use by default, following the optimism principle (take the optimistic end of each cited range). "Range" is what sources support. Items marked ⚠️ come from weak or secondary sources, or are my own estimates; check them before publishing.
 
 ---
 
@@ -67,9 +67,18 @@ Convention: **"Optimistic pick"** is the value the Part 2 notebook will use by d
 | Item | Range | Optimistic pick |
 |---|---|---|
 | Payload to LEO, reusable | >100 t (SpaceX official); 100–150 t; V3 ~200 t claimed ⚠️ | **150 t**; 200 t as a sensitivity |
-| Payload bay | ~8–9 m dia × 17–18 m (22 m extended); 614 m³ listed, ~1,000 m³ goal | **9 m × 22 m, ~1,000 m³** |
+| Payload bay | Starship Users Guide (rev 1.0, Fig. 4): 8 m envelope, full width only up to 8 m of height, then narrowing to 3.6 m at 17.24 m (~680 m³); extended option up to 22 m (~920 m³ if the extra height is all full-width) | **Guide envelope with the 22 m extended option (~920 m³).** See D.1 |
 | SSO penalty vs. due-east | no published Starship number | ⬜ **Open:** estimate from Δv (polar/retrograde loses Earth's ~0.4 km/s rotation boost, plus plane geometry); likely ~15–25% ⚠️ |
 | Price $/kg | today: expendable ~$600–1,000; Suncatcher: <$200 by ~2035; 10× reuse ≈ $60 cost / <$250 price; Musk target ~$100 (~$10M/flight); 100× reuse floor ~$15–38 | **$100/kg default**; sweep $2,500 → $15 |
+
+### D.1 Starship payload envelope and launch loads (Starship Users Guide, rev 1.0, March 2020)
+- **Envelope (Fig. 4), height station → radius [m]:** 0–8 → 4.00; 9 → 3.85; 10 → 3.68; 11 → 3.49; 12 → 3.27; 13 → 3.04; 14 → 2.78; 15 → 2.51; 16 → 2.20; 17.24 → 1.80.
+  - Volume ≈ 680 m³ standard. "An extended payload volume is also available for payloads requiring up to 22 m of height": ≈ 920 m³ if the extra 4.76 m is all added to the full-width section ⚠️ (the guide gives no drawing of it).
+  - **Effect on the notebook:** the flat-pack plate (6.4 × 4.6 m) only fits in the full-width section. The first flat-pack (6.4 × 4.6 m plate) fits 13 per flight (standard) or 21 (extended), against 35 in an idealized 8 m × 22 m cylinder. Applied in the notebook (Section 10.1) with the extended option; a re-laid-out 5.7 × 5.0 m plate, 0.50 m thick, fits 28. The tower fits 11.
+- **Load factors (Fig. 5):** up to 6 g axial with ±0.5 g lateral; up to ±2 g lateral at 3.5 g axial; down to −2 g axial. The notebook's 6 g axial matches. Lateral loads are not used yet.
+- **Payload:** "over 100 metric tons to LEO" at full reuse. No SSO figure.
+- **Starlink V3 on Starship:** ~60 satellites per flight at ~1,800–2,000 kg each is SpaceX's target ⚠️ (secondary sources), so a ~2.7 t satellite at 35 per flight is plausible by mass.
+- **Structure mass rule of thumb:** ~20% of dry mass for structure and mechanisms (SMAD, via secondary) ⚠️. The flat-pack CAD structure is 69 kg, under 3%, because only the corner posts are sized. The deck tubes under the compute trays would see ~1,200 MPa at 6 g against a 300 MPa allowable.
 
 ## E. Bus and drag
 - Drag at 550 km: solar max density ~2–5×10⁻¹³ kg/m³ ⚠️. At A/m = 0.01 m²/kg that is ~6 m/s per year of Δv. It scales linearly with A/m, but see headline 3: the arrays can fly edge-on.
@@ -110,10 +119,12 @@ Convention: **"Optimistic pick"** is the value the Part 2 notebook will use by d
 ## Open items
 - [ ] SPENVIS runs (550 km SSO vs. 7,000 km): array fluence and electronics dose. Needs your account.
 - [ ] Starship SSO payload penalty (Δv estimate in the notebook).
-- [x] Dawn-dusk eclipse season at 550 km (Part 2 notebook, Section 3): ~98 days/yr with eclipses, up to ~22 min per orbit. **Annual sunlight is 95.1%**, about equal to Part 1's 95.3% at 7,000 km, not "near-continuous."
+- [x] Dawn-dusk eclipse season at 550 km (Part 2 notebook, Section 3): ~98 days/yr with eclipses, up to ~22 min per orbit. **Annual sunlight is 95.1%**, about equal to Part 1's 95.3% at 7,000 km, not "near-continuous." Off-angle sunlight (β runs 59–90°) lowers compute availability to ~93% with wings that roll to follow the Sun (Section 3.4).
 - [ ] Real sources for radiator hardware $/m² and bus cost. These were Part 1 placeholders, and they now decide the result once arrays are cheap.
 - [ ] Read the Surrey review in full ("The return of silicon solar cells to space") for array-level, not cell-level, numbers.
 - [ ] Solar-max density at 550 km from NRLMSIS.
+- [x] Apply the real Starship envelope (D.1) to the packing, and re-optimize the flat-pack for it: 28 per flight (notebook Section 10.1).
+- [ ] Size the flat-pack deck for bending and lateral loads (D.1).
 
 ## Sources
 - Google Suncatcher paper: https://arxiv.org/abs/2511.19468 · blog: https://research.google/blog/exploring-a-space-based-scalable-ai-infrastructure-system-design/
@@ -121,7 +132,7 @@ Convention: **"Optimistic pick"** is the value the Part 2 notebook will use by d
 - Solestial SBIR targets: https://www.militaryaerospace.com/power/article/14301265/nasa-selects-solestial-for-space-solar-array · annealing test: https://pv-magazine-usa.com/2023/03/28/ultrathin-solar-cells-self-repair-radiation-damage-in-space · SpaceWERX: https://www.militaryaerospace.com/power/article/55303658/spacewerx-awards-solestial-12-million-contract-to-advance-fast-build-solar-array-technology · York acquisition: https://orbital-intel.com/companies/solestial/
 - Redwire ROSA: https://rdw.com/product-archive/power/rosa/ · https://pv-magazine-usa.com/2025/07/03/redwire-deploys-60-kw-roll-out-solar-array-for-the-first-lunar-orbit-space-station/
 - Radiators: https://scholar.colorado.edu/downloads/k643b230p · https://saemobilus.sae.org/content/2001-01-2194 · https://satsearch.co/products/redwirespace-q-rad-deployable-radiator
-- Starship: https://new.spacex.com/vehicles/starship · https://www.eoportal.org/other-space-activities/starship-of-spacex · https://en.wikipedia.org/wiki/SpaceX_Starship · https://payloadspace.com/what-to-expect-from-starship-v3/ · https://techcrunch.com/2026/05/26/starships-path-to-reusability-looks-murky-after-spacexs-s-1/
+- Starship: Users Guide rev 1.0 (https://www.spacex.com/media/starship_users_guide_v1.pdf, now offline; mirrored by the NYT document viewer) · https://www.universetoday.com/articles/want-to-buy-flights-on-starship-heres-the-new-spacex-payload-users-guide-no-prices-unfortunately · https://new.spacex.com/vehicles/starship · https://www.eoportal.org/other-space-activities/starship-of-spacex · https://en.wikipedia.org/wiki/SpaceX_Starship · https://payloadspace.com/what-to-expect-from-starship-v3/ · https://techcrunch.com/2026/05/26/starships-path-to-reusability-looks-murky-after-spacexs-s-1/
 - Datacenter cost: https://irei.com/news/cushman-wakefield-releases-2026-data-center-development-cost-guide-citing-21-rise-in-per-mw-construction-costs/ · https://www.gleeds.com/media/umybrjx1/global-market-report-data-centres.pdf · https://archdesk.com/blog/global-ai-data-center-construction-2026
 - Radiation: https://ntrs.nasa.gov/api/citations/20220011775/downloads/Mission_Radiation_Modeling_STI.pdf
 - SpaceX FCC filing: https://docs.fcc.gov/public/attachments/DA-26-113A1.pdf · https://satnews.com/2026/01/31/spacex-files-fcc-application-for-million-satellite-orbital-data-center/ · https://www.datacenterdynamics.com/en/news/spacex-files-for-million-satellite-orbital-ai-data-center-megaconstellation/

@@ -1,314 +1,367 @@
-"""Build the Part 2 reference satellite in SolidWorks from cad/params.json.
+"""Build the Part 2 reference satellite in SolidWorks.
 
-Run from the repo root with SolidWorks open:
-    .venv\\Scripts\\python.exe cad\\build_satellite.py              # all concepts
-    .venv\\Scripts\\python.exe cad\\build_satellite.py flatpack     # one concept
+Run from the repo root, with SolidWorks open:
+    .venv\\Scripts\\python.exe cad\\build_satellite.py              # both concepts
+    .venv\\Scripts\\python.exe cad\\build_satellite.py flatpack     # just one
 
-Two stowed-packaging concepts share the same deployed layout (layout B radiators):
-    tower     first pass: bus stands along the Starship axis, wings rolled (ROSA-style),
-              radiator panels stacked against the sides
-    flatpack  Starlink-style plates stacked along the bay axis: compute trays laid flat,
-              wings z-folded flat, full-footprint radiator panels on top, corner posts carry the stack
+Input:  cad/params.json, written by the notebook (sizes and masses from the sizing model).
+Output: cad/<concept>/ with the parts, three assemblies (satellite_deployed,
+        satellite_stowed, starship_stack), a picture of each, and mass_props.json,
+        which the notebook reads back.
 
-Outputs per concept, under cad/<concept>/:
-    parts/*.SLDPRT, satellite_deployed.SLDASM, satellite_stowed.SLDASM, starship_stack.SLDASM,
-    images/*.jpg, mass_props.json (read back by the notebook)
+The satellite is the same in orbit either way. The two concepts differ in how it folds
+for launch:
+    tower     First pass. The bus stands upright in the bay, the solar wings are rolled
+              up, and the radiator panels are stacked against its sides.
+    flatpack  Starlink-style. Each satellite is a wide, thin plate, and the plates are
+              stacked along the bay. Corner posts carry the weight of the stack.
 
-Model frame: +X = velocity, +Y = zenith (Starship axis when stowed), +Z = toward the Sun.
-Parts whose internals are not modeled get a uniform density that yields their target mass;
-primary structure is drawn as CFRP tubes and its mass comes from the geometry.
+How mass is modeled:
+    Structure (frame or deck) is drawn as real carbon-fiber tubes, so its mass comes
+    from the geometry. Everything else is a simple placeholder shape given its target
+    mass from the notebook. That is enough for total mass, stowed size and inertia.
+
+Axes: +X = direction of travel, +Y = zenith (the Starship axis when stowed), +Z = toward the Sun.
 """
-from __future__ import annotations
-
 import json
 import math
 import os
 import sys
+from collections import Counter
+from dataclasses import dataclass
+from pathlib import Path
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, HERE)
-import sw_api as S  # noqa: E402
-from packing import sats_per_flight  # noqa: E402
+import sw_api
+from packing import sats_per_flight
+from sw_api import Box, Cylinder, SquareTube
 
-# display colors (r, g, b)
-C_COMPUTE, C_FRAME, C_EQUIP = (0.25, 0.25, 0.28), (0.15, 0.15, 0.15), (0.75, 0.62, 0.25)
-C_ARRAY, C_RAD, C_BAY = (0.10, 0.20, 0.55), (0.92, 0.92, 0.90), (0.80, 0.80, 0.82)
-FLIP_Y = S.rot_matrix("y", 180)
+HERE = Path(__file__).parent
 
+# Display colors (r, g, b)
+DARK_GRAY, BLACK, GOLD = (0.25, 0.25, 0.28), (0.15, 0.15, 0.15), (0.75, 0.62, 0.25)
+BLUE, WHITE, LIGHT_GRAY = (0.10, 0.20, 0.55), (0.92, 0.92, 0.90), (0.80, 0.80, 0.82)
 
-class Builder:
-    """Collects parts for one concept and writes them under cad/<concept>/."""
-
-    def __init__(self, sw, concept):
-        self.sw, self.concept = sw, concept
-        self.out = os.path.join(HERE, concept)
-        self.paths, self.masses = {}, {}
-
-    def part(self, name, draw, mass=None, density=None, color=None):
-        p = S.Part(self.sw)
-        draw(p)
-        if mass is not None:
-            p.set_mass(mass)
-        elif density is not None:
-            p.density(density)
-        if color:
-            try:
-                p.color(color)
-            except Exception as e:  # cosmetic only
-                print(f"  (color skipped for {name}: {e})")
-        self.paths[name] = p.save(os.path.join(self.out, "parts", f"{name}.SLDPRT"))
-        self.masses[name] = p.mass_props()["mass"]
-        print(f"  {name:22s} {self.masses[name]:9.1f} kg")
-
-    def assembly(self, name, placements):
-        """placements: list of (part_name_or_path, pos, rot)."""
-        a = S.Assembly(self.sw)
-        for ref, pos, rot in placements:
-            a.add(self.paths.get(ref, ref), pos=pos, rot=rot)
-        path = a.save(os.path.join(self.out, f"{name}.SLDASM"))
-        return a, path
-
-    def image(self, assy, name, view="*Isometric"):
-        try:
-            assy.model.ShowNamedView2(view, -1)
-            assy.model.ViewZoomtofit2()
-            path = os.path.normpath(os.path.join(self.out, "images", f"{name}.jpg"))
-            os.makedirs(os.path.dirname(path), exist_ok=True)
-            assy.ext.SaveAs3(path, 0, 1, None, None, 0, 0)
-            return path if os.path.exists(path) else None
-        except Exception as e:
-            print(f"  (image {name} skipped: {e})")
-            return None
+SIDES = (-1, 1)                         # mirror a shape to both sides of the satellite
+FLIPPED = sw_api.rotation("y", 180)     # turns the +X wing into the -X wing
 
 
-def place(name, pos=(0, 0, 0), rot=None):
-    return (name, pos, rot)
+@dataclass
+class PartSpec:
+    """One part: its shapes, its color, and either a target mass or a material density."""
+    shapes: list
+    color: tuple
+    mass: float | None = None       # kg, spread evenly over the shapes
+    density: float | None = None    # kg/m³; the mass then follows from the geometry
 
 
-# ======================================================================================
+@dataclass
+class Design:
+    """A packaging concept: its parts, and where each one sits when deployed and stowed.
+    A placement is (part name, position, rotation)."""
+    parts: dict[str, PartSpec]
+    deployed: list
+    stowed: list
+    structure: str      # name of the part that is the primary structure
+    geometry: dict      # a few derived dimensions, passed back to the notebook
+
+
+def at(name, position=(0, 0, 0), rotation=None):
+    return (name, position, rotation)
+
+
+def deployed_wing(root_fitting, blanket_start_x, length, width):
+    """The +X solar wing, unrolled: a 3 mm blanket facing the Sun (+Z), held flat by a
+    hollow boom along each long edge."""
+    mid_x = blanket_start_x + length / 2
+    booms = [Cylinder("x", (mid_x, side * (width / 2 + 0.06), 0), 0.06, length, inner_radius=0.057)
+             for side in SIDES]
+    return [root_fitting, Box((mid_x, 0, 0), (length, width, 0.003)), *booms]
+
+
+def deployed_layout(bus, fin_root_y, panel_length, panels_per_fin):
+    """On orbit, both concepts look alike: the bus in the middle, a solar wing out each
+    side along ±X, and a radiator fin of hinged panels running up and down along ±Y."""
+    wings = [at("wing_deployed"), at("wing_deployed", rotation=FLIPPED)]
+    fins = [at("radiator_panel", (0, side * (fin_root_y + (i + 0.5) * panel_length), 0))
+            for side in SIDES for i in range(panels_per_fin)]
+    return [at(name) for name in bus] + wings + fins
+
+
+# ============================================================================================
 # Concept 1: tower
-# ======================================================================================
-def build_tower(b: Builder, P: dict):
+# ============================================================================================
+def tower(P: dict) -> Design:
     cx, cy, cz = P["compute"]["size"]
-    fx, fy, fz = P["frame"]["size"]
-    tb, tw = P["frame"]["tube_outer"], P["frame"]["tube_wall"]
-    top = fy / 2 + tb / 2
-    W = P["wing"]
-    wing_w = W["width"]
-    wing_len = W["area_each"] / wing_w
-    roll_r = math.sqrt(W["stowed_volume_each"] / (math.pi * wing_w))
-    root_x = fx / 2 + tb / 2 + 0.05 + roll_r
-    R = P["radiator"]
-    fin_len = R["panel_area_total"] / 2 / R["fin_width"]
-    n_pan = math.ceil(fin_len / R["panel_max_length"] - 1e-9)
-    pan_len = fin_len / n_pan
-    E = P["equipment"]
+    fx, fy, fz = P["frame"]["size"]             # frame size, between tube centerlines
+    tube, wall = P["frame"]["tube_outer"], P["frame"]["tube_wall"]
+    W, R, E = P["wing"], P["radiator"], P["equipment"]
 
-    b.part("compute_module", lambda p: p.box((0, 0, 0), (cx, cy, cz)), mass=P["compute"]["mass"], color=C_COMPUTE)
+    wing_length = W["area_each"] / W["width"]
+    roll_radius = math.sqrt(W["stowed_volume_each"] / (math.pi * W["width"]))   # wing rolled into a cylinder
+    roll_x = fx / 2 + tube / 2 + 0.05 + roll_radius                             # roll sits just outside the frame
 
-    def frame(p):
-        for sx in (-1, 1):
-            for sz in (-1, 1):
-                p.square_tube("y", (sx * fx / 2, 0, sz * fz / 2), tb, tw, fy + tb)
-        for y in (-fy / 2, 0.0, fy / 2):
-            for sz in (-1, 1):
-                p.square_tube("x", (0, y, sz * fz / 2), tb, tw, fx - tb)
-            for sx in (-1, 1):
-                p.square_tube("z", (sx * fx / 2, y, 0), tb, tw, fz - tb)
-    b.part("frame", frame, density=P["frame"]["density"], color=C_FRAME)
+    # Each radiator fin is split into equal panels short enough to fold against the bus.
+    fin_length = R["panel_area_total"] / 2 / R["fin_width"]
+    panels_per_fin = math.ceil(fin_length / R["panel_max_length"] - 1e-9)
+    panel_length = fin_length / panels_per_fin
 
-    yt, yb = (cy / 2 + fy / 2) / 2, -(cy / 2 + fy / 2) / 2
-    b.part("avionics", lambda p: p.box((0, yt + 0.2, -0.35), (0.4, 0.3, 0.3)), mass=E["avionics"], color=C_EQUIP)
-    b.part("reaction_wheels", lambda p: [p.cylinder("y", (sx * 0.4, yt - 0.15, sz * 0.35), 0.16, 0.12)
-                                         for sx in (-1, 1) for sz in (-1, 1)], mass=E["reaction_wheels"], color=C_EQUIP)
-    b.part("laser_terminals", lambda p: [p.cylinder("y", c, 0.13, 0.3) for c in
-                                         ((0.45, yt + 0.25, 0.4), (-0.45, yt + 0.25, 0.4), (0.45, yb - 0.25, -0.4))],
-           mass=E["laser_terminals"], color=C_EQUIP)
-    b.part("power_conditioning", lambda p: p.box((0.25, yb, 0.0), (0.7, 0.45, 0.8)), mass=E["power_conditioning"], color=C_EQUIP)
-    b.part("propellant_tank", lambda p: p.cylinder("z", (-0.4, yb, 0.0), 0.2, 0.7),
-           mass=E["propellant_tank"] + P["propellant"], color=C_EQUIP)
-    b.part("ep_thrusters", lambda p: [p.cylinder("x", (-(fx / 2 + tb / 2 + 0.12), yb, sz * 0.5), 0.09, 0.24)
-                                      for sz in (-1, 1)], mass=E["electric_propulsion"], color=C_EQUIP)
-    b.part("array_drives", lambda p: [p.cylinder("x", (sx * (fx / 2 + tb / 2 + 0.03), 0, 0), 0.14, 0.06)
-                                      for sx in (-1, 1)], mass=E["array_drives"], color=C_EQUIP)
-    b.part("stack_interfaces", lambda p: [p.box((sx * fx / 2, sy * (fy / 2 - 0.1), sz * fz / 2), (0.12, 0.08, 0.12))
-                                          for sx in (-1, 1) for sy in (-1, 1) for sz in (-1, 1)],
-           mass=E["stack_interfaces"], color=C_EQUIP)
+    # Bus equipment goes in the two bays above and below the compute module.
+    y_top = (cy / 2 + fy / 2) / 2
+    y_bottom = -y_top
+    outside_x = fx / 2 + tube / 2               # outer face of the frame
 
-    def wing_deployed(p):
-        p.cylinder("y", (root_x, 0, 0), 0.12, wing_w + 0.1)
-        x0 = root_x + 0.15
-        p.box((x0 + wing_len / 2, 0, 0), (wing_len, wing_w, 0.003))
-        for sy in (-1, 1):
-            p.cylinder("x", (x0 + wing_len / 2, sy * (wing_w / 2 + 0.06), 0), 0.06, wing_len, inner_radius=0.057)
-    b.part("wing_deployed", wing_deployed, mass=W["mass_each"], color=C_ARRAY)
-    b.part("wing_stowed", lambda p: p.cylinder("y", (root_x, 0, 0), roll_r, wing_w + 0.1), mass=W["mass_each"], color=C_ARRAY)
-    b.part("radiator_panel", lambda p: p.box((0, 0, 0), (R["thickness"], pan_len, R["fin_width"])),
-           mass=R["mass_total"] / (2 * n_pan), color=C_RAD)
+    frame = [SquareTube("y", (sx * fx / 2, 0, sz * fz / 2), tube, wall, fy + tube)     # 4 uprights
+             for sx in SIDES for sz in SIDES]
+    for y in (-fy / 2, 0, fy / 2):                                                      # 3 rings of cross-members
+        frame += [SquareTube("x", (0, y, sz * fz / 2), tube, wall, fx - tube) for sz in SIDES]
+        frame += [SquareTube("z", (sx * fx / 2, y, 0), tube, wall, fz - tube) for sx in SIDES]
 
-    core = ["compute_module", "frame", "avionics", "reaction_wheels", "laser_terminals", "power_conditioning",
-            "propellant_tank", "ep_thrusters", "array_drives", "stack_interfaces"]
-    deployed = [place(n) for n in core] + [place("wing_deployed"), place("wing_deployed", rot=FLIP_Y)]
-    deployed += [place("radiator_panel", (0, sy * (top + (i + 0.5) * pan_len), 0)) for sy in (-1, 1) for i in range(n_pan)]
-    stowed = [place(n) for n in core] + [place("wing_stowed"), place("wing_stowed", rot=FLIP_Y)]
-    pitch = R["thickness"] * 2
-    stowed += [place("radiator_panel", (0, 0, sz * (fz / 2 + tb / 2 + 0.05 + R["thickness"] / 2 + i * pitch)),
-                     S.rot_matrix("y", 90)) for sz in (-1, 1) for i in range(n_pan)]
-    counts = {n: 1 for n in core}
-    counts.update(wing_deployed=2, radiator_panel=2 * n_pan)
-    geometry = {"wing_length": wing_len, "roll_radius": roll_r, "radiator_panels": 2 * n_pan, "panel_length": pan_len}
-    return deployed, stowed, counts, "frame", geometry
-
-
-# ======================================================================================
-# Concept 2: flatpack
-# ======================================================================================
-def build_flatpack(b: Builder, P: dict):
-    cx, cy, cz = P["compute"]["size"]
-    D = P["deck"]
-    Lx, Lz = D["footprint"]
-    h, tube, wall, g = D["height"], D["tube"], D["wall"], D["gap"]
-    po, pw_ = D["post_outer"], D["post_wall"]
-    eq_y0, eq_h, rad_y0 = D["eq_y0"], D["eq_h"], D["rad_y0"]
-    eq_yc = eq_y0 + eq_h / 2
-    W = P["wing"]
-    px, pt, pz = W["pack"]
-    wing_w = W["width"]
-    wing_len = W["area_each"] / wing_w
-    R = P["radiator"]
-    n_pan, pl, pwid, th, pitch = R["n_panels"], R["panel_length"], R["panel_width"], R["thickness"], R["pitch"]
-    E = P["equipment"]
-
-    # Satellite origin: deck center at mid-height, so stowed layer spans y in [-h/2, h/2]
-    y0 = -h / 2
-
-    b.part("compute_module", lambda p: p.box((0, y0 + eq_yc, 0), (cx, cy, cz)), mass=P["compute"]["mass"], color=C_COMPUTE)
-
-    def deck(p):
-        yb = y0 + tube / 2
-        for sz in (-1, 1):                                        # long sides (along X)
-            p.square_tube("x", (0, yb, sz * (Lz / 2 - tube / 2)), tube, wall, Lx)
-        for sx in (-1, 1):                                        # short sides and compute supports (along Z)
-            p.square_tube("z", (sx * (Lx / 2 - tube / 2), yb, 0), tube, wall, Lz - 2 * tube)
-            p.square_tube("z", (sx * (cx / 2 + tube / 2), yb, 0), tube, wall, Lz - 2 * tube)
-        for sx in (-1, 1):                                        # corner posts carry the stack
-            for sz in (-1, 1):
-                p.square_tube("y", (sx * (Lx / 2 - po / 2), 0.0, sz * (Lz / 2 - po / 2)), po, pw_, h)
-    b.part("deck", deck, density=D["density"], color=C_FRAME)
-
-    # equipment in the two strips beside the compute module (|z| > cz/2), within the equipment layer
-    zs = (cz / 2 + Lz / 2 - po) / 2                               # strip centerline
-    ye = y0 + eq_yc
-    eh = min(eq_h, 0.30)
-    b.part("power_conditioning", lambda p: p.box((-0.4, ye, zs), (0.9, eh, 0.8)), mass=E["power_conditioning"], color=C_EQUIP)
-    b.part("propellant_tank", lambda p: p.cylinder("x", (0.6, ye, zs), min(eh / 2, 0.14), 0.8),
-           mass=E["propellant_tank"] + P["propellant"], color=C_EQUIP)
-    b.part("reaction_wheels", lambda p: [p.cylinder("y", (sx * 0.7, ye, -zs + dz), 0.16, min(eh, 0.12))
-                                         for sx in (-1, 1) for dz in (-0.3, 0.3)], mass=E["reaction_wheels"], color=C_EQUIP)
-    b.part("avionics", lambda p: p.box((0.0, ye, -zs), (0.4, min(eh, 0.25), 0.35)), mass=E["avionics"], color=C_EQUIP)
-    b.part("laser_terminals", lambda p: [p.cylinder("y", (x, ye, -zs + dz), 0.13, min(eh, 0.25))
-                                         for x, dz in ((-0.4, 0.0), (0.4, 0.0), (0.0, 0.4))],
-           mass=E["laser_terminals"], color=C_EQUIP)
-    b.part("ep_thrusters", lambda p: [p.cylinder("x", (-cx / 2 + 0.15, ye, sz * (zs + 0.3)), 0.09, 0.24)
-                                      for sz in (-1, 1)], mass=E["electric_propulsion"], color=C_EQUIP)
-    b.part("array_drives", lambda p: [p.cylinder("x", (sx * (Lx / 2 - 0.08), ye, 0), min(eh / 2, 0.12), 0.12)
-                                      for sx in (-1, 1)], mass=E["array_drives"], color=C_EQUIP)
-    b.part("stack_interfaces", lambda p: [p.box((sx * (Lx / 2 - po / 2), sy * (h / 2 - 0.03), sz * (Lz / 2 - po / 2)),
-                                                (po + 0.02, 0.06, po + 0.02))
-                                          for sx in (-1, 1) for sy in (-1, 1) for sz in (-1, 1)],
-           mass=E["stack_interfaces"], color=C_EQUIP)
-
-    # wings: z-folded blanket packs on each side of the compute module when stowed
-    pack_cx = cx / 2 + g + px / 2
-    b.part("wing_stowed", lambda p: p.box((pack_cx, y0 + eq_y0 + pt / 2, 0), (px, pt, pz)), mass=W["mass_each"], color=C_ARRAY)
-    root_x = Lx / 2 + 0.1
-
-    def wing_deployed(p):
-        p.box((root_x, 0, 0), (0.2, wing_w, 0.1))                                  # root hinge/drive bracket
-        x0 = root_x + 0.1
-        p.box((x0 + wing_len / 2, 0, 0), (wing_len, wing_w, 0.003))                 # blanket faces +Z (Sun)
-        for sy in (-1, 1):
-            p.cylinder("x", (x0 + wing_len / 2, sy * (wing_w / 2 + 0.06), 0), 0.06, wing_len, inner_radius=0.057)
-    b.part("wing_deployed", wing_deployed, mass=W["mass_each"], color=C_ARRAY)
-
-    # radiator panel in deployed orientation: thickness X, length Y, width Z
-    b.part("radiator_panel", lambda p: p.box((0, 0, 0), (th, pl, pwid)), mass=R["mass_total"] / n_pan, color=C_RAD)
-
-    core = ["compute_module", "deck", "power_conditioning", "propellant_tank", "reaction_wheels", "avionics",
-            "laser_terminals", "ep_thrusters", "array_drives", "stack_interfaces"]
-    half = n_pan // 2
-    deployed = [place(n) for n in core] + [place("wing_deployed"), place("wing_deployed", rot=FLIP_Y)]
-    deployed += [place("radiator_panel", (0, sy * (h / 2 + (i + 0.5) * pl), 0)) for sy in (-1, 1) for i in range(half)]
-    stowed = [place(n) for n in core] + [place("wing_stowed"), place("wing_stowed", rot=FLIP_Y)]
-    to_flat = S.rot_matrix("z", 90)     # panel length (local Y) -> X, thickness (local X) -> Y
-    stowed += [place("radiator_panel", (0, y0 + rad_y0 + th / 2 + i * pitch, 0), to_flat) for i in range(n_pan)]
-    counts = {n: 1 for n in core}
-    counts.update(wing_deployed=2, radiator_panel=n_pan)
-    geometry = {"wing_length": wing_len, "wing_width": wing_w, "radiator_panels": n_pan, "panel_length": pl,
-                "panel_width": pwid, "layer_height": h}
-    return deployed, stowed, counts, "deck", geometry
-
-
-BUILDERS = {"tower": build_tower, "flatpack": build_flatpack}
-
-
-def build(sw, concept: str, P: dict):
-    print(f"=== {concept} ===")
-    b = Builder(sw, concept)
-    S.close_matching(sw, b.out, untitled=False)
-    deployed, stowed, counts, structure, geometry = BUILDERS[concept](b, P)
-
-    print("Assembling deployed / stowed")
-    dep, _ = b.assembly("satellite_deployed", deployed)
-    dep_mp, dep_box = dep.mass_props(), dep.box()
-    imgs = [b.image(dep, "satellite_deployed")]
-    sto, sto_path = b.assembly("satellite_stowed", stowed)
-    sto_mp, sto_box = sto.mass_props(), sto.box()
-    imgs.append(b.image(sto, "satellite_stowed"))
-
-    print("Packing Starship")
-    Dbay, Hbay = P["bay"]["diameter"], P["bay"]["height"]
-    pack = sats_per_flight(sto_box["size"], Dbay, Hbay)
-    b.part("starship_bay", lambda p: p.cylinder("y", (0, Hbay / 2, 0), Dbay / 2 + 0.05, Hbay, inner_radius=Dbay / 2),
-           mass=1.0, color=C_BAY)
-    c = [(lo + hi) / 2 for lo, hi in zip(sto_box["min"], sto_box["max"])]
-    sy = sto_box["size"][1]
-    stack = [place("starship_bay")]
-    for k in range(pack["layers"]):
-        for (x, z, rotated) in pack["layout"]:
-            rc = [c[2], c[1], -c[0]] if rotated else c
-            target = (x, k * sy + sy / 2, z)
-            stack.append(place(sto_path, tuple(t - r for t, r in zip(target, rc)), S.rot_matrix("y", 90) if rotated else None))
-    st, _ = b.assembly("starship_stack", stack)
-    imgs.append(b.image(st, "starship_stack"))
-
-    out = {
-        "concept": concept,
-        "params": P,
-        "part_masses": {n: b.masses[n] * k for n, k in counts.items()},
-        "structure_part": structure,
-        "geometry": geometry,
-        "deployed": {**dep_mp, "size": dep_box["size"]},
-        "stowed": {**sto_mp, "size": sto_box["size"]},
-        "stack": {k: v for k, v in pack.items() if k != "layout"},
-        "images": [os.path.relpath(i, HERE) for i in imgs if i],
+    equipment = lambda mass, *shapes: PartSpec(list(shapes), GOLD, mass=mass)
+    parts = {
+        "compute_module": PartSpec([Box((0, 0, 0), (cx, cy, cz))], DARK_GRAY, mass=P["compute"]["mass"]),
+        "frame": PartSpec(frame, BLACK, density=P["frame"]["density"]),
+        "avionics": equipment(E["avionics"], Box((0, y_top + 0.2, -0.35), (0.4, 0.3, 0.3))),
+        "reaction_wheels": equipment(E["reaction_wheels"], *[
+            Cylinder("y", (sx * 0.4, y_top - 0.15, sz * 0.35), 0.16, 0.12) for sx in SIDES for sz in SIDES]),
+        "laser_terminals": equipment(E["laser_terminals"], *[
+            Cylinder("y", center, 0.13, 0.3)
+            for center in ((0.45, y_top + 0.25, 0.4), (-0.45, y_top + 0.25, 0.4), (0.45, y_bottom - 0.25, -0.4))]),
+        "power_conditioning": equipment(E["power_conditioning"], Box((0.25, y_bottom, 0), (0.7, 0.45, 0.8))),
+        "propellant_tank": equipment(E["propellant_tank"] + P["propellant"],     # tank and its propellant
+                                     Cylinder("z", (-0.4, y_bottom, 0), 0.2, 0.7)),
+        "ep_thrusters": equipment(E["electric_propulsion"], *[
+            Cylinder("x", (-(outside_x + 0.12), y_bottom, sz * 0.5), 0.09, 0.24) for sz in SIDES]),
+        "array_drives": equipment(E["array_drives"], *[
+            Cylinder("x", (sx * (outside_x + 0.03), 0, 0), 0.14, 0.06) for sx in SIDES]),
+        "stack_interfaces": equipment(E["stack_interfaces"], *[
+            Box((sx * fx / 2, sy * (fy / 2 - 0.1), sz * fz / 2), (0.12, 0.08, 0.12))
+            for sx in SIDES for sy in SIDES for sz in SIDES]),
     }
-    with open(os.path.join(b.out, "mass_props.json"), "w") as f:
-        json.dump(out, f, indent=2)
-    print(f"Deployed {dep_mp['mass']:,.0f} kg, span {dep_box['size'][0]:.1f} × {dep_box['size'][1]:.1f} m;  "
-          f"stowed {' × '.join(f'{v:.2f}' for v in sto_box['size'])} m;  "
-          f"Starship {pack['per_layer']} × {pack['layers']} = {pack['total']}")
-    S.close_matching(sw, b.out, untitled=False)
-    return out
+    bus = list(parts)
+
+    spool = Cylinder("y", (roll_x, 0, 0), 0.12, W["width"] + 0.1)
+    parts["wing_deployed"] = PartSpec(deployed_wing(spool, roll_x + 0.15, wing_length, W["width"]),
+                                      BLUE, mass=W["mass_each"])
+    parts["wing_stowed"] = PartSpec([Cylinder("y", (roll_x, 0, 0), roll_radius, W["width"] + 0.1)],
+                                    BLUE, mass=W["mass_each"])
+    # Drawn in its deployed orientation: thin along X, long along Y, wide along Z.
+    parts["radiator_panel"] = PartSpec([Box((0, 0, 0), (R["thickness"], panel_length, R["fin_width"]))],
+                                       WHITE, mass=R["mass_total"] / (2 * panels_per_fin))
+
+    # Stowed: wings rolled beside the bus, radiator panels stacked flat against its ±Z faces.
+    first_panel_z = fz / 2 + tube / 2 + 0.05 + R["thickness"] / 2
+    stowed = [at(name) for name in bus] + [at("wing_stowed"), at("wing_stowed", rotation=FLIPPED)]
+    stowed += [at("radiator_panel", (0, 0, side * (first_panel_z + i * 2 * R["thickness"])), sw_api.rotation("y", 90))
+               for side in SIDES for i in range(panels_per_fin)]
+
+    return Design(
+        parts=parts,
+        deployed=deployed_layout(bus, fy / 2 + tube / 2, panel_length, panels_per_fin),
+        stowed=stowed,
+        structure="frame",
+        geometry={"wing_length": wing_length, "roll_radius": roll_radius,
+                  "radiator_panels": 2 * panels_per_fin, "panel_length": panel_length},
+    )
+
+
+# ============================================================================================
+# Concept 2: flatpack
+#
+# One stowed satellite is one layer of the stack. Side view, looking along Z:
+#
+#     post |  =========== radiator panels, folded flat ===========  | post
+#     tube [] [ folded wing ] [] [ compute trays ] [] [ folded wing ] [] tube   <- equipment layer
+#
+# Everything sits inside the depth of the deck frame, not on top of it, which keeps the
+# layer thin. The compute trays hang between two rails ([] either side of them). The rest
+# of the bus equipment sits beside the trays, toward ±Z.
+# ============================================================================================
+def flatpack(P: dict) -> Design:
+    cx, cy, cz = P["compute"]["size"]
+    D, W, R, E = P["deck"], P["wing"], P["radiator"], P["equipment"]
+    Lx, Lz = D["footprint"]
+    height = D["height"]                        # full layer height = spacing between satellites in the stack
+    tube, wall, post, gap = D["tube"], D["wall"], D["post_outer"], D["gap"]
+
+    # The origin is at the middle of the layer, so a stowed satellite spans y = ±height/2.
+    floor = -height / 2
+    equipment_y = floor + D["eq_h"] / 2                     # mid-height of the equipment layer
+    radiator_floor = floor + D["rad_y0"]
+    post_x, post_z = Lx / 2 - post / 2, Lz / 2 - post / 2   # corner post centerlines
+
+    deck_y = floor + tube / 2
+    deck = [SquareTube("x", (0, deck_y, sz * (Lz / 2 - tube / 2)), tube, wall, Lx) for sz in SIDES]    # long edges
+    for sx in SIDES:
+        deck += [SquareTube("z", (sx * (Lx / 2 - tube / 2), deck_y, 0), tube, wall, Lz - 2 * tube),    # short edges
+                 SquareTube("z", (sx * (cx / 2 + tube / 2), deck_y, 0), tube, wall, Lz - 2 * tube)]    # compute rails
+    deck += [SquareTube("y", (sx * post_x, 0, sz * post_z), post, D["post_wall"], height)              # corner posts
+             for sx in SIDES for sz in SIDES]
+
+    # Equipment sits in the two strips beside the compute trays, each item shrunk to fit the layer.
+    strip_z = (cz / 2 + Lz / 2 - post) / 2      # centerline of the +Z strip
+    fit = lambda dimension: min(dimension, D["eq_h"])
+    drive_radius = min(0.12, (D["eq_h"] - tube) / 2)
+    equipment = lambda mass, *shapes: PartSpec(list(shapes), GOLD, mass=mass)
+    parts = {
+        "compute_module": PartSpec([Box((0, equipment_y, 0), (cx, cy, cz))], DARK_GRAY, mass=P["compute"]["mass"]),
+        "deck": PartSpec(deck, BLACK, density=D["density"]),
+        "power_conditioning": equipment(E["power_conditioning"], Box((-0.4, equipment_y, strip_z), (0.9, fit(0.30), 0.8))),
+        "propellant_tank": equipment(E["propellant_tank"] + P["propellant"],     # tank and its propellant
+                                     Cylinder("x", (0.6, equipment_y, strip_z), fit(0.28) / 2, 0.8)),
+        "reaction_wheels": equipment(E["reaction_wheels"], *[
+            Cylinder("y", (sx * 0.7, equipment_y, -strip_z + dz), 0.16, fit(0.12)) for sx in SIDES for dz in (-0.3, 0.3)]),
+        "avionics": equipment(E["avionics"], Box((0, equipment_y, -strip_z), (0.4, fit(0.25), 0.35))),
+        "laser_terminals": equipment(E["laser_terminals"], *[
+            Cylinder("y", (x, equipment_y, -strip_z + dz), 0.13, fit(0.25)) for x, dz in ((-0.4, 0), (0.4, 0), (0, 0.4))]),
+        "ep_thrusters": equipment(E["electric_propulsion"], *[
+            Cylinder("x", (-cx / 2 + 0.15, equipment_y, sz * (strip_z + 0.3)), 0.09, 0.24) for sz in SIDES]),
+        "array_drives": equipment(E["array_drives"], *[                          # on top of the end tubes
+            Cylinder("x", (sx * (Lx / 2 - tube / 2), floor + tube + drive_radius, 0), drive_radius, tube) for sx in SIDES]),
+        "stack_interfaces": equipment(E["stack_interfaces"], *[                  # caps on both ends of each post
+            Box((sx * post_x, sy * (height / 2 - 0.03), sz * post_z), (post + 0.02, 0.06, post + 0.02))
+            for sx in SIDES for sy in SIDES for sz in SIDES]),
+    }
+    bus = list(parts)
+
+    # Each wing folds like a concertina into a flat pack, between a compute rail and the end of the deck.
+    pack_x, pack_thickness, pack_z = W["pack"]
+    wing_length = W["area_each"] / W["width"]
+    root_x = Lx / 2 + 0.1                       # the deployed wing starts just beyond the deck edge
+    parts["wing_stowed"] = PartSpec(
+        [Box((cx / 2 + tube + gap + pack_x / 2, floor + pack_thickness / 2, 0), (pack_x, pack_thickness, pack_z))],
+        BLUE, mass=W["mass_each"])
+    hinge = Box((root_x, 0, 0), (0.2, W["width"], 0.1))
+    parts["wing_deployed"] = PartSpec(deployed_wing(hinge, root_x + 0.1, wing_length, W["width"]),
+                                      BLUE, mass=W["mass_each"])
+    # Drawn in its deployed orientation: thin along X, long along Y, wide along Z.
+    n_panels, panel_length, thickness = R["n_panels"], R["panel_length"], R["thickness"]
+    parts["radiator_panel"] = PartSpec([Box((0, 0, 0), (thickness, panel_length, R["panel_width"]))],
+                                       WHITE, mass=R["mass_total"] / n_panels)
+
+    # Stowed: wings folded inside the deck frame, radiator panels laid flat in a stack on top.
+    lay_flat = sw_api.rotation("z", 90)
+    stowed = [at(name) for name in bus] + [at("wing_stowed"), at("wing_stowed", rotation=FLIPPED)]
+    stowed += [at("radiator_panel", (0, radiator_floor + thickness / 2 + i * R["pitch"], 0), lay_flat)
+               for i in range(n_panels)]
+
+    return Design(
+        parts=parts,
+        deployed=deployed_layout(bus, height / 2, panel_length, n_panels // 2),
+        stowed=stowed,
+        structure="deck",
+        geometry={"wing_length": wing_length, "wing_width": W["width"], "radiator_panels": n_panels,
+                  "panel_length": panel_length, "panel_width": R["panel_width"], "layer_height": height},
+    )
+
+
+CONCEPTS = {"tower": tower, "flatpack": flatpack}
+
+
+# ============================================================================================
+# Driving SolidWorks
+# ============================================================================================
+def make_part(sw, spec: PartSpec, path: Path, transparency: float = 0.0) -> tuple[str, float]:
+    """Draw and save one part. Returns its file path and mass [kg]."""
+    part = sw_api.Part(sw)
+    for shape in spec.shapes:
+        part.add(shape)
+    if spec.mass is not None:
+        part.set_mass(spec.mass)
+    else:
+        part.set_density(spec.density)
+    part.set_color(spec.color, transparency)
+    return part.save(path), part.mass_properties()["mass"]
+
+
+def make_assembly(sw, files: dict, placements: list, path: Path, image: Path):
+    """Place parts, then save the assembly and a picture of it. A placement may name a
+    part in `files` or give a file path directly."""
+    assembly = sw_api.Assembly(sw)
+    for name, position, rotation in placements:
+        assembly.add(files.get(name, name), position, rotation)
+    return assembly, assembly.save(path), assembly.save_image(image)
+
+
+def stack_in_bay(stowed_box: dict, stowed_file: str, bay: dict) -> tuple[dict, list]:
+    """Fill the payload bay with stowed satellites. Returns the packing result and the
+    placements for the stack assembly."""
+    packing = sats_per_flight(stowed_box["size"], bay["profile"])
+    # The stowed satellite's origin is not at the center of its bounding box, so each copy
+    # is shifted to put the box center (not the origin) on its slot in the bay.
+    cx, cy, cz = [(low + high) / 2 for low, high in zip(stowed_box["min"], stowed_box["max"])]
+    quarter_turn = sw_api.rotation("y", 90)
+    placements = [at("starship_bay")]
+    for layer_floor, layer in packing["layout"]:
+        for x, z, turned in layer:
+            slot = (x, layer_floor + stowed_box["size"][1] / 2, z)
+            center = (cz, cy, -cx) if turned else (cx, cy, cz)      # box center after the quarter turn
+            position = tuple(s - c for s, c in zip(slot, center))
+            placements.append(at(stowed_file, position, quarter_turn if turned else None))
+    return packing, placements
+
+
+def build(sw, concept: str, P: dict) -> dict:
+    print(f"=== {concept} ===")
+    out = HERE / concept
+    sw_api.close_documents_in(sw, out)      # release files left open by an earlier build
+    design = CONCEPTS[concept](P)
+
+    # 1. Parts
+    files, masses = {}, {}
+    for name, spec in design.parts.items():
+        files[name], masses[name] = make_part(sw, spec, out / "parts" / f"{name}.SLDPRT")
+        print(f"  {name:22s} {masses[name]:9.1f} kg")
+
+    # 2. The satellite, deployed and stowed
+    images = []
+    results = {}
+    for state, placements in (("deployed", design.deployed), ("stowed", design.stowed)):
+        assembly, file, image = make_assembly(sw, files, placements, out / f"satellite_{state}.SLDASM",
+                                              out / "images" / f"satellite_{state}.jpg")
+        results[state] = dict(file=file, box=assembly.bounding_box(), mass=assembly.mass_properties())
+        images.append(image)
+    deployed, stowed = results["deployed"], results["stowed"]
+
+    # 3. As many stowed satellites as fit in Starship's payload bay. The bay is drawn
+    #    see-through, as a stack of rings that follow its profile (so the taper looks stepped).
+    bay = P["bay"]
+    bay_wall = [Cylinder("y", (0, (h0 + h1) / 2, 0), (r0 + r1) / 2 + 0.05, h1 - h0, inner_radius=(r0 + r1) / 2)
+                for (h0, r0), (h1, r1) in zip(bay["profile"], bay["profile"][1:])]
+    files["starship_bay"], _ = make_part(sw, PartSpec(bay_wall, LIGHT_GRAY, mass=1.0),
+                                         out / "parts" / "starship_bay.SLDPRT", transparency=0.75)
+    packing, placements = stack_in_bay(stowed["box"], stowed["file"], bay)
+    _, _, image = make_assembly(sw, files, placements, out / "starship_stack.SLDASM",
+                                out / "images" / "starship_stack.jpg")
+    images.append(image)
+
+    # 4. Results for the notebook
+    part_counts = Counter(name for name, _, _ in design.deployed)
+    summary = {
+        "concept": concept,
+        "params": P,        # lets the notebook check the model was built from its current inputs
+        "part_masses": {name: masses[name] * count for name, count in part_counts.items()},
+        "structure_part": design.structure,
+        "geometry": design.geometry,
+        "deployed": {**deployed["mass"], "size": deployed["box"]["size"]},
+        "stowed": {**stowed["mass"], "size": stowed["box"]["size"]},
+        "stack": {key: value for key, value in packing.items() if key != "layout"},
+        "images": [os.path.relpath(image, HERE) for image in images],
+    }
+    (out / "mass_props.json").write_text(json.dumps(summary, indent=2))
+
+    span_x, span_y, _ = deployed["box"]["size"]
+    print(f"Deployed: {deployed['mass']['mass']:,.0f} kg, {span_x:.1f} m across the wings, {span_y:.1f} m across the fins")
+    print("Stowed:   " + " × ".join(f"{v:.2f}" for v in stowed["box"]["size"]) + " m")
+    print(f"Starship: {packing['total']} satellites in {packing['layers']} layers")
+    sw_api.close_documents_in(sw, out)
+    return summary
 
 
 def main():
-    with open(os.path.join(HERE, "params.json")) as f:
-        params = json.load(f)
-    concepts = sys.argv[1:] or list(params)
-    sw = S.connect()
-    for c in concepts:
-        build(sw, c, params[c])
+    params = json.loads((HERE / "params.json").read_text())
+    sw = sw_api.connect()
+    for concept in sys.argv[1:] or params:
+        build(sw, concept, params[concept])
 
 
 if __name__ == "__main__":

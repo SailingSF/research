@@ -6,6 +6,8 @@ This repo contains the calculations and assumptions for a blog post about the fe
 
 This project uses Python 3.14 and a local virtual environment.
 
+**Windows (PowerShell):** run `.\scripts\setup_env.ps1`, then `.\.venv\Scripts\Activate.ps1` and `jupyter notebook`. This also installs `pywin32`, which the Part 2 SolidWorks scripts in `cad/` use. On macOS/Linux, use `./scripts/setup_env.sh` or the steps below.
+
 ## 1) Create and activate the environment
 
 ```bash

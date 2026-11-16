@@ -2,3 +2,15 @@
 __pycache__/
 .ipynb_checkpoints/
 
+~$*
+
+# Working notes (kept locally, not published)
+BLOG_OUTLINE_PART2.md
+PART2_PLAN.md
+
+# SolidWorks binaries: regenerate with `python cad/build_satellite.py`.
+# mass_props.json and images/*.jpg stay tracked.
+*.SLDPRT
+*.SLDASM
+*.sldprt
+*.sldasm

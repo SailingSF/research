@@ -1,0 +1,48 @@
+{
+  "compute": {
+    "size": [
+      1.2,
+      2.4,
+      1.0
+    ],
+    "mass": 750.0
+  },
+  "frame": {
+    "size": [
+      1.6,
+      4.2,
+      1.4
+    ],
+    "tube_outer": 0.15542540254798426,
+    "tube_wall": 0.003,
+    "density": 1600.0
+  },
+  "wing": {
+    "area_each": 173.50339261420282,
+    "width": 4.0,
+    "mass_each": 347.00678522840565,
+    "stowed_volume_each": 1.735033926142028
+  },
+  "radiator": {
+    "panel_area_total": 133.13278414474846,
+    "fin_width": 4.0,
+    "panel_max_length": 4.0,
+    "thickness": 0.025,
+    "mass_total": 532.5311365789938
+  },
+  "equipment": {
+    "power_conditioning": 92.53514272757484,
+    "electric_propulsion": 40.0,
+    "propellant_tank": 15.0,
+    "reaction_wheels": 48.0,
+    "laser_terminals": 45.0,
+    "avionics": 30.0,
+    "array_drives": 20.0,
+    "stack_interfaces": 20.0
+  },
+  "propellant": 30.372936197334045,
+  "bay": {
+    "diameter": 8.0,
+    "height": 22.0
+  }
+}

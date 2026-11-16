@@ -1,0 +1,121 @@
+{
+  "params": {
+    "compute": {
+      "size": [
+        1.2,
+        2.4,
+        1.0
+      ],
+      "mass": 750.0
+    },
+    "frame": {
+      "size": [
+        1.6,
+        4.2,
+        1.4
+      ],
+      "tube_outer": 0.15542540254798426,
+      "tube_wall": 0.003,
+      "density": 1600.0
+    },
+    "wing": {
+      "area_each": 173.50339261420282,
+      "width": 4.0,
+      "mass_each": 347.00678522840565,
+      "stowed_volume_each": 1.735033926142028
+    },
+    "radiator": {
+      "panel_area_total": 133.13278414474846,
+      "fin_width": 4.0,
+      "panel_max_length": 4.0,
+      "thickness": 0.025,
+      "mass_total": 532.5311365789938
+    },
+    "equipment": {
+      "power_conditioning": 92.53514272757484,
+      "electric_propulsion": 40.0,
+      "propellant_tank": 15.0,
+      "reaction_wheels": 48.0,
+      "laser_terminals": 45.0,
+      "avionics": 30.0,
+      "array_drives": 20.0,
+      "stack_interfaces": 20.0
+    },
+    "propellant": 30.372936197334045,
+    "bay": {
+      "diameter": 8.0,
+      "height": 22.0
+    }
+  },
+  "part_masses": {
+    "compute_module": 750.0,
+    "frame": 98.20565322764922,
+    "avionics": 29.999999999999996,
+    "reaction_wheels": 48.0,
+    "laser_terminals": 44.99999999999999,
+    "power_conditioning": 92.53514272757484,
+    "propellant_tank": 45.372936197334035,
+    "ep_thrusters": 40.0,
+    "array_drives": 20.0,
+    "stack_interfaces": 20.0,
+    "wing_deployed": 694.0135704568113,
+    "radiator_panel": 532.5311365789937
+  },
+  "geometry": {
+    "wing_length": 43.375848153550706,
+    "roll_radius": 0.37157719640583586,
+    "radiator_panels": 10,
+    "panel_length": 3.3283196036187115,
+    "fin_length": 16.641598018093557
+  },
+  "deployed": {
+    "mass": 2415.658439188364,
+    "volume": 8.364171421601421,
+    "com": [
+      -0.011663030000825157,
+      -0.05694030579601111,
+      -0.0018628461404141179
+    ],
+    "Ixx": 74532.45203423532,
+    "Iyy": 370577.8974446279,
+    "Izz": 443394.2482562609,
+    "Ixy": 43.19519949720885,
+    "Ixz": -2.752483634980788,
+    "Iyz": 14.518768623917829,
+    "size": [
+      89.65027610246108,
+      37.6386214387351,
+      4.0
+    ]
+  },
+  "stowed": {
+    "mass": 2415.658439188364,
+    "volume": 10.317689332724473,
+    "com": [
+      -0.011663030000824786,
+      -0.05694030579601125,
+      -0.00186284614041381
+    ],
+    "Ixx": 3620.5727699098497,
+    "Iyy": 2795.556725137102,
+    "Izz": 5126.744883580983,
+    "Ixy": 43.19519949720872,
+    "Ixz": -2.752483635003258,
+    "Iyz": 14.518768623917968,
+    "size": [
+      4.0,
+      4.355425402547985,
+      2.1054254025479846
+    ]
+  },
+  "stack": {
+    "per_layer": 3,
+    "layers": 5,
+    "total": 15
+  },
+  "images": [
+    "C:\\Users\\max\\code\\space_datacenters\\cad\\images\\satellite_deployed.jpg",
+    "C:\\Users\\max\\code\\space_datacenters\\cad\\images\\satellite_stowed.jpg",
+    "C:\\Users\\max\\code\\space_datacenters\\cad\\images\\starship_stack.jpg"
+  ]
+}

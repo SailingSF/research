@@ -4,4 +4,4 @@ numpy
 pandas
 matplotlib
 seaborn
-
+pywin32; sys_platform == "win32"

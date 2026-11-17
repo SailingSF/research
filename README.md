@@ -42,3 +42,17 @@ and select kernel:
 
 - `Python 3.14 (space_datacenters)`
 
+# Radiator panel drawing (SolidWorks)
+
+`cad/radiator/` designs one deployable radiator panel in detail (honeycomb sandwich with a
+pumped ammonia loop) and makes a toleranced engineering drawing of it (ASME Y14.5, mm).
+With SolidWorks open, from the repo root:
+
+```powershell
+.venv\Scripts\python.exe cad\radiator\build_radiator.py   # parts + assembly, prints the mass roll-up
+.venv\Scripts\python.exe cad\radiator\make_drawing.py     # radiator_panel.SLDDRW, .pdf, .png, and images/radiator_panel_drawing.jpg (blog)
+```
+
+Design parameters are at the top of `build_radiator.py`; the drawing follows them. Every
+dimension the script places is checked against the value it should measure.
+

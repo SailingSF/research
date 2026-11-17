@@ -14,6 +14,8 @@ PART2_PLAN.md
 *.SLDASM
 *.sldprt
 *.sldasm
+*.SLDDRW
+*.slddrw
 
 # Render inputs that are downloaded or large; regenerate with cad/render/*.py
 cad/render/*

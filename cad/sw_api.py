@@ -26,7 +26,7 @@ _sw = gencache.EnsureModule("{83A33D31-27C5-11CE-BFD4-00400513BB57}", 0, 34, 0)
 _END_BLIND = 0                          # extrude a fixed distance
 _START_AT_SKETCH, _START_AT_OFFSET = 0, 3
 _SAVE_AS_CURRENT_VERSION, _SAVE_SILENTLY = 0, 1
-_DOC_ASSEMBLY = 2
+_DOC_ASSEMBLY, _DOC_DRAWING = 2, 3
 _DENSITY_PREFERENCE = 7                 # document density, used when no library material is assigned
 _TRANSPARENCY = 7                       # index of transparency in a document's appearance values
 _THIS_DISPLAY_STATE = 1                 # apply an appearance to the active display state
@@ -79,11 +79,19 @@ def _save(model, path) -> str:
     """Save a document; the file extension picks the format (.SLDPRT, .SLDASM, .jpg)."""
     path = os.path.abspath(path)
     os.makedirs(os.path.dirname(path), exist_ok=True)
+    before = os.path.getmtime(path) if os.path.exists(path) else None
     extension = _typed(model.Extension, "IModelDocExtension")
     extension.SaveAs3(path, _SAVE_AS_CURRENT_VERSION, _SAVE_SILENTLY, None, None, 0, 0)
-    if not os.path.exists(path):
-        raise RuntimeError(f"SolidWorks did not save {path}")
+    if not os.path.exists(path) or os.path.getmtime(path) == before:
+        raise RuntimeError(f"SolidWorks did not save {path} (is an older copy still open?)")
     return path
+
+
+def set_properties(model, properties: dict) -> None:
+    """Write custom properties (the text that title blocks and BOM tables read)."""
+    manager = _typed(model.Extension, "IModelDocExtension").CustomPropertyManager("")
+    for name, value in properties.items():
+        manager.Add3(name, 30, str(value), 2)     # 30 = text; 2 = replace an existing value
 
 
 def mass_properties(model) -> dict:
@@ -115,8 +123,13 @@ class Part:
         self._sketch = _typed(self.model.SketchManager, "ISketchManager")
         self._sketch.AddToDB = True     # write sketch geometry directly, with no snapping
 
-    def add(self, shape):
+    def cut(self, shape):
+        """Remove a Box, Cylinder or SquareTube's volume from the part (holes, bores)."""
+        self.add(shape, cut=True)
+
+    def add(self, shape, cut: bool = False):
         """Add a Box, Cylinder or SquareTube. Overlapping shapes merge into one solid."""
+        self._cutting = cut
         if isinstance(shape, Box):
             (x, y, z), (sx, sy, sz) = shape.center, shape.size
             self._extrude("z", (x, y, z), sz, lambda u, v: self._rectangle(u, v, sx / 2, sy / 2))
@@ -151,12 +164,20 @@ class Part:
         draw_profile(u, v)
         self._sketch.InsertSketch(True)                 # close it; the sketch stays selected
         start_type = _START_AT_OFFSET if abs(start) > 1e-12 else _START_AT_SKETCH
-        feature = _typed(self.model.FeatureManager, "IFeatureManager").FeatureExtrusion3(
-            True, False, False, _END_BLIND, _END_BLIND, float(length), 0.0,
-            False, False, False, False, 0.0, 0.0, False, False, False, False,
-            True, True, True, start_type, abs(start), start < 0)
+        features = _typed(self.model.FeatureManager, "IFeatureManager")
+        if getattr(self, "_cutting", False):
+            # A cut runs opposite to an extrude unless its direction is flipped (third argument).
+            feature = features.FeatureCut4(
+                True, False, True, _END_BLIND, _END_BLIND, float(length), 0.0,
+                False, False, False, False, 0.0, 0.0, False, False, False, False,
+                False, True, True, True, True, False, start_type, abs(start), start < 0, False)
+        else:
+            feature = features.FeatureExtrusion3(
+                True, False, False, _END_BLIND, _END_BLIND, float(length), 0.0,
+                False, False, False, False, 0.0, 0.0, False, False, False, False,
+                True, True, True, start_type, abs(start), start < 0)
         if feature is None:
-            raise RuntimeError(f"extrude along {axis} failed")
+            raise RuntimeError(f"{'cut' if getattr(self, '_cutting', False) else 'extrude'} along {axis} failed")
         self.model.ClearSelection2(True)
 
     def set_density(self, kg_per_m3: float):
@@ -298,10 +319,10 @@ def rotation(axis: str, degrees: float) -> list:
 
 def close_documents_in(sw, folder) -> None:
     """Close open documents saved under `folder`, so a rebuild can overwrite their files.
-    Assemblies go first, because they hold their parts open."""
+    Drawings go first, then assemblies, because each holds the documents it shows open."""
     folder = os.path.normcase(os.path.abspath(folder))
     documents = [_typed(d, "IModelDoc2") for d in (sw.GetDocuments() or [])]
-    documents.sort(key=lambda d: d.GetType() != _DOC_ASSEMBLY)
+    documents.sort(key=lambda d: {_DOC_DRAWING: 0, _DOC_ASSEMBLY: 1}.get(d.GetType(), 2))
     # Collect the titles before closing anything: closing an assembly also closes its parts.
     titles = [d.GetTitle() for d in documents if os.path.normcase(d.GetPathName()).startswith(folder)]
     for title in titles:

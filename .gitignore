@@ -6,6 +6,7 @@ __pycache__/
 
 # Working notes (kept locally, not published)
 BLOG_OUTLINE_PART2.md
+BLOG_DRAFT_PART2.md
 PART2_PLAN.md
 
 # SolidWorks binaries: regenerate with `python cad/build_satellite.py`.

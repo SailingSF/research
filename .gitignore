@@ -14,3 +14,12 @@ PART2_PLAN.md
 *.SLDASM
 *.sldprt
 *.sldasm
+*.SLDDRW
+*.slddrw
+
+# Render inputs that are downloaded or large; regenerate with cad/render/*.py
+cad/render/*
+cad/render/backdrop/environment.hdr
+# Generated appearance files (hold an absolute texture path) and Visualize projects
+cad/*/appearances/
+*.svpj

@@ -29,6 +29,10 @@ _SAVE_AS_CURRENT_VERSION, _SAVE_SILENTLY = 0, 1
 _DOC_ASSEMBLY = 2
 _DENSITY_PREFERENCE = 7                 # document density, used when no library material is assigned
 _TRANSPARENCY = 7                       # index of transparency in a document's appearance values
+_THIS_DISPLAY_STATE = 1                 # apply an appearance to the active display state
+_SOLID_BODY = 0
+_LIGHT_DIRECTIONAL = 4
+_DIRECTIONAL_LIGHT_NAME = "Directional-1"   # SolidWorks' internal name for directional lights
 
 
 # ---- Shapes: the whole satellite is drawn from these three primitives ---------------------
@@ -173,12 +177,50 @@ class Part:
         appearance[_TRANSPARENCY] = transparency
         self.model.MaterialPropertyValues = _doubles(appearance)
 
+    def set_appearance(self, p2m, tile_size: float | None = None, faces=None):
+        """Apply a SolidWorks appearance (.p2m file) to the whole part, or only to `faces`.
+        Appearances (unlike the display color) carry over to SolidWorks Visualize.
+        `tile_size` [m] sets how much surface one copy of a texture image covers."""
+        if not os.path.exists(p2m):
+            raise FileNotFoundError(f"appearance not found: {p2m}")
+        extension = _typed(self.model.Extension, "IModelDocExtension")
+        material = _typed(extension.CreateRenderMaterial(str(p2m)), "IRenderMaterial")
+        if material is None:
+            raise RuntimeError(f"could not load appearance {p2m}")
+        if tile_size:
+            material.Width = material.Height = float(tile_size)
+        for entity in faces if faces is not None else [self.model]:
+            material.AddEntity(entity)
+        added, *_ = extension.AddDisplayStateSpecificRenderMaterial(material, _THIS_DISPLAY_STATE, None)
+        if not added:
+            raise RuntimeError(f"could not apply appearance {p2m}")
+
+    def flat_faces(self, axis: str, min_area: float) -> list:
+        """Flat faces of at least `min_area` [m²] whose normal is along ±axis."""
+        k = "xyz".index(axis)
+        bodies = _typed(self.model, "IPartDoc").GetBodies2(_SOLID_BODY, False) or []
+        faces = []
+        for body in bodies:
+            for face in _typed(body, "IBody2").GetFaces() or []:
+                face = _typed(face, "IFace2")
+                if abs(face.Normal[k]) > 0.99 and face.GetArea() >= min_area:
+                    faces.append(face)
+        return faces
+
     def mass_properties(self) -> dict:
         return mass_properties(self.model)
 
     def save(self, path) -> str:
         self.model.ForceRebuild3(False)
         return _save(self.model, path)
+
+
+def appearance_library(sw) -> str:
+    """Folder of SolidWorks' built-in appearances (.p2m files)."""
+    install = sw.GetExecutablePath()            # the SOLIDWORKS install folder
+    if install.lower().endswith(".exe"):
+        install = os.path.dirname(install)
+    return os.path.join(install, "data", "graphics", "Materials")
 
 
 class Assembly:
@@ -204,6 +246,25 @@ class Assembly:
         transform = [r[0][0], r[1][0], r[2][0], r[0][1], r[1][1], r[2][1], r[0][2], r[1][2], r[2][2],
                      *position, 1, 0, 0, 0]
         component.Transform2 = self._math.CreateTransform(_doubles(transform))
+
+    def set_sun(self, toward_sun, intensity: float = 1.0):
+        """Replace SolidWorks' default directional lights with one "Sun" light shining from
+        `toward_sun` (a model-frame direction), locked to the model and enabled for rendering.
+        SolidWorks Visualize imports it as a directional light."""
+        for i in reversed(range(self.model.GetLightSourceCount())):
+            if self.model.GetLightSourceName(i).startswith("Directional"):
+                self.model.DeleteLightSource(i)
+        self.model.AddLightSource(_DIRECTIONAL_LIGHT_NAME, _LIGHT_DIRECTIONAL, "Sun")
+        x, y, z = (float(v) for v in toward_sun)
+        # Arguments: name, type, intensity, color (0xBBGGRR), distance (must be nonzero, or
+        # the direction is lost), direction, 3 spot-direction values, spot angle,
+        # 3 falloff terms, ambient, specular, spot exponent, disabled.
+        self.model.SetLightSourcePropertyValuesVB(_DIRECTIONAL_LIGHT_NAME, _LIGHT_DIRECTIONAL, float(intensity),
+                                                  0xFFFFFF, 1.0, x, y, z, 0.0, 0.0, 0.0, 0.0,
+                                                  0.0, 0.0, 0.0, 0.0, 0.5, 0.0, False)
+        sun = self.model.GetLightSourceCount() - 1
+        self.model.LockLightToModel(sun, True)
+        _typed(self.model.Extension, "IModelDocExtension").SetLightEnabledInRender(sun, True)
 
     def bounding_box(self) -> dict:
         """Axis-aligned bounding box of everything in the assembly: min, max and size [m]."""

@@ -41,6 +41,20 @@ HERE = Path(__file__).parent
 DARK_GRAY, BLACK, GOLD = (0.25, 0.25, 0.28), (0.15, 0.15, 0.15), (0.75, 0.62, 0.25)
 BLUE, WHITE, LIGHT_GRAY = (0.10, 0.20, 0.55), (0.92, 0.92, 0.90), (0.80, 0.80, 0.82)
 
+# Appearances, for photoreal rendering in SolidWorks Visualize (cad/render/README.md).
+# Paths are inside SolidWorks' own appearance library, matched to the display colors above.
+APPEARANCES = {
+    DARK_GRAY: "painted/powder coat/dark powdercoat.p2m",       # compute module housing
+    BLACK: "plastic/composite/carbon fiber eproxy 2d.p2m",      # deck / frame tubes
+    GOLD: "metal/gold/matte gold.p2m",                          # gold insulation blanket over the equipment
+    WHITE: "plastic/low gloss/white low gloss plastic.p2m",     # white radiator paint
+    BLUE: "plastic/composite/carbon fiber eproxy 2d.p2m",       # wing booms and hinges; the blanket gets cells
+}
+CELL_PARTS = {"wing_deployed", "wing_stowed"}   # solar cells go on their big faces toward and away from the Sun
+SOLAR_TEXTURE = HERE / "render" / "textures" / "solar_cells_color.png"   # from cad/render/make_solar_texture.py
+SOLAR_TILE_M = 0.66                                                      # one texture tile covers 0.66 m x 0.66 m
+SUN_DIRECTION = (0, 0, 1)       # dawn-dusk orbit: the Sun is along +Z (the deployed assembly's only light)
+
 SIDES = (-1, 1)                         # mirror a shape to both sides of the satellite
 FLIPPED = sw_api.rotation("y", 180)     # turns the +X wing into the -X wing
 
@@ -260,7 +274,27 @@ CONCEPTS = {"tower": tower, "flatpack": flatpack}
 # ============================================================================================
 # Driving SolidWorks
 # ============================================================================================
-def make_part(sw, spec: PartSpec, path: Path, transparency: float = 0.0) -> tuple[str, float]:
+def solar_cell_appearance(folder: Path) -> Path:
+    """Write a SolidWorks appearance that tiles the solar-cell texture: a glossy surface (the
+    cells sit under cover glass). The texture path inside has to be absolute, so the file is
+    written fresh on each build."""
+    if not SOLAR_TEXTURE.exists():
+        raise FileNotFoundError(f"{SOLAR_TEXTURE} is missing: run cad/render/make_solar_texture.py first")
+    folder.mkdir(parents=True, exist_ok=True)
+    path = folder / "solar_cells.p2m"
+    path.write_text("\n".join([
+        '"sw_shader" texture',
+        f'color texture "color_texname" "{SOLAR_TEXTURE.resolve()}"',
+        '"col1" 1 1 1', '"num_cols" 0', '"diffuse_factor" 1',
+        '"roughness" 0.05', '"blurryReflections" on', '"reflectivity" 0.1', '"mtl_ior" 1.5',
+        '"specular_color" 1 1 1', '"specular_factor" 0.8',
+        f'"initTextureWidth" {SOLAR_TILE_M}', f'"initTextureHeight" {SOLAR_TILE_M}',
+        '"doubleSided" on', '"transparency" 0', '"swP2M" on', '',
+    ]))
+    return path
+
+
+def make_part(sw, spec: PartSpec, path: Path, transparency: float = 0.0, name: str = "") -> tuple[str, float]:
     """Draw and save one part. Returns its file path and mass [kg]."""
     part = sw_api.Part(sw)
     for shape in spec.shapes:
@@ -270,15 +304,24 @@ def make_part(sw, spec: PartSpec, path: Path, transparency: float = 0.0) -> tupl
     else:
         part.set_density(spec.density)
     part.set_color(spec.color, transparency)
+    if spec.color in APPEARANCES:
+        part.set_appearance(Path(sw_api.appearance_library(sw)) / APPEARANCES[spec.color])
+    if name in CELL_PARTS:
+        cells = part.flat_faces("z", min_area=1.0)
+        if cells:
+            part.set_appearance(solar_cell_appearance(path.parent.parent / "appearances"), SOLAR_TILE_M, cells)
     return part.save(path), part.mass_properties()["mass"]
 
 
-def make_assembly(sw, files: dict, placements: list, path: Path, image: Path):
+def make_assembly(sw, files: dict, placements: list, path: Path, image: Path, sun: bool = False):
     """Place parts, then save the assembly and a picture of it. A placement may name a
-    part in `files` or give a file path directly."""
+    part in `files` or give a file path directly. `sun` replaces the default lights with
+    the Sun at +Z, for rendering in Visualize."""
     assembly = sw_api.Assembly(sw)
     for name, position, rotation in placements:
         assembly.add(files.get(name, name), position, rotation)
+    if sun:
+        assembly.set_sun(SUN_DIRECTION)
     return assembly, assembly.save(path), assembly.save_image(image)
 
 
@@ -309,7 +352,7 @@ def build(sw, concept: str, P: dict) -> dict:
     # 1. Parts
     files, masses = {}, {}
     for name, spec in design.parts.items():
-        files[name], masses[name] = make_part(sw, spec, out / "parts" / f"{name}.SLDPRT")
+        files[name], masses[name] = make_part(sw, spec, out / "parts" / f"{name}.SLDPRT", name=name)
         print(f"  {name:22s} {masses[name]:9.1f} kg")
 
     # 2. The satellite, deployed and stowed
@@ -317,7 +360,7 @@ def build(sw, concept: str, P: dict) -> dict:
     results = {}
     for state, placements in (("deployed", design.deployed), ("stowed", design.stowed)):
         assembly, file, image = make_assembly(sw, files, placements, out / f"satellite_{state}.SLDASM",
-                                              out / "images" / f"satellite_{state}.jpg")
+                                              out / "images" / f"satellite_{state}.jpg", sun=state == "deployed")
         results[state] = dict(file=file, box=assembly.bounding_box(), mass=assembly.mass_properties())
         images.append(image)
     deployed, stowed = results["deployed"], results["stowed"]

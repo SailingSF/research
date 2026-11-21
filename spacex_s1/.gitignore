@@ -1,0 +1,11 @@
+.venv/
+.mplconfig/
+output/
+__pycache__/
+.DS_Store
+.env
+source_docs/
+MANIFEST.md
+.claude/
+CLAUDE.md
+blog_post.md

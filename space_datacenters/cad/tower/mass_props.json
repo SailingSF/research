@@ -1,0 +1,171 @@
+{
+  "concept": "tower",
+  "params": {
+    "compute": {
+      "size": [
+        1.2,
+        2.4,
+        1.0
+      ],
+      "mass": 750.0
+    },
+    "frame": {
+      "size": [
+        1.6,
+        4.2,
+        1.4
+      ],
+      "tube_outer": 0.1609392012393272,
+      "tube_wall": 0.003,
+      "density": 1600.0
+    },
+    "wing": {
+      "area_each": 173.50339261420282,
+      "width": 4.0,
+      "mass_each": 347.00678522840565,
+      "stowed_volume_each": 1.735033926142028
+    },
+    "radiator": {
+      "panel_area_total": 171.3422523226368,
+      "fin_width": 4.0,
+      "panel_max_length": 4.0,
+      "thickness": 0.025,
+      "mass_total": 747.0522201266965
+    },
+    "equipment": {
+      "power_conditioning": 92.53514272757484,
+      "electric_propulsion": 40.0,
+      "propellant_tank": 15.0,
+      "reaction_wheels": 48.0,
+      "laser_terminals": 45.0,
+      "avionics": 30.0,
+      "array_drives": 20.0,
+      "stack_interfaces": 20.0
+    },
+    "propellant": 38.23692766903035,
+    "bay": {
+      "profile": [
+        [
+          0,
+          4.0
+        ],
+        [
+          12.76,
+          4.0
+        ],
+        [
+          13.76,
+          3.85
+        ],
+        [
+          14.76,
+          3.68
+        ],
+        [
+          15.76,
+          3.49
+        ],
+        [
+          16.759999999999998,
+          3.27
+        ],
+        [
+          17.759999999999998,
+          3.04
+        ],
+        [
+          18.759999999999998,
+          2.78
+        ],
+        [
+          19.759999999999998,
+          2.51
+        ],
+        [
+          20.759999999999998,
+          2.2
+        ],
+        [
+          22.0,
+          1.8
+        ]
+      ]
+    }
+  },
+  "part_masses": {
+    "compute_module": 750.0,
+    "frame": 101.6243583742825,
+    "avionics": 29.999999999999996,
+    "reaction_wheels": 48.0,
+    "laser_terminals": 45.0,
+    "power_conditioning": 92.53514272757481,
+    "propellant_tank": 53.23692766903035,
+    "ep_thrusters": 40.0,
+    "array_drives": 20.0,
+    "stack_interfaces": 20.0,
+    "wing_deployed": 694.0135704568114,
+    "radiator_panel": 747.0522201266965
+  },
+  "structure_part": "frame",
+  "geometry": {
+    "wing_length": 43.375848153550706,
+    "roll_radius": 0.37157719640583586,
+    "radiator_panels": 12,
+    "panel_length": 3.5696302567216
+  },
+  "deployed": {
+    "mass": 2641.462219354398,
+    "volume": 9.321544816765273,
+    "com": [
+      -0.011898625382643958,
+      -0.056985072529709566,
+      -0.0017036018789247406
+    ],
+    "Ixx": 156533.0713172136,
+    "Iyy": 370938.3165128485,
+    "Izz": 525179.719827646,
+    "Ixy": 48.380591837883024,
+    "Ixz": -2.7535438141990465,
+    "Iyz": 14.518567173616475,
+    "size": [
+      89.65578990115242,
+      47.19650228189853,
+      4.0
+    ]
+  },
+  "stowed": {
+    "mass": 2641.462219354397,
+    "volume": 11.27506272788833,
+    "com": [
+      -0.01189862538264379,
+      -0.05698507252971014,
+      -0.0017036018789244774
+    ],
+    "Ixx": 4184.414838876961,
+    "Iyy": 3323.73355416235,
+    "Izz": 5751.252858992987,
+    "Ixy": 48.38059183788296,
+    "Ixz": -2.7535438142215396,
+    "Iyz": 14.518567173616455,
+    "size": [
+      4.0,
+      4.3609392012393275,
+      2.210939201239327
+    ]
+  },
+  "stack": {
+    "per_layer": [
+      3,
+      3,
+      3,
+      2
+    ],
+    "layers": 4,
+    "total": 11
+  },
+  "images": [
+    "tower\\images\\satellite_deployed.jpg",
+    "tower\\images\\satellite_stowed.jpg",
+    "tower\\images\\starship_stack.jpg"
+  ]
+}

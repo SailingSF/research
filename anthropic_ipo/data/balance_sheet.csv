@@ -1,0 +1,85 @@
+line_item,period,period_type,unit,value
+Cash and cash equivalents,2024-12-31,instant,millions_usd,3141.0
+Cash and cash equivalents,2025-12-31,instant,millions_usd,17388.0
+Cash and cash equivalents,2026-09-30,instant,millions_usd,95562.0
+Short-term investments,2024-12-31,instant,millions_usd,0.0
+Short-term investments,2025-12-31,instant,millions_usd,2889.0
+Short-term investments,2026-09-30,instant,millions_usd,36283.0
+"Accounts receivable, net",2024-12-31,instant,millions_usd,95.0
+"Accounts receivable, net",2025-12-31,instant,millions_usd,909.0
+"Accounts receivable, net",2026-09-30,instant,millions_usd,7892.0
+Prepaid expenses and other current assets,2024-12-31,instant,millions_usd,2076.0
+Prepaid expenses and other current assets,2025-12-31,instant,millions_usd,2560.0
+Prepaid expenses and other current assets,2026-09-30,instant,millions_usd,1283.0
+Total current assets,2024-12-31,instant,millions_usd,5312.0
+Total current assets,2025-12-31,instant,millions_usd,23746.0
+Total current assets,2026-09-30,instant,millions_usd,141020.0
+Restricted cash,2024-12-31,instant,millions_usd,13.0
+Restricted cash,2025-12-31,instant,millions_usd,13.0
+Restricted cash,2026-09-30,instant,millions_usd,2540.0
+"Property and equipment, net",2024-12-31,instant,millions_usd,19.0
+"Property and equipment, net",2025-12-31,instant,millions_usd,146.0
+"Property and equipment, net",2026-09-30,instant,millions_usd,3061.0
+Operating lease right-of-use assets,2024-12-31,instant,millions_usd,35.0
+Operating lease right-of-use assets,2025-12-31,instant,millions_usd,126.0
+Operating lease right-of-use assets,2026-09-30,instant,millions_usd,2839.0
+Goodwill,2024-12-31,instant,millions_usd,0.0
+Goodwill,2025-12-31,instant,millions_usd,154.0
+Goodwill,2026-09-30,instant,millions_usd,595.0
+"Other assets, noncurrent",2024-12-31,instant,millions_usd,2373.0
+"Other assets, noncurrent",2025-12-31,instant,millions_usd,476.0
+"Other assets, noncurrent",2026-09-30,instant,millions_usd,4265.0
+Total assets,2024-12-31,instant,millions_usd,7752.0
+Total assets,2025-12-31,instant,millions_usd,24661.0
+Total assets,2026-09-30,instant,millions_usd,154320.0
+"Accounts payable, accrued expenses, and other current liabilities",2024-12-31,instant,millions_usd,333.0
+"Accounts payable, accrued expenses, and other current liabilities",2025-12-31,instant,millions_usd,2511.0
+"Accounts payable, accrued expenses, and other current liabilities",2026-09-30,instant,millions_usd,9426.0
+"Operating lease liabilities, current",2024-12-31,instant,millions_usd,13.0
+"Operating lease liabilities, current",2025-12-31,instant,millions_usd,37.0
+"Operating lease liabilities, current",2026-09-30,instant,millions_usd,274.0
+Deferred revenue,2024-12-31,instant,millions_usd,28.0
+Deferred revenue,2025-12-31,instant,millions_usd,269.0
+Deferred revenue,2026-09-30,instant,millions_usd,1971.0
+Total current liabilities,2024-12-31,instant,millions_usd,374.0
+Total current liabilities,2025-12-31,instant,millions_usd,2817.0
+Total current liabilities,2026-09-30,instant,millions_usd,11671.0
+"Operating lease liabilities, noncurrent",2024-12-31,instant,millions_usd,39.0
+"Operating lease liabilities, noncurrent",2025-12-31,instant,millions_usd,80.0
+"Operating lease liabilities, noncurrent",2026-09-30,instant,millions_usd,2536.0
+Convertible notes payable,2024-12-31,instant,millions_usd,14116.0
+Convertible notes payable,2025-12-31,instant,millions_usd,41677.0
+Convertible notes payable,2026-09-30,instant,millions_usd,130502.0
+Other noncurrent liabilities,2024-12-31,instant,millions_usd,150.0
+Other noncurrent liabilities,2025-12-31,instant,millions_usd,823.0
+Other noncurrent liabilities,2026-09-30,instant,millions_usd,1974.0
+Total liabilities,2024-12-31,instant,millions_usd,14679.0
+Total liabilities,2025-12-31,instant,millions_usd,45397.0
+Total liabilities,2026-09-30,instant,millions_usd,146683.0
+Redeemable convertible preferred stock,2024-12-31,instant,millions_usd,2874.0
+Redeemable convertible preferred stock,2025-12-31,instant,millions_usd,29769.0
+Redeemable convertible preferred stock,2026-09-30,instant,millions_usd,157510.0
+Class A common stock,2024-12-31,instant,millions_usd,0.0
+Class A common stock,2025-12-31,instant,millions_usd,0.0
+Class A common stock,2026-09-30,instant,millions_usd,0.0
+Class N common stock,2024-12-31,instant,millions_usd,0.0
+Class N common stock,2025-12-31,instant,millions_usd,0.0
+Class N common stock,2026-09-30,instant,millions_usd,0.0
+Class T common stock,2024-12-31,instant,millions_usd,0.0
+Class T common stock,2025-12-31,instant,millions_usd,0.0
+Class T common stock,2026-09-30,instant,millions_usd,0.0
+Additional paid-in capital,2024-12-31,instant,millions_usd,239.0
+Additional paid-in capital,2025-12-31,instant,millions_usd,1644.0
+Additional paid-in capital,2026-09-30,instant,millions_usd,6481.0
+Accumulated other comprehensive income (loss),2024-12-31,instant,millions_usd,0.0
+Accumulated other comprehensive income (loss),2025-12-31,instant,millions_usd,5.0
+Accumulated other comprehensive income (loss),2026-09-30,instant,millions_usd,-161.0
+Accumulated deficit,2024-12-31,instant,millions_usd,-10040.0
+Accumulated deficit,2025-12-31,instant,millions_usd,-52154.0
+Accumulated deficit,2026-09-30,instant,millions_usd,-156193.0
+Total stockholders’ deficit,2024-12-31,instant,millions_usd,-9801.0
+Total stockholders’ deficit,2025-12-31,instant,millions_usd,-50505.0
+Total stockholders’ deficit,2026-09-30,instant,millions_usd,-149873.0
+"Total liabilities, redeemable convertible preferred stock, and stockholders’ deficit",2024-12-31,instant,millions_usd,7752.0
+"Total liabilities, redeemable convertible preferred stock, and stockholders’ deficit",2025-12-31,instant,millions_usd,24661.0
+"Total liabilities, redeemable convertible preferred stock, and stockholders’ deficit",2026-09-30,instant,millions_usd,154320.0

@@ -1,0 +1,155 @@
+schedule,section,line_item,period,period_type,unit,value
+lease_cost,,Operating lease cost,FY2023,year,millions_usd,3.0
+lease_cost,,Operating lease cost,FY2024,year,millions_usd,17.0
+lease_cost,,Operating lease cost,FY2025,year,millions_usd,22.0
+lease_cost,,Operating lease cost,9M-2025,ytd_9m,millions_usd,13.0
+lease_cost,,Operating lease cost,9M-2026,ytd_9m,millions_usd,128.0
+lease_cost,Finance lease cost,Amortization of lease assets,FY2023,year,millions_usd,0.0
+lease_cost,Finance lease cost,Amortization of lease assets,FY2024,year,millions_usd,0.0
+lease_cost,Finance lease cost,Amortization of lease assets,FY2025,year,millions_usd,0.0
+lease_cost,Finance lease cost,Amortization of lease assets,9M-2025,ytd_9m,millions_usd,0.0
+lease_cost,Finance lease cost,Amortization of lease assets,9M-2026,ytd_9m,millions_usd,81.0
+lease_cost,Finance lease cost,Interest on lease liabilities,FY2023,year,millions_usd,0.0
+lease_cost,Finance lease cost,Interest on lease liabilities,FY2024,year,millions_usd,0.0
+lease_cost,Finance lease cost,Interest on lease liabilities,FY2025,year,millions_usd,0.0
+lease_cost,Finance lease cost,Interest on lease liabilities,9M-2025,ytd_9m,millions_usd,0.0
+lease_cost,Finance lease cost,Interest on lease liabilities,9M-2026,ytd_9m,millions_usd,27.0
+lease_cost,Finance lease cost,Finance lease cost,FY2023,year,millions_usd,0.0
+lease_cost,Finance lease cost,Finance lease cost,FY2024,year,millions_usd,0.0
+lease_cost,Finance lease cost,Finance lease cost,FY2025,year,millions_usd,0.0
+lease_cost,Finance lease cost,Finance lease cost,9M-2025,ytd_9m,millions_usd,0.0
+lease_cost,Finance lease cost,Finance lease cost,9M-2026,ytd_9m,millions_usd,108.0
+lease_cost,Finance lease cost,Short-term lease cost,FY2023,year,millions_usd,0.0
+lease_cost,Finance lease cost,Short-term lease cost,FY2024,year,millions_usd,0.0
+lease_cost,Finance lease cost,Short-term lease cost,FY2025,year,millions_usd,0.0
+lease_cost,Finance lease cost,Short-term lease cost,9M-2025,ytd_9m,millions_usd,0.0
+lease_cost,Finance lease cost,Short-term lease cost,9M-2026,ytd_9m,millions_usd,11.0
+lease_cost,Finance lease cost,Variable lease cost,FY2023,year,millions_usd,0.0
+lease_cost,Finance lease cost,Variable lease cost,FY2024,year,millions_usd,0.0
+lease_cost,Finance lease cost,Variable lease cost,FY2025,year,millions_usd,0.0
+lease_cost,Finance lease cost,Variable lease cost,9M-2025,ytd_9m,millions_usd,0.0
+lease_cost,Finance lease cost,Variable lease cost,9M-2026,ytd_9m,millions_usd,15.0
+lease_cost,Finance lease cost,Total lease cost,FY2023,year,millions_usd,3.0
+lease_cost,Finance lease cost,Total lease cost,FY2024,year,millions_usd,17.0
+lease_cost,Finance lease cost,Total lease cost,FY2025,year,millions_usd,22.0
+lease_cost,Finance lease cost,Total lease cost,9M-2025,ytd_9m,millions_usd,13.0
+lease_cost,Finance lease cost,Total lease cost,9M-2026,ytd_9m,millions_usd,262.0
+other_income_expense,,Recognition and change in fair value of partner financing arrangements,FY2023,year,millions_usd,0.0
+other_income_expense,,Recognition and change in fair value of partner financing arrangements,FY2024,year,millions_usd,0.0
+other_income_expense,,Recognition and change in fair value of partner financing arrangements,FY2025,year,millions_usd,0.0
+other_income_expense,,Recognition and change in fair value of partner financing arrangements,9M-2025,ytd_9m,millions_usd,0.0
+other_income_expense,,Recognition and change in fair value of partner financing arrangements,9M-2026,ytd_9m,millions_usd,-11008.0
+other_income_expense,,Change in fair value of holdback liability,FY2023,year,millions_usd,0.0
+other_income_expense,,Change in fair value of holdback liability,FY2024,year,millions_usd,0.0
+other_income_expense,,Change in fair value of holdback liability,FY2025,year,millions_usd,-3.0
+other_income_expense,,Change in fair value of holdback liability,9M-2025,ytd_9m,millions_usd,0.0
+other_income_expense,,Change in fair value of holdback liability,9M-2026,ytd_9m,millions_usd,-52.0
+other_income_expense,,Change in fair value of warrant rights,FY2023,year,millions_usd,0.0
+other_income_expense,,Change in fair value of warrant rights,FY2024,year,millions_usd,0.0
+other_income_expense,,Change in fair value of warrant rights,FY2025,year,millions_usd,0.0
+other_income_expense,,Change in fair value of warrant rights,9M-2025,ytd_9m,millions_usd,0.0
+other_income_expense,,Change in fair value of warrant rights,9M-2026,ytd_9m,millions_usd,783.0
+other_income_expense,,Other,FY2023,year,millions_usd,-2.0
+other_income_expense,,Other,FY2024,year,millions_usd,0.0
+other_income_expense,,Other,FY2025,year,millions_usd,-5.0
+other_income_expense,,Other,9M-2025,ytd_9m,millions_usd,-3.0
+other_income_expense,,Other,9M-2026,ytd_9m,millions_usd,-120.0
+other_income_expense,,Total,FY2023,year,millions_usd,-2.0
+other_income_expense,,Total,FY2024,year,millions_usd,0.0
+other_income_expense,,Total,FY2025,year,millions_usd,-8.0
+other_income_expense,,Total,9M-2025,ytd_9m,millions_usd,-3.0
+other_income_expense,,Total,9M-2026,ytd_9m,millions_usd,-10397.0
+supplemental_cash_flow,Supplemental disclosure of cash flow information,"Cash paid for income taxes, net of refunds",FY2023,year,millions_usd,0.0
+supplemental_cash_flow,Supplemental disclosure of cash flow information,"Cash paid for income taxes, net of refunds",FY2024,year,millions_usd,0.0
+supplemental_cash_flow,Supplemental disclosure of cash flow information,"Cash paid for income taxes, net of refunds",FY2025,year,millions_usd,8.0
+supplemental_cash_flow,Supplemental disclosure of cash flow information,"Cash paid for income taxes, net of refunds",9M-2025,ytd_9m,millions_usd,7.0
+supplemental_cash_flow,Supplemental disclosure of cash flow information,"Cash paid for income taxes, net of refunds",9M-2026,ytd_9m,millions_usd,46.0
+supplemental_cash_flow,Noncash investing and financing activities,Increase in property and equipment acquired but not yet paid,FY2023,year,millions_usd,0.0
+supplemental_cash_flow,Noncash investing and financing activities,Increase in property and equipment acquired but not yet paid,FY2024,year,millions_usd,1.0
+supplemental_cash_flow,Noncash investing and financing activities,Increase in property and equipment acquired but not yet paid,FY2025,year,millions_usd,10.0
+supplemental_cash_flow,Noncash investing and financing activities,Increase in property and equipment acquired but not yet paid,9M-2025,ytd_9m,millions_usd,2.0
+supplemental_cash_flow,Noncash investing and financing activities,Increase in property and equipment acquired but not yet paid,9M-2026,ytd_9m,millions_usd,345.0
+supplemental_cash_flow,Noncash investing and financing activities,"Conversion of convertible notes into Series E-2, Series E-3, Series E-4, Series E-5 and Series F-2 non-voting redeemable convertible preferred stock",FY2023,year,millions_usd,0.0
+supplemental_cash_flow,Noncash investing and financing activities,"Conversion of convertible notes into Series E-2, Series E-3, Series E-4, Series E-5 and Series F-2 non-voting redeemable convertible preferred stock",FY2024,year,millions_usd,0.0
+supplemental_cash_flow,Noncash investing and financing activities,"Conversion of convertible notes into Series E-2, Series E-3, Series E-4, Series E-5 and Series F-2 non-voting redeemable convertible preferred stock",FY2025,year,millions_usd,10347.0
+supplemental_cash_flow,Noncash investing and financing activities,"Conversion of convertible notes into Series E-2, Series E-3, Series E-4, Series E-5 and Series F-2 non-voting redeemable convertible preferred stock",9M-2025,ytd_9m,millions_usd,10347.0
+supplemental_cash_flow,Noncash investing and financing activities,"Conversion of convertible notes into Series E-2, Series E-3, Series E-4, Series E-5 and Series F-2 non-voting redeemable convertible preferred stock",9M-2026,ytd_9m,millions_usd,0.0
+supplemental_cash_flow,Noncash investing and financing activities,Conversion of convertible notes into Series G-3 and Series G-4 redeemable convertible preferred stock,FY2023,year,millions_usd,0.0
+supplemental_cash_flow,Noncash investing and financing activities,Conversion of convertible notes into Series G-3 and Series G-4 redeemable convertible preferred stock,FY2024,year,millions_usd,0.0
+supplemental_cash_flow,Noncash investing and financing activities,Conversion of convertible notes into Series G-3 and Series G-4 redeemable convertible preferred stock,FY2025,year,millions_usd,0.0
+supplemental_cash_flow,Noncash investing and financing activities,Conversion of convertible notes into Series G-3 and Series G-4 redeemable convertible preferred stock,9M-2025,ytd_9m,millions_usd,0.0
+supplemental_cash_flow,Noncash investing and financing activities,Conversion of convertible notes into Series G-3 and Series G-4 redeemable convertible preferred stock,9M-2026,ytd_9m,millions_usd,5499.0
+supplemental_cash_flow,Noncash investing and financing activities,Conversion of partner financing arrangements into Series G-2 redeemable convertible preferred stock,FY2023,year,millions_usd,0.0
+supplemental_cash_flow,Noncash investing and financing activities,Conversion of partner financing arrangements into Series G-2 redeemable convertible preferred stock,FY2024,year,millions_usd,0.0
+supplemental_cash_flow,Noncash investing and financing activities,Conversion of partner financing arrangements into Series G-2 redeemable convertible preferred stock,FY2025,year,millions_usd,0.0
+supplemental_cash_flow,Noncash investing and financing activities,Conversion of partner financing arrangements into Series G-2 redeemable convertible preferred stock,9M-2025,ytd_9m,millions_usd,0.0
+supplemental_cash_flow,Noncash investing and financing activities,Conversion of partner financing arrangements into Series G-2 redeemable convertible preferred stock,9M-2026,ytd_9m,millions_usd,11810.0
+supplemental_cash_flow,Noncash investing and financing activities,"Conversion of SAFE notes into Series C-1, Series D-1, and Series D-2 redeemable convertible preferred stock",FY2023,year,millions_usd,1.0
+supplemental_cash_flow,Noncash investing and financing activities,"Conversion of SAFE notes into Series C-1, Series D-1, and Series D-2 redeemable convertible preferred stock",FY2024,year,millions_usd,134.0
+supplemental_cash_flow,Noncash investing and financing activities,"Conversion of SAFE notes into Series C-1, Series D-1, and Series D-2 redeemable convertible preferred stock",FY2025,year,millions_usd,0.0
+supplemental_cash_flow,Noncash investing and financing activities,"Conversion of SAFE notes into Series C-1, Series D-1, and Series D-2 redeemable convertible preferred stock",9M-2025,ytd_9m,millions_usd,0.0
+supplemental_cash_flow,Noncash investing and financing activities,"Conversion of SAFE notes into Series C-1, Series D-1, and Series D-2 redeemable convertible preferred stock",9M-2026,ytd_9m,millions_usd,0.0
+supplemental_cash_flow,Noncash investing and financing activities,Issuance of Class N common stock upon settlement of donation matching program,FY2023,year,millions_usd,0.0
+supplemental_cash_flow,Noncash investing and financing activities,Issuance of Class N common stock upon settlement of donation matching program,FY2024,year,millions_usd,0.0
+supplemental_cash_flow,Noncash investing and financing activities,Issuance of Class N common stock upon settlement of donation matching program,FY2025,year,millions_usd,0.0
+supplemental_cash_flow,Noncash investing and financing activities,Issuance of Class N common stock upon settlement of donation matching program,9M-2025,ytd_9m,millions_usd,0.0
+supplemental_cash_flow,Noncash investing and financing activities,Issuance of Class N common stock upon settlement of donation matching program,9M-2026,ytd_9m,millions_usd,667.0
+supplemental_cash_flow,Noncash investing and financing activities,Warrant rights,FY2023,year,millions_usd,0.0
+supplemental_cash_flow,Noncash investing and financing activities,Warrant rights,FY2024,year,millions_usd,0.0
+supplemental_cash_flow,Noncash investing and financing activities,Warrant rights,FY2025,year,millions_usd,345.0
+supplemental_cash_flow,Noncash investing and financing activities,Warrant rights,9M-2025,ytd_9m,millions_usd,0.0
+supplemental_cash_flow,Noncash investing and financing activities,Warrant rights,9M-2026,ytd_9m,millions_usd,0.0
+supplemental_cash_flow,Noncash investing and financing activities,Equity issued in connection with business acquisition,FY2023,year,millions_usd,0.0
+supplemental_cash_flow,Noncash investing and financing activities,Equity issued in connection with business acquisition,FY2024,year,millions_usd,0.0
+supplemental_cash_flow,Noncash investing and financing activities,Equity issued in connection with business acquisition,FY2025,year,millions_usd,136.0
+supplemental_cash_flow,Noncash investing and financing activities,Equity issued in connection with business acquisition,9M-2025,ytd_9m,millions_usd,0.0
+supplemental_cash_flow,Noncash investing and financing activities,Equity issued in connection with business acquisition,9M-2026,ytd_9m,millions_usd,557.0
+supplemental_cash_flow,Noncash investing and financing activities,Right-of-use assets obtained in exchange for operating lease liabilities,FY2023,year,millions_usd,38.0
+supplemental_cash_flow,Noncash investing and financing activities,Right-of-use assets obtained in exchange for operating lease liabilities,FY2024,year,millions_usd,8.0
+supplemental_cash_flow,Noncash investing and financing activities,Right-of-use assets obtained in exchange for operating lease liabilities,FY2025,year,millions_usd,82.0
+supplemental_cash_flow,Noncash investing and financing activities,Right-of-use assets obtained in exchange for operating lease liabilities,9M-2025,ytd_9m,millions_usd,24.0
+supplemental_cash_flow,Noncash investing and financing activities,Right-of-use assets obtained in exchange for operating lease liabilities,9M-2026,ytd_9m,millions_usd,2700.0
+supplemental_cash_flow,Noncash investing and financing activities,Right-of-use assets obtained in exchange for finance lease liabilities,FY2023,year,millions_usd,0.0
+supplemental_cash_flow,Noncash investing and financing activities,Right-of-use assets obtained in exchange for finance lease liabilities,FY2024,year,millions_usd,0.0
+supplemental_cash_flow,Noncash investing and financing activities,Right-of-use assets obtained in exchange for finance lease liabilities,FY2025,year,millions_usd,0.0
+supplemental_cash_flow,Noncash investing and financing activities,Right-of-use assets obtained in exchange for finance lease liabilities,9M-2025,ytd_9m,millions_usd,0.0
+supplemental_cash_flow,Noncash investing and financing activities,Right-of-use assets obtained in exchange for finance lease liabilities,9M-2026,ytd_9m,millions_usd,1759.0
+tax_provision,Current,Federal,FY2023,year,millions_usd,0.0
+tax_provision,Current,Federal,FY2024,year,millions_usd,0.0
+tax_provision,Current,Federal,FY2025,year,millions_usd,0.0
+tax_provision,Current,State,FY2023,year,millions_usd,0.0
+tax_provision,Current,State,FY2024,year,millions_usd,0.0
+tax_provision,Current,State,FY2025,year,millions_usd,0.0
+tax_provision,Current,Foreign,FY2023,year,millions_usd,2.0
+tax_provision,Current,Foreign,FY2024,year,millions_usd,4.0
+tax_provision,Current,Foreign,FY2025,year,millions_usd,17.0
+tax_provision,Current,Total current provision for income taxes,FY2023,year,millions_usd,2.0
+tax_provision,Current,Total current provision for income taxes,FY2024,year,millions_usd,4.0
+tax_provision,Current,Total current provision for income taxes,FY2025,year,millions_usd,17.0
+tax_provision,Deferred,Federal,FY2023,year,millions_usd,0.0
+tax_provision,Deferred,Federal,FY2024,year,millions_usd,0.0
+tax_provision,Deferred,Federal,FY2025,year,millions_usd,0.0
+tax_provision,Deferred,State,FY2023,year,millions_usd,0.0
+tax_provision,Deferred,State,FY2024,year,millions_usd,0.0
+tax_provision,Deferred,State,FY2025,year,millions_usd,0.0
+tax_provision,Deferred,Foreign,FY2023,year,millions_usd,0.0
+tax_provision,Deferred,Foreign,FY2024,year,millions_usd,-3.0
+tax_provision,Deferred,Foreign,FY2025,year,millions_usd,3.0
+tax_provision,Deferred,Total deferred provision for (benefit from) income taxes,FY2023,year,millions_usd,0.0
+tax_provision,Deferred,Total deferred provision for (benefit from) income taxes,FY2024,year,millions_usd,-3.0
+tax_provision,Deferred,Total deferred provision for (benefit from) income taxes,FY2025,year,millions_usd,3.0
+tax_provision,Deferred,Total provision for income taxes,FY2023,year,millions_usd,2.0
+tax_provision,Deferred,Total provision for income taxes,FY2024,year,millions_usd,1.0
+tax_provision,Deferred,Total provision for income taxes,FY2025,year,millions_usd,20.0
+credit_loss_allowance,,Balance at beginning of period,FY2024,year,millions_usd,0.0
+credit_loss_allowance,,Balance at beginning of period,FY2025,year,millions_usd,5.0
+credit_loss_allowance,,Balance at beginning of period,9M-2026,ytd_9m,millions_usd,17.0
+credit_loss_allowance,,Change in allowance for credit losses,FY2024,year,millions_usd,5.0
+credit_loss_allowance,,Change in allowance for credit losses,FY2025,year,millions_usd,20.0
+credit_loss_allowance,,Change in allowance for credit losses,9M-2026,ytd_9m,millions_usd,94.0
+credit_loss_allowance,,Write-off of uncollectible accounts receivable,FY2024,year,millions_usd,0.0
+credit_loss_allowance,,Write-off of uncollectible accounts receivable,FY2025,year,millions_usd,-8.0
+credit_loss_allowance,,Write-off of uncollectible accounts receivable,9M-2026,ytd_9m,millions_usd,-2.0
+credit_loss_allowance,,Balance at end of period,FY2024,year,millions_usd,5.0
+credit_loss_allowance,,Balance at end of period,FY2025,year,millions_usd,17.0
+credit_loss_allowance,,Balance at end of period,9M-2026,ytd_9m,millions_usd,109.0

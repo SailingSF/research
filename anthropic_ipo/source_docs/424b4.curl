@@ -1,0 +1,6 @@
+url = "https://www.sec.gov/Archives/edgar/data/2130357/000162828026074944/anthropicpbc-424b4.htm"
+output = "source_docs/anthropic_424b4.htm"
+url = "https://www.sec.gov/Archives/edgar/data/2130357/000162828026074937/anthropicpbc-fwppricing.htm"
+output = "source_docs/anthropic_fwp_pricing.htm"
+url = "https://www.sec.gov/Archives/edgar/data/1181412/000162828026066880/spcx-20260930.htm"
+output = "source_docs/spacex/spcx_10q_2026q3.htm"

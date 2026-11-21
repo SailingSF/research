@@ -1,0 +1,15 @@
+venture,bond_id,fact,value,unit,source_url,note
+Louisiana,BEIGNET_6.581_2049,development_cost,27,usd_bn,https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm,10-Q Note 5: parties fund pro rata share of ~$27B
+Texas,SOPAIPILLA_2048,development_cost,14,usd_bn,https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm,10-Q Note 5: ~$14B
+Louisiana,BEIGNET_6.581_2049,lease_commencement_year,2029,year,https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm,10-Q Note 5; month not disclosed
+Texas,SOPAIPILLA_2048,lease_commencement_year,2028,year,https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm,10-Q Note 5; month not disclosed
+Louisiana,BEIGNET_6.581_2049,meta_equity_share,0.20,fraction,https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm,Blue Owl funds 80%
+Texas,SOPAIPILLA_2048,meta_equity_share,0.20,fraction,https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm,BlackRock GIP/HPS 80%
+Louisiana,BEIGNET_6.581_2049,meta_distribution_at_formation,3,usd_bn,https://privatecreditprep.com/deals/meta-hyperion-27bn-off-balance-sheet,"Secondary, citing Meta press release; 'approximately $3 billion'"
+Texas,SOPAIPILLA_2048,meta_distribution_at_formation,1.04,usd_bn,https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm,"10-Q: contributed $2.26B of assets, received $1.04B"
+Louisiana,BEIGNET_6.581_2049,partner_equity_cash,7,usd_bn,https://privatecreditprep.com/deals/meta-hyperion-27bn-off-balance-sheet,"Secondary, citing Meta press release; Blue Owl ~$7B cash"
+Louisiana,BEIGNET_6.581_2049,sp_operating_dscr,1.12,x,https://www.ifre.com/ifr-awards/2340435/the-metablue-owl-deal-broken-down-off-balance-sheet-gymnastics-24-years-after-enron,IFR summary of S&P; S&P base case includes 8 years of lease payments
+Louisiana,BEIGNET_6.581_2049,issue_spread_press,225,bp,https://privatecreditprep.com/deals/meta-hyperion-27bn-off-balance-sheet,Secondary citing IFR; benchmark not stated
+Texas,SOPAIPILLA_2048,issue_spread_press,287.5,bp,https://ca.finance.yahoo.com/news/investors-dig-12-5b-data-134615348.html,PitchBook/LCD; benchmark not stated
+Texas,SOPAIPILLA_2048,property_insurance_operational,0.45,usd_bn,https://finance.biggo.com/news/9e8d67e5-ca22-44ed-a1bd-0753ecac9f88,"Secondary, citing the agreement's insurance table; grows 2%/yr; ~3.2% of project value"
+Texas,SOPAIPILLA_2048,meta_termination_if_delay_months,18,months,https://finance.biggo.com/news/9e8d67e5-ca22-44ed-a1bd-0753ecac9f88,"Secondary, citing S&P: Meta may terminate without penalty if casualty/construction delay > 18 months"

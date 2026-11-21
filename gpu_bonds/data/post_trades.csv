@@ -1,0 +1,52 @@
+trade,version,ticker,scenario,stock,pnl,capital,yearly return
+build,CoreWeave: Treasuries + sell 7 $20/$10 put spreads,CRWV,Shortage lasts,120.0,3050.2651439292013,8550.0,0.14906472463086096
+build,CoreWeave: Treasuries + sell 7 $20/$10 put spreads,CRWV,Dilution rescue,30.0,3050.2651439292013,8550.0,0.14906472463086096
+build,CoreWeave: Treasuries + sell 7 $20/$10 put spreads,CRWV,Muddle through,49.0,3050.2651439292013,8550.0,0.14906472463086096
+build,CoreWeave: Treasuries + sell 7 $20/$10 put spreads,CRWV,Slow squeeze,12.0,-2549.734856070799,8550.0,-0.14894472358337374
+build,CoreWeave: Treasuries + sell 7 $20/$10 put spreads,CRWV,Glut and default,1.0,-3949.7348560707997,8550.0,-0.24593722288783393
+build,SpaceX: Treasuries + sell 2 $60/$30 put spreads,SPCX,AI wins,300.0,1760.8045549472986,9274.0,0.08238905849618683
+build,SpaceX: Treasuries + sell 2 $60/$30 put spreads,SPCX,AI wins on borrowed money,250.0,1760.8045549472986,9274.0,0.08238905849618683
+build,SpaceX: Treasuries + sell 2 $60/$30 put spreads,SPCX,Muddle through,142.0,1760.8045549472986,9274.0,0.08238905849618683
+build,SpaceX: Treasuries + sell 2 $60/$30 put spreads,SPCX,"Worth $350B, solvent",25.77,-4239.195445052702,9274.0,-0.24284795604998244
+build,SpaceX: Treasuries + sell 2 $60/$30 put spreads,SPCX,Primed,90.0,1760.8045549472986,9274.0,0.08238905849618683
+build,SpaceX: Treasuries + sell 2 $60/$30 put spreads,SPCX,Distress,5.0,-4239.195445052701,9274.0,-0.24284795604998233
+trade1,2030 notes + buy a $20 put + sell a $90 call,CRWV,Shortage lasts,120.0,1387.7642431349454,8550.0,0.07090134603103992
+trade1,2030 notes + buy a $20 put + sell a $90 call,CRWV,Dilution rescue,30.0,4012.5136445936437,8550.0,0.19153304512747282
+trade1,2030 notes + buy a $20 put + sell a $90 call,CRWV,Muddle through,49.0,3587.3123078673143,8550.0,0.17299368168748042
+trade1,2030 notes + buy a $20 put + sell a $90 call,CRWV,Slow squeeze,12.0,2406.017575254945,8550.0,0.11954887581161211
+trade1,2030 notes + buy a $20 put + sell a $90 call,CRWV,Glut and default,1.0,131.07460643394916,8550.0,0.006952898273634434
+trade2,Treasuries + sell ten $10/$5 put spreads + sell two $90/$135 call spreads,CRWV,Shortage lasts,120.0,-3319.7348560707997,8550.0,-0.2005464836980776
+trade2,Treasuries + sell ten $10/$5 put spreads + sell two $90/$135 call spreads,CRWV,Dilution rescue,30.0,2680.2651439292003,8550.0,0.13222587837312183
+trade2,Treasuries + sell ten $10/$5 put spreads + sell two $90/$135 call spreads,CRWV,Muddle through,49.0,2680.2651439292003,8550.0,0.13222587837312183
+trade2,Treasuries + sell ten $10/$5 put spreads + sell two $90/$135 call spreads,CRWV,Slow squeeze,12.0,2680.2651439292003,8550.0,0.13222587837312183
+trade2,Treasuries + sell ten $10/$5 put spreads + sell two $90/$135 call spreads,CRWV,Glut and default,1.0,-2319.7348560707997,8550.0,-0.1342398056444467
+trade3,Treasuries + buy a $75/$25 put spread + sell a $250/$295 call spread,SPCX,AI wins,300.0,-4005.1954450527014,9734.0,-0.21449498960262736
+trade3,Treasuries + buy a $75/$25 put spread + sell a $250/$295 call spread,SPCX,AI wins on borrowed money,250.0,494.8045549472987,9734.0,0.022838081545089484
+trade3,Treasuries + buy a $75/$25 put spread + sell a $250/$295 call spread,SPCX,Muddle through,142.0,494.8045549472987,9734.0,0.022838081545089484
+trade3,Treasuries + buy a $75/$25 put spread + sell a $250/$295 call spread,SPCX,"Worth $350B, solvent",25.77,5417.804554947299,9734.0,0.223263994571421
+trade3,Treasuries + buy a $75/$25 put spread + sell a $250/$295 call spread,SPCX,Primed,90.0,494.8045549472987,9734.0,0.022838081545089484
+trade3,Treasuries + buy a $75/$25 put spread + sell a $250/$295 call spread,SPCX,Distress,5.0,5494.804554947299,9734.0,0.22609123418214505
+trade4,2031 notes + buy a $100 put (institutions),SPCX,AI wins,300.0,-7.3115238564917036,11034.0,-0.00030183469318012524
+trade4,2031 notes + buy a $100 put (institutions),SPCX,AI wins on borrowed money,250.0,-655.8227484483675,11034.0,-0.027520834841579522
+trade4,2031 notes + buy a $100 put (institutions),SPCX,Muddle through,142.0,-273.32970299859403,11034.0,-0.01135865461230312
+trade4,2031 notes + buy a $100 put (institutions),SPCX,"Worth $350B, solvent",25.77,7084.566513137212,11034.0,0.253412876196242
+trade4,2031 notes + buy a $100 put (institutions),SPCX,Primed,90.0,139.8831742162664,11034.0,0.005753821059471642
+trade4,2031 notes + buy a $100 put (institutions),SPCX,Distress,5.0,3640.729637234772,11034.0,0.13867134923538482
+trade4,Treasuries + buy a $100/$25 put spread (anyone),SPCX,AI wins,300.0,-725.1954450527015,10954.0,-0.03071361129348038
+trade4,Treasuries + buy a $100/$25 put spread (anyone),SPCX,AI wins on borrowed money,250.0,-725.1954450527015,10954.0,-0.03071361129348038
+trade4,Treasuries + buy a $100/$25 put spread (anyone),SPCX,Muddle through,142.0,-725.1954450527015,10954.0,-0.03071361129348038
+trade4,Treasuries + buy a $100/$25 put spread (anyone),SPCX,"Worth $350B, solvent",25.77,6697.804554947299,10954.0,0.2427143043053137
+trade4,Treasuries + buy a $100/$25 put spread (anyone),SPCX,Primed,90.0,274.8045549472986,10954.0,0.011348232064699593
+trade4,Treasuries + buy a $100/$25 put spread (anyone),SPCX,Distress,5.0,6774.8045549473,10954.0,0.24518019475936015
+trade5,2031 notes + sell a $200 call,SPCX,AI wins,300.0,-5167.3115238564915,9274.0,-0.3099473240534806
+trade5,2031 notes + sell a $200 call,SPCX,AI wins on borrowed money,250.0,-815.8227484483673,9274.0,-0.04106878558051408
+trade5,2031 notes + sell a $200 call,SPCX,Muddle through,142.0,4566.670297001407,9274.0,0.20003436619197723
+trade5,2031 notes + sell a $200 call,SPCX,"Worth $350B, solvent",25.77,4501.566513137212,9274.0,0.19746032270179126
+trade5,2031 notes + sell a $200 call,SPCX,Primed,90.0,3979.8831742162665,9274.0,0.17659051812327098
+trade5,2031 notes + sell a $200 call,SPCX,Distress,5.0,-1019.270362765229,9274.0,-0.05164304068591885
+trade6,Treasuries + buy a $150/$295 call spread,SPCX,AI wins,300.0,12379.804554947299,12349.0,0.3719642788910833
+trade6,Treasuries + buy a $150/$295 call spread,SPCX,AI wins on borrowed money,250.0,7879.804554947299,12349.0,0.25203033478598935
+trade6,Treasuries + buy a $150/$295 call spread,SPCX,Muddle through,142.0,-2120.1954450527014,12349.0,-0.0822103101760353
+trade6,Treasuries + buy a $150/$295 call spread,SPCX,"Worth $350B, solvent",25.77,-2120.1954450527014,12349.0,-0.0822103101760353
+trade6,Treasuries + buy a $150/$295 call spread,SPCX,Primed,90.0,-2120.1954450527014,12349.0,-0.0822103101760353
+trade6,Treasuries + buy a $150/$295 call spread,SPCX,Distress,5.0,-2120.1954450527014,12349.0,-0.0822103101760353

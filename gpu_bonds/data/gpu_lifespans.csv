@@ -1,0 +1,9 @@
+gpu,launched,event,date,provider,source_url,note
+K80,2014-11-17,hyperscaler_retired,2023-08-31,Azure (NC series),https://azure.microsoft.com/updates/nc-v2series-azure-virtual-machines-will-be-retired-by-31-august-2022,"Retirement of NC (K80), ND (P40) and NC v2 (P100) extended to Aug 31 2023. Launch date: Nvidia Tesla K80 announcement (±1 month)"
+K80,2014-11-17,hyperscaler_retired,2024-05-01,Google Cloud,https://docs.cloud.google.com/compute/docs/deprecations,"K80 end of support May 1 2024 (deprecated May 1 2023)"
+P40,2016-09-13,hyperscaler_retired,2023-08-31,Azure (ND series),https://azure.microsoft.com/updates/nc-v2series-azure-virtual-machines-will-be-retired-by-31-august-2022,"Same Azure notice. Launch: GTC China Sep 2016"
+P100,2016-06-20,hyperscaler_retired,2023-08-31,Azure (NC v2 series),https://azure.microsoft.com/updates/nc-v2series-azure-virtual-machines-will-be-retired-by-31-august-2022,"Same Azure notice. Launch: PCIe P100 at ISC Jun 2016 (SXM announced Apr 2016)"
+V100,2017-06-21,hyperscaler_retired,2025-09-30,Azure (NCv3 series),https://learn.microsoft.com/en-us/azure/virtual-machines/ncv3-retirement,"General retirement Sep 30 2025; regional extensions to Jun 30 2026 (Azure China page says Jun 2027). Launch: first V100 shipments mid-2017"
+V100,2017-06-21,provider_retiring,2026-08-31,TWSC (Taiwan),https://docs.twcloud.ai/en/docs/faqs/service-changes/202608-gpu-upgrade,"Begins phasing out V100 and T4 from end of Aug 2026. Smaller provider; not used in the life range"
+T4,2018-09-12,provider_retiring,2026-08-31,TWSC (Taiwan),https://docs.twcloud.ai/en/docs/faqs/service-changes/202608-gpu-upgrade,"Same notice. Not used in the life range"
+A100,2020-06-01,contracted_to,2029-06-30,CoreWeave,https://www.tomshardware.com/tech-industry/coreweave-ceo-mike-intrator-says-it-has-signed-an-a100-contract-running-into-2029,"CEO: A100 contract 'into 2029' (mid-2029 assumed). Launch date as 10 §5 SHIPPED"

@@ -1,0 +1,18 @@
+item,value,unit,as_of,source_url,reliability,note
+risk_free_rate,4.94,pct,2026-11-01,https://pages.stern.nyu.edu/~adamodar/New_Home_Page/home.htm,primary,US T-bond rate Damodaran uses with his Nov-1 implied ERP; 10y Treasury closed 4.86% on Nov 6 (Advisor Perspectives)
+equity_risk_premium,4.41,pct,2026-11-01,https://pages.stern.nyu.edu/~adamodar/New_Home_Page/home.htm,primary,"Damodaran implied ERP, S&P 500, trailing 12m with adjusted payout; variants 3.39%-5.81%"
+beta_software_system_app,1.25,x,2026-01-01,https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/Betas.html,primary,"Damodaran, Software (System & Application), 309 firms, unlevered beta corrected for cash"
+beta_software_internet,1.59,x,2026-01-01,https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/Betas.html,primary,"Damodaran, Software (Internet), 29 firms, unlevered beta corrected for cash"
+beta_semiconductor,1.5,x,2026-01-01,https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/Betas.html,primary,"Damodaran, Semiconductor, 66 firms, unlevered beta corrected for cash"
+ipo_price_low,70.0,usd_per_share,2026-11-10,https://www.sec.gov/Archives/edgar/data/2130357/000162828026072484/anthropicpbc-sx1ax2.htm,primary,"cover: ""between $70.00 and $78.00"""
+ipo_price_high,78.0,usd_per_share,2026-11-10,https://www.sec.gov/Archives/edgar/data/2130357/000162828026072484/anthropicpbc-sx1ax2.htm,primary,idem
+ipo_price,83.0,usd_per_share,2026-11-18,https://www.sec.gov/Archives/edgar/data/2130357/000162828026074944/anthropicpbc-424b4.htm,primary,"cover: ""Initial public offering price $83.00"", above the $70-78 range"
+ipo_shares_offered_company,956.351354,millions_shares,2026-11-18,https://www.sec.gov/Archives/edgar/data/2130357/000162828026074944/anthropicpbc-424b4.htm,primary,Class A offered by us
+ipo_shares_offered_selling_holders,23.648646,millions_shares,2026-11-18,https://www.sec.gov/Archives/edgar/data/2130357/000162828026074944/anthropicpbc-424b4.htm,primary,no proceeds to the company; already in the fully diluted count
+ipo_underwriter_option,147.0,millions_shares,2026-11-18,https://www.sec.gov/Archives/edgar/data/2130357/000162828026074944/anthropicpbc-424b4.htm,primary,"option to purchase additional Class A from us, 30 days"
+ipo_private_placement,26000.0,millions_usd,2026-11-18,https://www.sec.gov/Archives/edgar/data/2130357/000162828026074944/anthropicpbc-424b4.htm,primary,"Class N at $83, 313,253,007 shares: Google $10B, NVIDIA $10B, AMD $2.5B, Broadcom/Micron/Microsoft $1B each, TSMC $0.5B"
+ipo_net_proceeds,104800.0,millions_usd,2026-11-18,https://www.sec.gov/Archives/edgar/data/2130357/000162828026074944/anthropicpbc-424b4.htm,primary,"offering + placement, no option exercise ($117.0B with it)"
+ipo_shares_outstanding_after,13219.642276,millions_shares,2026-11-18,https://www.sec.gov/Archives/edgar/data/2130357/000162828026074944/anthropicpbc-424b4.htm,primary,"Class A + N (+T, F) outstanding after the offering and placement, no option"
+ant_first_trade,111.5,usd_per_share,2026-11-19,https://www.cnn.com/2026/11/19/business/live-news/anthropic-ipo,press,"Nasdaq: ANT opening trade, 34% above $83; high $115.10, ~$95-100 by midday (Forbes, NBC)"
+ipo_valuation_top,1400000.0,millions_usd,2026-11-10,https://aljazeera.com/economy/2026/11/10/anthropic-targets-1-4-trillion-valuation-in-massive-stock-market-debut,press,"""up to $1.4 trillion when potential shares are included"""
+run_rate_revenue_oct2026,81000.0,millions_usd,2026-11-12,https://www.sec.gov/Archives/edgar/data/2130357/000162828026072949/anthropicpbc-fwpipowebsi.htm,primary,"FWP (IPO website): ""~$81B Run-Rate Revenue as of October 2026""; company definition, not net of policy violators"

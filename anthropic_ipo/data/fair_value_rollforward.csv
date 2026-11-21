@@ -1,0 +1,99 @@
+event,instrument,value,unit
+"Balance as of December 31, 2023",Warrant Rights,0.0,millions_usd
+Additions,Warrant Rights,0.0,millions_usd
+Conversion,Warrant Rights,0.0,millions_usd
+Change in fair value and settlement of derivative liability,Warrant Rights,0.0,millions_usd
+"Balance as of December 31, 2024",Warrant Rights,0.0,millions_usd
+Additions,Warrant Rights,345.0,millions_usd
+Conversion,Warrant Rights,0.0,millions_usd
+Change in fair value and settlement of derivative liability,Warrant Rights,0.0,millions_usd
+"Balance as of December 31, 2025",Warrant Rights,345.0,millions_usd
+Additions,Warrant Rights,0.0,millions_usd
+Conversion,Warrant Rights,0.0,millions_usd
+Change in fair value,Warrant Rights,783.0,millions_usd
+Settlement,Warrant Rights,0.0,millions_usd
+"Balance as of September 30, 2026",Warrant Rights,1128.0,millions_usd
+"Balance as of December 31, 2023",Partner Financing Arrangements,0.0,millions_usd
+Additions,Partner Financing Arrangements,0.0,millions_usd
+Conversion,Partner Financing Arrangements,0.0,millions_usd
+Change in fair value and settlement of derivative liability,Partner Financing Arrangements,0.0,millions_usd
+"Balance as of December 31, 2024",Partner Financing Arrangements,0.0,millions_usd
+Additions,Partner Financing Arrangements,0.0,millions_usd
+Conversion,Partner Financing Arrangements,0.0,millions_usd
+Change in fair value and settlement of derivative liability,Partner Financing Arrangements,0.0,millions_usd
+"Balance as of December 31, 2025",Partner Financing Arrangements,0.0,millions_usd
+Additions,Partner Financing Arrangements,2440.0,millions_usd
+Conversion,Partner Financing Arrangements,0.0,millions_usd
+Change in fair value,Partner Financing Arrangements,-13356.0,millions_usd
+Settlement,Partner Financing Arrangements,11810.0,millions_usd
+"Balance as of September 30, 2026",Partner Financing Arrangements,894.0,millions_usd
+"Balance as of December 31, 2023",Donation Matching Program Liability,0.0,millions_usd
+Additions,Donation Matching Program Liability,0.0,millions_usd
+Conversion,Donation Matching Program Liability,0.0,millions_usd
+Change in fair value and settlement of derivative liability,Donation Matching Program Liability,0.0,millions_usd
+"Balance as of December 31, 2024",Donation Matching Program Liability,0.0,millions_usd
+Additions,Donation Matching Program Liability,541.0,millions_usd
+Conversion,Donation Matching Program Liability,0.0,millions_usd
+Change in fair value and settlement of derivative liability,Donation Matching Program Liability,0.0,millions_usd
+"Balance as of December 31, 2025",Donation Matching Program Liability,541.0,millions_usd
+Additions,Donation Matching Program Liability,1808.0,millions_usd
+Conversion,Donation Matching Program Liability,0.0,millions_usd
+Change in fair value,Donation Matching Program Liability,278.0,millions_usd
+Settlement,Donation Matching Program Liability,-667.0,millions_usd
+"Balance as of September 30, 2026",Donation Matching Program Liability,1960.0,millions_usd
+"Balance as of December 31, 2023",Holdback Liability,0.0,millions_usd
+Additions,Holdback Liability,0.0,millions_usd
+Conversion,Holdback Liability,0.0,millions_usd
+Change in fair value and settlement of derivative liability,Holdback Liability,0.0,millions_usd
+"Balance as of December 31, 2024",Holdback Liability,0.0,millions_usd
+Additions,Holdback Liability,25.0,millions_usd
+Conversion,Holdback Liability,0.0,millions_usd
+Change in fair value and settlement of derivative liability,Holdback Liability,3.0,millions_usd
+"Balance as of December 31, 2025",Holdback Liability,28.0,millions_usd
+Additions,Holdback Liability,0.0,millions_usd
+Conversion,Holdback Liability,0.0,millions_usd
+Change in fair value,Holdback Liability,43.0,millions_usd
+Settlement,Holdback Liability,0.0,millions_usd
+"Balance as of September 30, 2026",Holdback Liability,71.0,millions_usd
+"Balance as of December 31, 2023",SAFEs,128.0,millions_usd
+Additions,SAFEs,0.0,millions_usd
+Conversion,SAFEs,-134.0,millions_usd
+Change in fair value and settlement of derivative liability,SAFEs,6.0,millions_usd
+"Balance as of December 31, 2024",SAFEs,0.0,millions_usd
+Additions,SAFEs,0.0,millions_usd
+Conversion,SAFEs,0.0,millions_usd
+Change in fair value and settlement of derivative liability,SAFEs,0.0,millions_usd
+"Balance as of December 31, 2025",SAFEs,0.0,millions_usd
+Additions,SAFEs,0.0,millions_usd
+Conversion,SAFEs,0.0,millions_usd
+Change in fair value,SAFEs,0.0,millions_usd
+Settlement,SAFEs,0.0,millions_usd
+"Balance as of September 30, 2026",SAFEs,0.0,millions_usd
+"Balance as of December 31, 2023",Convertible Notes Payable,1678.0,millions_usd
+Additions,Convertible Notes Payable,5900.0,millions_usd
+Conversion,Convertible Notes Payable,0.0,millions_usd
+Change in fair value and settlement of derivative liability,Convertible Notes Payable,6538.0,millions_usd
+"Balance as of December 31, 2024",Convertible Notes Payable,14116.0,millions_usd
+Additions,Convertible Notes Payable,3450.0,millions_usd
+Conversion,Convertible Notes Payable,-10347.0,millions_usd
+Change in fair value and settlement of derivative liability,Convertible Notes Payable,34458.0,millions_usd
+"Balance as of December 31, 2025",Convertible Notes Payable,41677.0,millions_usd
+Additions,Convertible Notes Payable,0.0,millions_usd
+Conversion,Convertible Notes Payable,-5499.0,millions_usd
+Change in fair value,Convertible Notes Payable,94324.0,millions_usd
+Settlement,Convertible Notes Payable,0.0,millions_usd
+"Balance as of September 30, 2026",Convertible Notes Payable,130502.0,millions_usd
+"Balance as of December 31, 2023",Derivative Liability,1110.0,millions_usd
+Additions,Derivative Liability,150.0,millions_usd
+Conversion,Derivative Liability,0.0,millions_usd
+Change in fair value and settlement of derivative liability,Derivative Liability,-1110.0,millions_usd
+"Balance as of December 31, 2024",Derivative Liability,150.0,millions_usd
+Additions,Derivative Liability,0.0,millions_usd
+Conversion,Derivative Liability,0.0,millions_usd
+Change in fair value and settlement of derivative liability,Derivative Liability,-150.0,millions_usd
+"Balance as of December 31, 2025",Derivative Liability,0.0,millions_usd
+Additions,Derivative Liability,0.0,millions_usd
+Conversion,Derivative Liability,0.0,millions_usd
+Change in fair value,Derivative Liability,0.0,millions_usd
+Settlement,Derivative Liability,0.0,millions_usd
+"Balance as of September 30, 2026",Derivative Liability,0.0,millions_usd

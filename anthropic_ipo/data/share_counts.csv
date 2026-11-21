@@ -1,0 +1,125 @@
+schedule,line_item,period,period_type,unit,value
+common_reserved_as_converted,Series A,2024-12-31,instant,thousands_shares,485744.0
+common_reserved_as_converted,Series A,2025-12-31,instant,thousands_shares,485744.0
+common_reserved_as_converted,Series A,2026-09-30,instant,thousands_shares,485744.0
+common_reserved_as_converted,Series B,2024-12-31,instant,thousands_shares,874304.0
+common_reserved_as_converted,Series B,2025-12-31,instant,thousands_shares,874304.0
+common_reserved_as_converted,Series B,2026-09-30,instant,thousands_shares,874304.0
+common_reserved_as_converted,Series C-1,2024-12-31,instant,thousands_shares,263972.0
+common_reserved_as_converted,Series C-1,2025-12-31,instant,thousands_shares,263972.0
+common_reserved_as_converted,Series C-1,2026-09-30,instant,thousands_shares,263972.0
+common_reserved_as_converted,Series C-2,2024-12-31,instant,thousands_shares,133617.0
+common_reserved_as_converted,Series C-2,2025-12-31,instant,thousands_shares,133617.0
+common_reserved_as_converted,Series C-2,2026-09-30,instant,thousands_shares,133617.0
+common_reserved_as_converted,Series D-1,2024-12-31,instant,thousands_shares,350128.0
+common_reserved_as_converted,Series D-1,2025-12-31,instant,thousands_shares,368311.0
+common_reserved_as_converted,Series D-1,2026-09-30,instant,thousands_shares,370299.0
+common_reserved_as_converted,Series D-2,2024-12-31,instant,thousands_shares,44438.0
+common_reserved_as_converted,Series D-2,2025-12-31,instant,thousands_shares,46132.0
+common_reserved_as_converted,Series D-2,2026-09-30,instant,thousands_shares,46314.0
+common_reserved_as_converted,Series D-3,2024-12-31,instant,thousands_shares,49993.0
+common_reserved_as_converted,Series D-3,2025-12-31,instant,thousands_shares,52589.0
+common_reserved_as_converted,Series D-3,2026-09-30,instant,thousands_shares,52873.0
+common_reserved_as_converted,Series E-1,2024-12-31,instant,thousands_shares,0.0
+common_reserved_as_converted,Series E-1,2025-12-31,instant,thousands_shares,636101.0
+common_reserved_as_converted,Series E-1,2026-09-30,instant,thousands_shares,636101.0
+common_reserved_as_converted,Series E-2,2024-12-31,instant,thousands_shares,0.0
+common_reserved_as_converted,Series E-2,2025-12-31,instant,thousands_shares,952819.0
+common_reserved_as_converted,Series E-2,2026-09-30,instant,thousands_shares,952819.0
+common_reserved_as_converted,Series E-3,2024-12-31,instant,thousands_shares,0.0
+common_reserved_as_converted,Series E-3,2025-12-31,instant,thousands_shares,126646.0
+common_reserved_as_converted,Series E-3,2026-09-30,instant,thousands_shares,126646.0
+common_reserved_as_converted,Series E-4,2024-12-31,instant,thousands_shares,0.0
+common_reserved_as_converted,Series E-4,2025-12-31,instant,thousands_shares,153429.0
+common_reserved_as_converted,Series E-4,2026-09-30,instant,thousands_shares,153429.0
+common_reserved_as_converted,Series E-5,2024-12-31,instant,thousands_shares,0.0
+common_reserved_as_converted,Series E-5,2025-12-31,instant,thousands_shares,242436.0
+common_reserved_as_converted,Series E-5,2026-09-30,instant,thousands_shares,242436.0
+common_reserved_as_converted,Series F-1,2024-12-31,instant,thousands_shares,0.0
+common_reserved_as_converted,Series F-1,2025-12-31,instant,thousands_shares,922197.0
+common_reserved_as_converted,Series F-1,2026-09-30,instant,thousands_shares,922197.0
+common_reserved_as_converted,Series F-2,2024-12-31,instant,thousands_shares,0.0
+common_reserved_as_converted,Series F-2,2025-12-31,instant,thousands_shares,207399.0
+common_reserved_as_converted,Series F-2,2026-09-30,instant,thousands_shares,207399.0
+common_reserved_as_converted,Series F-3,2024-12-31,instant,thousands_shares,0.0
+common_reserved_as_converted,Series F-3,2025-12-31,instant,thousands_shares,0.0
+common_reserved_as_converted,Series F-3,2026-09-30,instant,thousands_shares,0.0
+common_reserved_as_converted,Series F-4,2024-12-31,instant,thousands_shares,0.0
+common_reserved_as_converted,Series F-4,2025-12-31,instant,thousands_shares,0.0
+common_reserved_as_converted,Series F-4,2026-09-30,instant,thousands_shares,0.0
+common_reserved_as_converted,Series G-1,2024-12-31,instant,thousands_shares,0.0
+common_reserved_as_converted,Series G-1,2025-12-31,instant,thousands_shares,0.0
+common_reserved_as_converted,Series G-1,2026-09-30,instant,thousands_shares,905104.0
+common_reserved_as_converted,Series G-2,2024-12-31,instant,thousands_shares,0.0
+common_reserved_as_converted,Series G-2,2025-12-31,instant,thousands_shares,0.0
+common_reserved_as_converted,Series G-2,2026-09-30,instant,thousands_shares,839288.0
+common_reserved_as_converted,Series G-3,2024-12-31,instant,thousands_shares,0.0
+common_reserved_as_converted,Series G-3,2025-12-31,instant,thousands_shares,0.0
+common_reserved_as_converted,Series G-3,2026-09-30,instant,thousands_shares,205629.0
+common_reserved_as_converted,Series G-4,2024-12-31,instant,thousands_shares,0.0
+common_reserved_as_converted,Series G-4,2025-12-31,instant,thousands_shares,0.0
+common_reserved_as_converted,Series G-4,2026-09-30,instant,thousands_shares,33216.0
+common_reserved_as_converted,Series H-1,2024-12-31,instant,thousands_shares,0.0
+common_reserved_as_converted,Series H-1,2025-12-31,instant,thousands_shares,0.0
+common_reserved_as_converted,Series H-1,2026-09-30,instant,thousands_shares,776379.0
+common_reserved_as_converted,Series H-2,2024-12-31,instant,thousands_shares,0.0
+common_reserved_as_converted,Series H-2,2025-12-31,instant,thousands_shares,0.0
+common_reserved_as_converted,Series H-2,2026-09-30,instant,thousands_shares,331103.0
+common_reserved_as_converted,Series H-3,2024-12-31,instant,thousands_shares,0.0
+common_reserved_as_converted,Series H-3,2025-12-31,instant,thousands_shares,0.0
+common_reserved_as_converted,Series H-3,2026-09-30,instant,thousands_shares,0.0
+common_reserved_as_converted,Series H-4,2024-12-31,instant,thousands_shares,0.0
+common_reserved_as_converted,Series H-4,2025-12-31,instant,thousands_shares,0.0
+common_reserved_as_converted,Series H-4,2026-09-30,instant,thousands_shares,0.0
+common_reserved_as_converted,Shares available under Donation Matching Plan,2024-12-31,instant,thousands_shares,964341.0
+common_reserved_as_converted,Shares available under Donation Matching Plan,2025-12-31,instant,thousands_shares,964341.0
+common_reserved_as_converted,Shares available under Donation Matching Plan,2026-09-30,instant,thousands_shares,933698.0
+common_reserved_as_converted,Stock options and restricted stock units outstanding,2024-12-31,instant,thousands_shares,1736780.0
+common_reserved_as_converted,Stock options and restricted stock units outstanding,2025-12-31,instant,thousands_shares,2603784.0
+common_reserved_as_converted,Stock options and restricted stock units outstanding,2026-09-30,instant,thousands_shares,2902337.0
+common_reserved_as_converted,Shares available for future issuance,2024-12-31,instant,thousands_shares,26547.0
+common_reserved_as_converted,Shares available for future issuance,2025-12-31,instant,thousands_shares,287571.0
+common_reserved_as_converted,Shares available for future issuance,2026-09-30,instant,thousands_shares,502429.0
+common_reserved_as_converted,Total shares reserved for issuance,2024-12-31,instant,thousands_shares,4929864.0
+common_reserved_as_converted,Total shares reserved for issuance,2025-12-31,instant,thousands_shares,9321392.0
+common_reserved_as_converted,Total shares reserved for issuance,2026-09-30,instant,thousands_shares,12897333.0
+antidilutive_excluded,Redeemable convertible preferred stock,FY2023,year,thousands_shares,1757637.0
+antidilutive_excluded,Redeemable convertible preferred stock,FY2024,year,thousands_shares,2202194.0
+antidilutive_excluded,Redeemable convertible preferred stock,FY2025,year,thousands_shares,5465695.0
+antidilutive_excluded,Redeemable convertible preferred stock,9M-2025,ytd_9m,thousands_shares,5465695.0
+antidilutive_excluded,Redeemable convertible preferred stock,9M-2026,ytd_9m,thousands_shares,8558869.0
+antidilutive_excluded,Convertible notes,FY2023,year,thousands_shares,1137923.0
+antidilutive_excluded,Convertible notes,FY2024,year,thousands_shares,1893289.0
+antidilutive_excluded,Convertible notes,FY2025,year,thousands_shares,2046074.0
+antidilutive_excluded,Convertible notes,9M-2025,ytd_9m,thousands_shares,2046074.0
+antidilutive_excluded,Convertible notes,9M-2026,ytd_9m,thousands_shares,1840445.0
+antidilutive_excluded,Derivative liabilities,FY2023,year,thousands_shares,3062061.0
+antidilutive_excluded,Derivative liabilities,FY2024,year,thousands_shares,450000.0
+antidilutive_excluded,Derivative liabilities,FY2025,year,thousands_shares,0.0
+antidilutive_excluded,Derivative liabilities,9M-2025,ytd_9m,thousands_shares,0.0
+antidilutive_excluded,Derivative liabilities,9M-2026,ytd_9m,thousands_shares,0.0
+antidilutive_excluded,RSAs,FY2023,year,thousands_shares,468904.0
+antidilutive_excluded,RSAs,FY2024,year,thousands_shares,36070.0
+antidilutive_excluded,RSAs,FY2025,year,thousands_shares,27.0
+antidilutive_excluded,RSAs,9M-2025,ytd_9m,thousands_shares,0.0
+antidilutive_excluded,RSAs,9M-2026,ytd_9m,thousands_shares,13736.0
+antidilutive_excluded,Stock options,FY2023,year,thousands_shares,532827.0
+antidilutive_excluded,Stock options,FY2024,year,thousands_shares,1736780.0
+antidilutive_excluded,Stock options,FY2025,year,thousands_shares,1982743.0
+antidilutive_excluded,Stock options,9M-2025,ytd_9m,thousands_shares,1877399.0
+antidilutive_excluded,Stock options,9M-2026,ytd_9m,thousands_shares,1774343.0
+antidilutive_excluded,Holdback liability,FY2023,year,thousands_shares,0.0
+antidilutive_excluded,Holdback liability,FY2024,year,thousands_shares,0.0
+antidilutive_excluded,Holdback liability,FY2025,year,thousands_shares,1596.0
+antidilutive_excluded,Holdback liability,9M-2025,ytd_9m,thousands_shares,0.0
+antidilutive_excluded,Holdback liability,9M-2026,ytd_9m,thousands_shares,1590.0
+antidilutive_excluded,Donation matching program liability,FY2023,year,thousands_shares,0.0
+antidilutive_excluded,Donation matching program liability,FY2024,year,thousands_shares,0.0
+antidilutive_excluded,Donation matching program liability,FY2025,year,thousands_shares,30643.0
+antidilutive_excluded,Donation matching program liability,9M-2025,ytd_9m,thousands_shares,0.0
+antidilutive_excluded,Donation matching program liability,9M-2026,ytd_9m,thousands_shares,27992.0
+antidilutive_excluded,Total,FY2023,year,thousands_shares,6959352.0
+antidilutive_excluded,Total,FY2024,year,thousands_shares,6318333.0
+antidilutive_excluded,Total,FY2025,year,thousands_shares,9526778.0
+antidilutive_excluded,Total,9M-2025,ytd_9m,thousands_shares,9389168.0
+antidilutive_excluded,Total,9M-2026,ytd_9m,thousands_shares,12216975.0

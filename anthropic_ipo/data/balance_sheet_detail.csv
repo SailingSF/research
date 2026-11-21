@@ -1,0 +1,58 @@
+schedule,line_item,period,period_type,unit,value
+ppe,Leasehold improvements,2024-12-31,instant,millions_usd,16.0
+ppe,Leasehold improvements,2025-12-31,instant,millions_usd,51.0
+ppe,Leasehold improvements,2026-09-30,instant,millions_usd,70.0
+ppe,"Servers, networking, and infrastructure equipment",2024-12-31,instant,millions_usd,0.0
+ppe,"Servers, networking, and infrastructure equipment",2025-12-31,instant,millions_usd,34.0
+ppe,"Servers, networking, and infrastructure equipment",2026-09-30,instant,millions_usd,2216.0
+ppe,Construction in progress,2024-12-31,instant,millions_usd,4.0
+ppe,Construction in progress,2025-12-31,instant,millions_usd,63.0
+ppe,Construction in progress,2026-09-30,instant,millions_usd,877.0
+ppe,Other assets,2024-12-31,instant,millions_usd,3.0
+ppe,Other assets,2025-12-31,instant,millions_usd,10.0
+ppe,Other assets,2026-09-30,instant,millions_usd,30.0
+ppe,"Total property and equipment, gross",2024-12-31,instant,millions_usd,23.0
+ppe,"Total property and equipment, gross",2025-12-31,instant,millions_usd,158.0
+ppe,"Total property and equipment, gross",2026-09-30,instant,millions_usd,3193.0
+ppe,Less: Accumulated depreciation,2024-12-31,instant,millions_usd,-4.0
+ppe,Less: Accumulated depreciation,2025-12-31,instant,millions_usd,-12.0
+ppe,Less: Accumulated depreciation,2026-09-30,instant,millions_usd,-132.0
+ppe,"Total property and equipment, net",2024-12-31,instant,millions_usd,19.0
+ppe,"Total property and equipment, net",2025-12-31,instant,millions_usd,146.0
+ppe,"Total property and equipment, net",2026-09-30,instant,millions_usd,3061.0
+prepaid_current,Prepaid expenses,2024-12-31,instant,millions_usd,2073.0
+prepaid_current,Prepaid expenses,2025-12-31,instant,millions_usd,2537.0
+prepaid_current,Prepaid expenses,2026-09-30,instant,millions_usd,790.0
+prepaid_current,Other,2024-12-31,instant,millions_usd,3.0
+prepaid_current,Other,2025-12-31,instant,millions_usd,23.0
+prepaid_current,Other,2026-09-30,instant,millions_usd,493.0
+prepaid_current,Total,2024-12-31,instant,millions_usd,2076.0
+prepaid_current,Total,2025-12-31,instant,millions_usd,2560.0
+prepaid_current,Total,2026-09-30,instant,millions_usd,1283.0
+other_assets_noncurrent,Prepaid expenses,2024-12-31,instant,millions_usd,2364.0
+other_assets_noncurrent,Prepaid expenses,2025-12-31,instant,millions_usd,104.0
+other_assets_noncurrent,Prepaid expenses,2026-09-30,instant,millions_usd,684.0
+other_assets_noncurrent,Other,2024-12-31,instant,millions_usd,9.0
+other_assets_noncurrent,Other,2025-12-31,instant,millions_usd,372.0
+other_assets_noncurrent,Other,2026-09-30,instant,millions_usd,3581.0
+other_assets_noncurrent,Total,2024-12-31,instant,millions_usd,2373.0
+other_assets_noncurrent,Total,2025-12-31,instant,millions_usd,476.0
+other_assets_noncurrent,Total,2026-09-30,instant,millions_usd,4265.0
+payables_accruals,Cloud service provider payables,2024-12-31,instant,millions_usd,302.0
+payables_accruals,Cloud service provider payables,2025-12-31,instant,millions_usd,947.0
+payables_accruals,Cloud service provider payables,2026-09-30,instant,millions_usd,4231.0
+payables_accruals,Accrued legal expenses,2024-12-31,instant,millions_usd,2.0
+payables_accruals,Accrued legal expenses,2025-12-31,instant,millions_usd,775.0
+payables_accruals,Accrued legal expenses,2026-09-30,instant,millions_usd,552.0
+payables_accruals,Accrued taxes,2024-12-31,instant,millions_usd,14.0
+payables_accruals,Accrued taxes,2025-12-31,instant,millions_usd,82.0
+payables_accruals,Accrued taxes,2026-09-30,instant,millions_usd,907.0
+payables_accruals,Donation matching program liability,2024-12-31,instant,millions_usd,0.0
+payables_accruals,Donation matching program liability,2025-12-31,instant,millions_usd,541.0
+payables_accruals,Donation matching program liability,2026-09-30,instant,millions_usd,1960.0
+payables_accruals,Other,2024-12-31,instant,millions_usd,15.0
+payables_accruals,Other,2025-12-31,instant,millions_usd,166.0
+payables_accruals,Other,2026-09-30,instant,millions_usd,1776.0
+payables_accruals,Total,2024-12-31,instant,millions_usd,333.0
+payables_accruals,Total,2025-12-31,instant,millions_usd,2511.0
+payables_accruals,Total,2026-09-30,instant,millions_usd,9426.0

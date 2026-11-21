@@ -1,0 +1,68 @@
+as_of,bond_id,price,yield_pct,spread_bp,kind,source_url,note
+2025-10-16,BEIGNET_6.581_2049,100.0,6.581,,issue,https://vinodkothari.com/2025/11/meta-morphed-a-corporate-bond-that-puts-27-billion-off-the-balance-sheet/,Priced at par
+2026-02-10,GOOG_4.100_2031,99.673,4.173,43.0,issue,https://www.sec.gov/Archives/edgar/data/1652044/000119312526043127/d297481dfwp.htm,Term sheet date
+2026-02-10,GOOG_4.800_2036,99.795,4.826,63.0,issue,https://www.sec.gov/Archives/edgar/data/1652044/000119312526043127/d297481dfwp.htm,Term sheet date
+2026-02-10,GOOG_5.650_2056,99.656,5.674,83.0,issue,https://www.sec.gov/Archives/edgar/data/1652044/000119312526043127/d297481dfwp.htm,Term sheet date
+2026-04-30,META_4.55_2031,99.985,4.553,53.0,issue,https://www.sec.gov/Archives/edgar/data/1326801/000119312526197902/d148113dfwp.htm,Term sheet date
+2026-04-30,META_5.25_2036,99.72,5.286,90.0,issue,https://www.sec.gov/Archives/edgar/data/1326801/000119312526197902/d148113dfwp.htm,Term sheet date
+2026-04-30,META_6.30_2056,,6.31,132.0,issue,https://www.sec.gov/Archives/edgar/data/1326801/000119312526197902/d148113dfwp.htm,Term sheet date
+2026-06-23,SPCX_5.875_2036,,,140.0,issue,https://www.zerohedge.com/markets/equity-sees-125-billion-credit-sees-83-cents-spacex-earnings-preview,~140bp at issue per press
+2026-07-27,SOPAIPILLA_2048,,7.534,,issue,https://www.webull.com/news/15301968728318976,"Placed Jul 27 at par, 7.534%. Press spread (~287.5bp) is vs the 10yr Treasury, so not used; spread computed from yield vs. interpolated curve."
+2026-09-28,BEIGNET_6.581_2049,91.0,7.55,,trade,https://www.thestateofai.com/news/ai-data-center-debt-subprime-pension-funds,Reuters column via secondary source
+2026-10-07,BEIGNET_6.581_2049,91.0,,,trade,https://www.tokenpost.com/news/technology/27470,Record low ~91
+2026-10-19,BEIGNET_6.581_2049,92.0,,,trade,https://enterpriseam.com/uae/2026/10/19/investors-turn-on-the-debt-behind-the-ai-build-out/,'just under 0.92'
+2026-10-01,META_5.55_2064,75.8,7.48,,trade,https://www.benzinga.com/markets/large-cap/26/10/62161704/highest-yielding-hyperscaler-bonds-october-2026-spacex-oracle,Early Oct 2026; exact date not visible (page 403s)
+2026-10-14,CRWV_9.75_2031,78.0,16.39,,trade,https://www.morningstar.com/bonds/coreweave-data-center-bonds-slide-capex-debt-overhang-concerns,Intraday low
+2026-10-15,CRWV_9.75_2031,83.0,,,trade,https://www.morningstar.com/bonds/coreweave-data-center-bonds-slide-capex-debt-overhang-concerns,
+2026-10-14,CRWV_9.625_2032,75.0,16.5,,trade,https://www.morningstar.com/bonds/coreweave-data-center-bonds-slide-capex-debt-overhang-concerns,Intraday low
+2026-10-15,CRWV_9.625_2032,80.0,,,trade,https://www.morningstar.com/bonds/coreweave-data-center-bonds-slide-capex-debt-overhang-concerns,
+2026-10-20,SPCX_5.875_2036,,,193.0,trade,https://www.zerohedge.com/markets/equity-sees-125-billion-credit-sees-83-cents-spacex-earnings-preview,"TRACE level 'earlier this month', article ~Oct 20"
+2026-10-20,SPCX_6.650_2056,83.0,,,trade,https://www.zerohedge.com/markets/equity-sees-125-billion-credit-sees-83-cents-spacex-earnings-preview,All-time low
+2026-10-21,SPCX_6.600_2046,,,264.0,trade,https://www.bloomberg.com/news/articles/2026-10-21/spacex-bonds-weaken-credit-risk-gauge-worsens-on-debt-fears,Widened 9bp on the day
+2025-05-05,AAPL_4.20_2030,99.83,4.238,30.0,issue,https://www.sec.gov/Archives/edgar/data/320193/000114036125017410/ny20048442x2_fwp.htm,Term sheet (filed 2025-05-06)
+2025-05-05,AAPL_4.75_2035,99.34,4.834,50.0,issue,https://www.sec.gov/Archives/edgar/data/320193/000114036125017410/ny20048442x2_fwp.htm,Term sheet (filed 2025-05-06)
+2023-05-08,AAPL_4.85_2053,99.499,4.882,108.0,issue,https://www.sec.gov/Archives/edgar/data/320193/000114036123023544/ny20007635x2_fwp.htm,Term sheet (filed 2023-05-09)
+2026-10-23,META_4.55_2031,95.967,5.566,,trade,https://www.tradingview.com/symbols/FINRA-FB6383864/,TRACE close via TradingView FINRA feed
+2026-10-23,META_5.25_2036,94.522,6.009,,trade,https://www.tradingview.com/symbols/FINRA-FB6383866/,TRACE close via TradingView FINRA feed
+2026-10-23,META_6.30_2056,87.835,7.306,,trade,https://www.tradingview.com/symbols/FINRA-FB6383871/,TRACE close via TradingView FINRA feed
+2026-10-23,GOOG_4.100_2031,95.45,5.289,,trade,https://www.tradingview.com/symbols/FINRA-GOOG6308909/,TRACE close via TradingView FINRA feed
+2026-10-23,GOOG_4.800_2036,93.167,5.754,,trade,https://www.tradingview.com/symbols/FINRA-GOOG6308907/,TRACE close via TradingView FINRA feed
+2026-10-23,GOOG_5.650_2056,88.71,6.514,,trade,https://www.tradingview.com/symbols/FINRA-GOOG6308428/,TRACE close via TradingView FINRA feed
+2026-10-23,AAPL_4.20_2030,97.748,4.898,,trade,https://www.tradingview.com/symbols/FINRA-AAPL6070269/,TRACE close via TradingView FINRA feed
+2026-10-23,AAPL_4.75_2035,97.124,5.168,,trade,https://www.tradingview.com/symbols/FINRA-AAPL6070271/,TRACE close via TradingView FINRA feed
+2026-10-23,AAPL_4.85_2053,86.628,5.844,,trade,https://www.tradingview.com/symbols/FINRA-AAPL5584758/,TRACE close via TradingView FINRA feed
+2026-10-23,SPCX_5.650_2033,91.36,7.29,,trade,https://www.tradingview.com/symbols/FINRA-SPCX6434767/,TRACE close via TradingView FINRA feed
+2026-10-23,SPCX_5.875_2036,88.719,7.523,,trade,https://www.tradingview.com/symbols/FINRA-SPCX6434604/,TRACE close via TradingView FINRA feed
+2026-10-23,SPCX_6.600_2046,84.857,8.148,,trade,https://www.tradingview.com/symbols/FINRA-SPCX6434768/,TRACE close via TradingView FINRA feed
+2026-10-23,SPCX_6.650_2056,83.646,8.106,,trade,https://www.tradingview.com/symbols/FINRA-SPCX6434763/,TRACE close via TradingView FINRA feed
+2026-10-23,BEIGNET_6.581_2049,90.515,,,trade,https://www.tradingview.com/symbols/FINRA-BEIG6208409/,TRACE close via TradingView FINRA feed; no yield shown (amortizing)
+2026-10-23,META_5.55_2064,75.906,7.464,,trade,https://www.tradingview.com/symbols/FINRA-FB5868810/,TRACE close via TradingView FINRA feed
+2026-10-23,CRWV_9.25_2030,85.25,14.662095,,trade,https://www.finra.org/finra-data/fixed-income/bond?symbol=CRWV6083302&bondType=CORP,"FINRA Bond Center last trade (144A line), read Oct 25"
+2026-10-23,CRWV_9.00_2031,81.0,15.203682,,trade,https://www.finra.org/finra-data/fixed-income/bond?symbol=CRWV6130541&bondType=CORP,"FINRA Bond Center last trade (144A line), read Oct 25"
+2026-10-23,CRWV_9.75_2031,81.25,15.296369,,trade,https://www.finra.org/finra-data/fixed-income/bond?symbol=CRWV6364372&bondType=CORP,"FINRA Bond Center last trade (144A line), read Oct 25"
+2026-10-23,CRWV_9.625_2032,79.25,15.16062,,trade,https://www.finra.org/finra-data/fixed-income/bond?symbol=CRWV6424531&bondType=CORP,"FINRA Bond Center last trade (144A line), read Oct 25"
+2026-10-23,SPCX_5.350_2031,93.17,7.073391,,trade,https://www.finra.org/finra-data/fixed-income/bond?symbol=SPCX6434760&bondType=CORP,"FINRA Bond Center last trade (144A line), read Oct 25"
+2026-10-23,SOPAIPILLA_2048,98.38,7.687076,,trade,https://www.finra.org/finra-data/fixed-income/bond?symbol=SOPC6466524&bondType=CORP,"FINRA Bond Center last trade (144A line), read Oct 25"
+2026-07-28,SOPAIPILLA_2048,103.0,7.31,,trade,https://ca.finance.yahoo.com/news/investors-dig-12-5b-data-134615348.html,"PitchBook/LCD citing MarketAxess: large blocks at 103+ the morning after pricing, T+217 (press benchmark)"
+2026-07-27,META_6.30_2056,,6.92,,trade,https://ca.finance.yahoo.com/news/investors-dig-12-5b-data-134615348.html,"PitchBook/LCD: T+178 (press benchmark), 46bp wider than Apr 30 pricing"
+2026-11-10,CRWV_9.25_2030,85.5,14.621223,,trade,https://www.finra.org/finra-data/fixed-income/bond?symbol=CRWV6083302&bondType=CORP,"FINRA bond page, last trade on Nov 10 2026 (read Nov 10)"
+2026-11-10,CRWV_9.00_2031,81.75,14.976623,,trade,https://www.finra.org/finra-data/fixed-income/bond?symbol=CRWV6130541&bondType=CORP,"FINRA bond page, last trade on Nov 10 2026 (read Nov 10)"
+2026-11-10,CRWV_9.75_2031,82.0,15.078277,,trade,https://www.finra.org/finra-data/fixed-income/bond?symbol=CRWV6364372&bondType=CORP,"FINRA bond page, last trade on Nov 10 2026 (read Nov 10)"
+2026-11-10,CRWV_9.625_2032,82.0,14.35427,,trade,https://www.finra.org/finra-data/fixed-income/bond?symbol=CRWV6424531&bondType=CORP,"FINRA bond page, last trade on Nov 10 2026 (read Nov 10)"
+2026-11-10,META_4.55_2031,95.97,5.574122,,trade,https://www.finra.org/finra-data/fixed-income/bond?symbol=FB6383864&bondType=CORP,"FINRA bond page, last trade on Nov 10 2026 (read Nov 10)"
+2026-11-10,META_5.25_2036,94.1,6.075354,,trade,https://www.finra.org/finra-data/fixed-income/bond?symbol=FB6383866&bondType=CORP,"FINRA bond page, last trade on Nov 10 2026 (read Nov 10)"
+2026-11-10,META_6.30_2056,88.64,7.237419,,trade,https://www.finra.org/finra-data/fixed-income/bond?symbol=FB6383871&bondType=CORP,"FINRA bond page, last trade on Nov 10 2026 (read Nov 10)"
+2026-11-10,META_5.55_2064,76.51,7.408425,,trade,https://www.finra.org/finra-data/fixed-income/bond?symbol=FB5868810&bondType=CORP,"FINRA bond page, last trade on Nov 10 2026 (read Nov 10)"
+2026-11-10,BEIGNET_6.581_2049,92.21,,,trade,https://www.finra.org/finra-data/fixed-income/bond?symbol=BEIG6208409&bondType=CORP,"FINRA bond page, last trade on Nov 10 2026 (read Nov 10)"
+2026-11-10,SOPAIPILLA_2048,98.65,7.660581,,trade,https://www.finra.org/finra-data/fixed-income/bond?symbol=SOPC6466524&bondType=CORP,"FINRA bond page, last trade on Nov 10 2026 (read Nov 10)"
+2026-11-10,SPCX_5.350_2031,92.74,7.202951,,trade,https://www.finra.org/finra-data/fixed-income/bond?symbol=SPCX6434760&bondType=CORP,"FINRA bond page, last trade on Nov 10 2026 (read Nov 10)"
+2026-11-10,SPCX_5.650_2033,91.17,7.344,,trade,https://www.finra.org/finra-data/fixed-income/bond?symbol=SPCX6434767&bondType=CORP,"FINRA bond page, last trade on Nov 10 2026 (read Nov 10); yield computed from price (FINRA shows N/A)"
+2026-11-10,SPCX_5.875_2036,88.65,7.547,,trade,https://www.finra.org/finra-data/fixed-income/bond?symbol=SPCX6434604&bondType=CORP,"FINRA bond page, last trade on Nov 10 2026 (read Nov 10); yield computed from price (FINRA shows N/A)"
+2026-11-10,SPCX_6.600_2046,86.2,8.003,,trade,https://www.finra.org/finra-data/fixed-income/bond?symbol=SPCX6434768&bondType=CORP,"FINRA bond page, last trade on Nov 10 2026 (read Nov 10); yield computed from price (FINRA shows N/A)"
+2026-11-10,SPCX_6.650_2056,84.28,8.048,,trade,https://www.finra.org/finra-data/fixed-income/bond?symbol=SPCX6434763&bondType=CORP,"FINRA bond page, last trade on Nov 10 2026 (read Nov 10); yield computed from price (FINRA shows N/A)"
+2026-11-10,GOOG_4.100_2031,95.39,5.323756,,trade,https://www.finra.org/finra-data/fixed-income/bond?symbol=GOOG6308909&bondType=CORP,"FINRA bond page, last trade on Nov 10 2026 (read Nov 10)"
+2026-11-10,GOOG_4.800_2036,93.34,5.736029,,trade,https://www.finra.org/finra-data/fixed-income/bond?symbol=GOOG6308907&bondType=CORP,"FINRA bond page, last trade on Nov 10 2026 (read Nov 10)"
+2026-11-10,GOOG_5.650_2056,89.28,6.470241,,trade,https://www.finra.org/finra-data/fixed-income/bond?symbol=GOOG6308428&bondType=CORP,"FINRA bond page, last trade on Nov 10 2026 (read Nov 10)"
+2026-11-10,AAPL_4.20_2030,97.73,4.913858,,trade,https://www.finra.org/finra-data/fixed-income/bond?symbol=AAPL6070269&bondType=CORP,"FINRA bond page, last trade on Nov 10 2026 (read Nov 10)"
+2026-11-10,AAPL_4.75_2035,96.88,5.20853,,trade,https://www.finra.org/finra-data/fixed-income/bond?symbol=AAPL6070271&bondType=CORP,"FINRA bond page, last trade on Nov 10 2026 (read Nov 10)"
+2026-11-10,AAPL_4.85_2053,86.58,5.85304,,trade,https://www.finra.org/finra-data/fixed-income/bond?symbol=AAPL5584758&bondType=CORP,"FINRA bond page, last trade on Nov 10 2026 (read Nov 10)"

@@ -1,0 +1,10 @@
+# SpaceX FY2025 (year ended Dec 31 2025), $mn. SpaceX's XBRL starts with its Q2 2026 10-Q, so FY2025 comes from the S-1 (424B4 final prospectus, 2026-06-12):
+# https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/spaceexplorationtechnologi.htm
+# Extracted in ~/Documents/spacex_s1/csv (income_statement.csv, cash_flow.csv). Tag = matching us-gaap tag used in 06. Check: S-1 Q1-2025 revenue 4,067 = 10-Q H1-2025 8,138 - Q2-2025 4,071.
+tag,fy2025_mn,line_item
+RevenueFromContractWithCustomerExcludingAssessedTax,18674,Revenue
+OperatingIncomeLoss,-2589,Income (loss) from operations
+DepreciationDepletionAndAmortization,6701,Depreciation and amortization (cash flow statement)
+NetCashProvidedByUsedInOperatingActivities,6785,Net cash provided by operating activities
+PaymentsToAcquirePropertyPlantAndEquipment,20737,Purchases of property plant and equipment
+InterestExpenseNonoperating,1945,Interest expense

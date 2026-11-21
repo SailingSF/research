@@ -1,0 +1,26 @@
+section,line_item,period,period_type,unit,value
+,Net loss,FY2023,year,millions_usd,-1531.0
+,Net loss,FY2024,year,millions_usd,-8309.0
+,Net loss,FY2025,year,millions_usd,-41965.0
+,Net loss,9M-2025,ytd_9m,millions_usd,-25107.0
+,Net loss,9M-2026,ytd_9m,millions_usd,-104039.0
+Other comprehensive income (loss),"Net unrealized gain (loss) on available-for-sale securities, net of tax",FY2023,year,millions_usd,0.0
+Other comprehensive income (loss),"Net unrealized gain (loss) on available-for-sale securities, net of tax",FY2024,year,millions_usd,0.0
+Other comprehensive income (loss),"Net unrealized gain (loss) on available-for-sale securities, net of tax",FY2025,year,millions_usd,4.0
+Other comprehensive income (loss),"Net unrealized gain (loss) on available-for-sale securities, net of tax",9M-2025,ytd_9m,millions_usd,3.0
+Other comprehensive income (loss),"Net unrealized gain (loss) on available-for-sale securities, net of tax",9M-2026,ytd_9m,millions_usd,-155.0
+Other comprehensive income (loss),Foreign currency translation adjustments,FY2023,year,millions_usd,0.0
+Other comprehensive income (loss),Foreign currency translation adjustments,FY2024,year,millions_usd,0.0
+Other comprehensive income (loss),Foreign currency translation adjustments,FY2025,year,millions_usd,1.0
+Other comprehensive income (loss),Foreign currency translation adjustments,9M-2025,ytd_9m,millions_usd,1.0
+Other comprehensive income (loss),Foreign currency translation adjustments,9M-2026,ytd_9m,millions_usd,-11.0
+Other comprehensive income (loss),Other comprehensive income (loss),FY2023,year,millions_usd,0.0
+Other comprehensive income (loss),Other comprehensive income (loss),FY2024,year,millions_usd,0.0
+Other comprehensive income (loss),Other comprehensive income (loss),FY2025,year,millions_usd,5.0
+Other comprehensive income (loss),Other comprehensive income (loss),9M-2025,ytd_9m,millions_usd,4.0
+Other comprehensive income (loss),Other comprehensive income (loss),9M-2026,ytd_9m,millions_usd,-166.0
+Other comprehensive income (loss),Comprehensive loss,FY2023,year,millions_usd,-1531.0
+Other comprehensive income (loss),Comprehensive loss,FY2024,year,millions_usd,-8309.0
+Other comprehensive income (loss),Comprehensive loss,FY2025,year,millions_usd,-41960.0
+Other comprehensive income (loss),Comprehensive loss,9M-2025,ytd_9m,millions_usd,-25103.0
+Other comprehensive income (loss),Comprehensive loss,9M-2026,ytd_9m,millions_usd,-104205.0

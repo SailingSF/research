@@ -1,0 +1,13 @@
+item,value,unit,as_of,source_url,note
+cash,51.294,usd_bn,2026-09-30,https://www.sec.gov/Archives/edgar/data/1181412/000162828026066880/spcx-20260930.htm,10-Q Liquidity and Capital Resources
+short_term_securities,38.561,usd_bn,2026-09-30,https://www.sec.gov/Archives/edgar/data/1181412/000162828026066880/spcx-20260930.htm,10-Q Liquidity and Capital Resources
+undrawn_credit,5.25,usd_bn,2026-09-30,https://www.sec.gov/Archives/edgar/data/1181412/000162828026066880/spcx-20260930.htm,"$5,000M SpaceX Credit Facility + $250M xAI revolver"
+q4_2026_capex_guidance_low,35,usd_bn,2026-10-20,https://finance.yahoo.com/markets/stocks/articles/spacex-spend-40-billion-single-155643492.html,"Secondary (Yahoo Finance, Oct 24): CFO on the Q3 call. Not in the 8-K earnings release text."
+q4_2026_capex_guidance_high,40,usd_bn,2026-10-20,https://finance.yahoo.com/markets/stocks/articles/spacex-spend-40-billion-single-155643492.html,Same as above
+consensus_fcf_2026,-61,usd_bn,2026-10-24,https://finance.yahoo.com/markets/stocks/articles/spacex-spend-40-billion-single-155643492.html,"Secondary; consensus provider not named; may predate the Oct 20 guidance"
+consensus_fcf_2027,-110,usd_bn,2026-10-24,https://finance.yahoo.com/markets/stocks/articles/spacex-spend-40-billion-single-155643492.html,Same as above
+consensus_fcf_2028,-66,usd_bn,2026-10-24,https://finance.yahoo.com/markets/stocks/articles/spacex-spend-40-billion-single-155643492.html,Same as above
+apollo_lease_principal,40,usd_bn,2026-10-24,https://www.sec.gov/Archives/edgar/data/1181412/000110465926118614/tm2628247d1_8k.htm,"8-K: binding commitment letter; master finance lease of GPU pods with an Apollo-managed lessor; ~$40B aggregate principal; close expected before year end"
+apollo_lease_start,2027-04-01,date,2026-10-24,https://www.sec.gov/Archives/edgar/data/1181412/000110465926118614/tm2628247d1_8k.htm,"8-K says schedules commence in H1 2027 as GPUs are delivered; modelled as one tranche on Apr 1 2027"
+apollo_lease_quarterly_principal_share,0.05,fraction,2026-10-24,https://www.sec.gov/Archives/edgar/data/1181412/000110465926118614/tm2628247d1_8k.htm,"8-K: rent payable quarterly in advance, generally 1/20 of financed cost plus interest; term ~5 to 5.25 years"
+apollo_lease_rate,0.07,fraction,,,"ASSUMPTION: the fixed rate is set at pricing (8-K). 7% is roughly where SpaceX's own notes trade (02)."

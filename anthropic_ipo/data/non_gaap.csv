@@ -1,0 +1,193 @@
+measure,line_item,period,period_type,unit,value
+adjusted_operating_income,Operating loss,FY2023,year,millions_usd,-551.0
+adjusted_operating_income,Operating loss,FY2024,year,millions_usd,-2980.0
+adjusted_operating_income,Operating loss,FY2025,year,millions_usd,-8060.0
+adjusted_operating_income,Operating loss,9M-2025,ytd_9m,millions_usd,-5224.0
+adjusted_operating_income,Operating loss,9M-2026,ytd_9m,millions_usd,-1260.0
+adjusted_operating_income,Stock-based compensation expense,FY2023,year,millions_usd,29.0
+adjusted_operating_income,Stock-based compensation expense,FY2024,year,millions_usd,192.0
+adjusted_operating_income,Stock-based compensation expense,FY2025,year,millions_usd,1165.0
+adjusted_operating_income,Stock-based compensation expense,9M-2025,ytd_9m,millions_usd,591.0
+adjusted_operating_income,Stock-based compensation expense,9M-2026,ytd_9m,millions_usd,3255.0
+adjusted_operating_income,Non-cash charitable contributions,FY2023,year,millions_usd,0.0
+adjusted_operating_income,Non-cash charitable contributions,FY2024,year,millions_usd,0.0
+adjusted_operating_income,Non-cash charitable contributions,FY2025,year,millions_usd,541.0
+adjusted_operating_income,Non-cash charitable contributions,9M-2025,ytd_9m,millions_usd,0.0
+adjusted_operating_income,Non-cash charitable contributions,9M-2026,ytd_9m,millions_usd,2086.0
+adjusted_operating_income,Bartz settlement,FY2023,year,millions_usd,0.0
+adjusted_operating_income,Bartz settlement,FY2024,year,millions_usd,0.0
+adjusted_operating_income,Bartz settlement,FY2025,year,millions_usd,1500.0
+adjusted_operating_income,Bartz settlement,9M-2025,ytd_9m,millions_usd,1500.0
+adjusted_operating_income,Bartz settlement,9M-2026,ytd_9m,millions_usd,0.0
+adjusted_operating_income,Adjusted Operating Income (Loss),FY2023,year,millions_usd,-522.0
+adjusted_operating_income,Adjusted Operating Income (Loss),FY2024,year,millions_usd,-2788.0
+adjusted_operating_income,Adjusted Operating Income (Loss),FY2025,year,millions_usd,-4854.0
+adjusted_operating_income,Adjusted Operating Income (Loss),9M-2025,ytd_9m,millions_usd,-3133.0
+adjusted_operating_income,Adjusted Operating Income (Loss),9M-2026,ytd_9m,millions_usd,4081.0
+adjusted_operating_income,Revenue,FY2023,year,millions_usd,41.0
+adjusted_operating_income,Revenue,FY2024,year,millions_usd,386.0
+adjusted_operating_income,Revenue,FY2025,year,millions_usd,4585.0
+adjusted_operating_income,Revenue,9M-2025,ytd_9m,millions_usd,2545.0
+adjusted_operating_income,Revenue,9M-2026,ytd_9m,millions_usd,33242.0
+adjusted_operating_income,Operating margin,FY2023,year,pct,-1344.0
+adjusted_operating_income,Operating margin,FY2024,year,pct,-772.0
+adjusted_operating_income,Operating margin,FY2025,year,pct,-176.0
+adjusted_operating_income,Operating margin,9M-2025,ytd_9m,pct,-205.0
+adjusted_operating_income,Operating margin,9M-2026,ytd_9m,pct,-4.0
+adjusted_operating_income,Adjusted Operating Margin,FY2023,year,pct,-1273.0
+adjusted_operating_income,Adjusted Operating Margin,FY2024,year,pct,-722.0
+adjusted_operating_income,Adjusted Operating Margin,FY2025,year,pct,-106.0
+adjusted_operating_income,Adjusted Operating Margin,9M-2025,ytd_9m,pct,-123.0
+adjusted_operating_income,Adjusted Operating Margin,9M-2026,ytd_9m,pct,12.0
+adjusted_operating_income,Operating income (loss),Q1-2025,quarter,millions_usd,-935.0
+adjusted_operating_income,Operating income (loss),Q2-2025,quarter,millions_usd,-1200.0
+adjusted_operating_income,Operating income (loss),Q3-2025,quarter,millions_usd,-3089.0
+adjusted_operating_income,Operating income (loss),Q4-2025,quarter,millions_usd,-2836.0
+adjusted_operating_income,Operating income (loss),Q1-2026,quarter,millions_usd,-1667.0
+adjusted_operating_income,Operating income (loss),Q2-2026,quarter,millions_usd,974.0
+adjusted_operating_income,Operating income (loss),Q3-2026,quarter,millions_usd,-567.0
+adjusted_operating_income,Stock-based compensation expense,Q1-2025,quarter,millions_usd,105.0
+adjusted_operating_income,Stock-based compensation expense,Q2-2025,quarter,millions_usd,181.0
+adjusted_operating_income,Stock-based compensation expense,Q3-2025,quarter,millions_usd,305.0
+adjusted_operating_income,Stock-based compensation expense,Q4-2025,quarter,millions_usd,574.0
+adjusted_operating_income,Stock-based compensation expense,Q1-2026,quarter,millions_usd,924.0
+adjusted_operating_income,Stock-based compensation expense,Q2-2026,quarter,millions_usd,1261.0
+adjusted_operating_income,Stock-based compensation expense,Q3-2026,quarter,millions_usd,1070.0
+adjusted_operating_income,Non-cash charitable contributions,Q1-2025,quarter,millions_usd,0.0
+adjusted_operating_income,Non-cash charitable contributions,Q2-2025,quarter,millions_usd,0.0
+adjusted_operating_income,Non-cash charitable contributions,Q3-2025,quarter,millions_usd,0.0
+adjusted_operating_income,Non-cash charitable contributions,Q4-2025,quarter,millions_usd,541.0
+adjusted_operating_income,Non-cash charitable contributions,Q1-2026,quarter,millions_usd,126.0
+adjusted_operating_income,Non-cash charitable contributions,Q2-2026,quarter,millions_usd,0.0
+adjusted_operating_income,Non-cash charitable contributions,Q3-2026,quarter,millions_usd,1960.0
+adjusted_operating_income,Bartz settlement,Q1-2025,quarter,millions_usd,0.0
+adjusted_operating_income,Bartz settlement,Q2-2025,quarter,millions_usd,0.0
+adjusted_operating_income,Bartz settlement,Q3-2025,quarter,millions_usd,1500.0
+adjusted_operating_income,Bartz settlement,Q4-2025,quarter,millions_usd,0.0
+adjusted_operating_income,Bartz settlement,Q1-2026,quarter,millions_usd,0.0
+adjusted_operating_income,Bartz settlement,Q2-2026,quarter,millions_usd,0.0
+adjusted_operating_income,Bartz settlement,Q3-2026,quarter,millions_usd,0.0
+adjusted_operating_income,Adjusted Operating Income (Loss),Q1-2025,quarter,millions_usd,-830.0
+adjusted_operating_income,Adjusted Operating Income (Loss),Q2-2025,quarter,millions_usd,-1019.0
+adjusted_operating_income,Adjusted Operating Income (Loss),Q3-2025,quarter,millions_usd,-1284.0
+adjusted_operating_income,Adjusted Operating Income (Loss),Q4-2025,quarter,millions_usd,-1721.0
+adjusted_operating_income,Adjusted Operating Income (Loss),Q1-2026,quarter,millions_usd,-617.0
+adjusted_operating_income,Adjusted Operating Income (Loss),Q2-2026,quarter,millions_usd,2235.0
+adjusted_operating_income,Adjusted Operating Income (Loss),Q3-2026,quarter,millions_usd,2463.0
+adjusted_operating_income,Revenue,Q1-2025,quarter,millions_usd,376.0
+adjusted_operating_income,Revenue,Q2-2025,quarter,millions_usd,787.0
+adjusted_operating_income,Revenue,Q3-2025,quarter,millions_usd,1382.0
+adjusted_operating_income,Revenue,Q4-2025,quarter,millions_usd,2040.0
+adjusted_operating_income,Revenue,Q1-2026,quarter,millions_usd,4731.0
+adjusted_operating_income,Revenue,Q2-2026,quarter,millions_usd,11555.0
+adjusted_operating_income,Revenue,Q3-2026,quarter,millions_usd,16956.0
+adjusted_operating_income,Operating margin,Q1-2025,quarter,pct,-249.0
+adjusted_operating_income,Operating margin,Q2-2025,quarter,pct,-152.0
+adjusted_operating_income,Operating margin,Q3-2025,quarter,pct,-224.0
+adjusted_operating_income,Operating margin,Q4-2025,quarter,pct,-139.0
+adjusted_operating_income,Operating margin,Q1-2026,quarter,pct,-35.0
+adjusted_operating_income,Operating margin,Q2-2026,quarter,pct,8.0
+adjusted_operating_income,Operating margin,Q3-2026,quarter,pct,-3.0
+adjusted_operating_income,Adjusted Operating Margin,Q1-2025,quarter,pct,-221.0
+adjusted_operating_income,Adjusted Operating Margin,Q2-2025,quarter,pct,-129.0
+adjusted_operating_income,Adjusted Operating Margin,Q3-2025,quarter,pct,-93.0
+adjusted_operating_income,Adjusted Operating Margin,Q4-2025,quarter,pct,-84.0
+adjusted_operating_income,Adjusted Operating Margin,Q1-2026,quarter,pct,-13.0
+adjusted_operating_income,Adjusted Operating Margin,Q2-2026,quarter,pct,19.0
+adjusted_operating_income,Adjusted Operating Margin,Q3-2026,quarter,pct,15.0
+adjusted_net_income,Net loss,FY2023,year,millions_usd,-1531.0
+adjusted_net_income,Net loss,FY2024,year,millions_usd,-8309.0
+adjusted_net_income,Net loss,FY2025,year,millions_usd,-41965.0
+adjusted_net_income,Net loss,9M-2025,ytd_9m,millions_usd,-25107.0
+adjusted_net_income,Net loss,9M-2026,ytd_9m,millions_usd,-104039.0
+adjusted_net_income,Stock-based compensation expense,FY2023,year,millions_usd,29.0
+adjusted_net_income,Stock-based compensation expense,FY2024,year,millions_usd,192.0
+adjusted_net_income,Stock-based compensation expense,FY2025,year,millions_usd,1165.0
+adjusted_net_income,Stock-based compensation expense,9M-2025,ytd_9m,millions_usd,591.0
+adjusted_net_income,Stock-based compensation expense,9M-2026,ytd_9m,millions_usd,3255.0
+adjusted_net_income,Non-cash charitable contributions,FY2023,year,millions_usd,0.0
+adjusted_net_income,Non-cash charitable contributions,FY2024,year,millions_usd,0.0
+adjusted_net_income,Non-cash charitable contributions,FY2025,year,millions_usd,541.0
+adjusted_net_income,Non-cash charitable contributions,9M-2025,ytd_9m,millions_usd,0.0
+adjusted_net_income,Non-cash charitable contributions,9M-2026,ytd_9m,millions_usd,2086.0
+adjusted_net_income,Bartz settlement,FY2023,year,millions_usd,0.0
+adjusted_net_income,Bartz settlement,FY2024,year,millions_usd,0.0
+adjusted_net_income,Bartz settlement,FY2025,year,millions_usd,1500.0
+adjusted_net_income,Bartz settlement,9M-2025,ytd_9m,millions_usd,1500.0
+adjusted_net_income,Bartz settlement,9M-2026,ytd_9m,millions_usd,0.0
+adjusted_net_income,"Change in fair value of convertible notes, derivative liabilities, and SAFEs",FY2023,year,millions_usd,1045.0
+adjusted_net_income,"Change in fair value of convertible notes, derivative liabilities, and SAFEs",FY2024,year,millions_usd,5434.0
+adjusted_net_income,"Change in fair value of convertible notes, derivative liabilities, and SAFEs",FY2025,year,millions_usd,34308.0
+adjusted_net_income,"Change in fair value of convertible notes, derivative liabilities, and SAFEs",9M-2025,ytd_9m,millions_usd,20107.0
+adjusted_net_income,"Change in fair value of convertible notes, derivative liabilities, and SAFEs",9M-2026,ytd_9m,millions_usd,94324.0
+adjusted_net_income,Change in fair value of certain mark-to-market financial instruments,FY2023,year,millions_usd,0.0
+adjusted_net_income,Change in fair value of certain mark-to-market financial instruments,FY2024,year,millions_usd,0.0
+adjusted_net_income,Change in fair value of certain mark-to-market financial instruments,FY2025,year,millions_usd,3.0
+adjusted_net_income,Change in fair value of certain mark-to-market financial instruments,9M-2025,ytd_9m,millions_usd,0.0
+adjusted_net_income,Change in fair value of certain mark-to-market financial instruments,9M-2026,ytd_9m,millions_usd,10277.0
+adjusted_net_income,Income tax effects and adjustments,FY2023,year,millions_usd,0.0
+adjusted_net_income,Income tax effects and adjustments,FY2024,year,millions_usd,0.0
+adjusted_net_income,Income tax effects and adjustments,FY2025,year,millions_usd,-7.0
+adjusted_net_income,Income tax effects and adjustments,9M-2025,ytd_9m,millions_usd,-2.0
+adjusted_net_income,Income tax effects and adjustments,9M-2026,ytd_9m,millions_usd,-312.0
+adjusted_net_income,Adjusted Net Income (Loss),FY2023,year,millions_usd,-457.0
+adjusted_net_income,Adjusted Net Income (Loss),FY2024,year,millions_usd,-2683.0
+adjusted_net_income,Adjusted Net Income (Loss),FY2025,year,millions_usd,-4455.0
+adjusted_net_income,Adjusted Net Income (Loss),9M-2025,ytd_9m,millions_usd,-2911.0
+adjusted_net_income,Adjusted Net Income (Loss),9M-2026,ytd_9m,millions_usd,5591.0
+adjusted_net_income,Net loss,Q1-2025,quarter,millions_usd,-6592.0
+adjusted_net_income,Net loss,Q2-2025,quarter,millions_usd,-6377.0
+adjusted_net_income,Net loss,Q3-2025,quarter,millions_usd,-12138.0
+adjusted_net_income,Net loss,Q4-2025,quarter,millions_usd,-16858.0
+adjusted_net_income,Net loss,Q1-2026,quarter,millions_usd,-14439.0
+adjusted_net_income,Net loss,Q2-2026,quarter,millions_usd,-66309.0
+adjusted_net_income,Net loss,Q3-2026,quarter,millions_usd,-23291.0
+adjusted_net_income,Stock-based compensation expense,Q1-2025,quarter,millions_usd,105.0
+adjusted_net_income,Stock-based compensation expense,Q2-2025,quarter,millions_usd,181.0
+adjusted_net_income,Stock-based compensation expense,Q3-2025,quarter,millions_usd,305.0
+adjusted_net_income,Stock-based compensation expense,Q4-2025,quarter,millions_usd,574.0
+adjusted_net_income,Stock-based compensation expense,Q1-2026,quarter,millions_usd,924.0
+adjusted_net_income,Stock-based compensation expense,Q2-2026,quarter,millions_usd,1261.0
+adjusted_net_income,Stock-based compensation expense,Q3-2026,quarter,millions_usd,1070.0
+adjusted_net_income,Non-cash charitable contributions,Q1-2025,quarter,millions_usd,0.0
+adjusted_net_income,Non-cash charitable contributions,Q2-2025,quarter,millions_usd,0.0
+adjusted_net_income,Non-cash charitable contributions,Q3-2025,quarter,millions_usd,0.0
+adjusted_net_income,Non-cash charitable contributions,Q4-2025,quarter,millions_usd,541.0
+adjusted_net_income,Non-cash charitable contributions,Q1-2026,quarter,millions_usd,126.0
+adjusted_net_income,Non-cash charitable contributions,Q2-2026,quarter,millions_usd,0.0
+adjusted_net_income,Non-cash charitable contributions,Q3-2026,quarter,millions_usd,1960.0
+adjusted_net_income,Bartz settlement,Q1-2025,quarter,millions_usd,0.0
+adjusted_net_income,Bartz settlement,Q2-2025,quarter,millions_usd,0.0
+adjusted_net_income,Bartz settlement,Q3-2025,quarter,millions_usd,1500.0
+adjusted_net_income,Bartz settlement,Q4-2025,quarter,millions_usd,0.0
+adjusted_net_income,Bartz settlement,Q1-2026,quarter,millions_usd,0.0
+adjusted_net_income,Bartz settlement,Q2-2026,quarter,millions_usd,0.0
+adjusted_net_income,Bartz settlement,Q3-2026,quarter,millions_usd,0.0
+adjusted_net_income,"Change in fair value of convertible notes, derivative liabilities, and SAFEs",Q1-2025,quarter,millions_usd,5701.0
+adjusted_net_income,"Change in fair value of convertible notes, derivative liabilities, and SAFEs",Q2-2025,quarter,millions_usd,5241.0
+adjusted_net_income,"Change in fair value of convertible notes, derivative liabilities, and SAFEs",Q3-2025,quarter,millions_usd,9165.0
+adjusted_net_income,"Change in fair value of convertible notes, derivative liabilities, and SAFEs",Q4-2025,quarter,millions_usd,14201.0
+adjusted_net_income,"Change in fair value of convertible notes, derivative liabilities, and SAFEs",Q1-2026,quarter,millions_usd,12791.0
+adjusted_net_income,"Change in fair value of convertible notes, derivative liabilities, and SAFEs",Q2-2026,quarter,millions_usd,59597.0
+adjusted_net_income,"Change in fair value of convertible notes, derivative liabilities, and SAFEs",Q3-2026,quarter,millions_usd,21936.0
+adjusted_net_income,Change in fair value of certain mark-to- market financial instruments,Q1-2025,quarter,millions_usd,0.0
+adjusted_net_income,Change in fair value of certain mark-to- market financial instruments,Q2-2025,quarter,millions_usd,0.0
+adjusted_net_income,Change in fair value of certain mark-to- market financial instruments,Q3-2025,quarter,millions_usd,0.0
+adjusted_net_income,Change in fair value of certain mark-to- market financial instruments,Q4-2025,quarter,millions_usd,3.0
+adjusted_net_income,Change in fair value of certain mark-to- market financial instruments,Q1-2026,quarter,millions_usd,288.0
+adjusted_net_income,Change in fair value of certain mark-to- market financial instruments,Q2-2026,quarter,millions_usd,8432.0
+adjusted_net_income,Change in fair value of certain mark-to- market financial instruments,Q3-2026,quarter,millions_usd,1557.0
+adjusted_net_income,Income tax effects and adjustments,Q1-2025,quarter,millions_usd,0.0
+adjusted_net_income,Income tax effects and adjustments,Q2-2025,quarter,millions_usd,-2.0
+adjusted_net_income,Income tax effects and adjustments,Q3-2025,quarter,millions_usd,0.0
+adjusted_net_income,Income tax effects and adjustments,Q4-2025,quarter,millions_usd,-5.0
+adjusted_net_income,Income tax effects and adjustments,Q1-2026,quarter,millions_usd,-2.0
+adjusted_net_income,Income tax effects and adjustments,Q2-2026,quarter,millions_usd,-245.0
+adjusted_net_income,Income tax effects and adjustments,Q3-2026,quarter,millions_usd,-65.0
+adjusted_net_income,Adjusted Net Income (Loss),Q1-2025,quarter,millions_usd,-786.0
+adjusted_net_income,Adjusted Net Income (Loss),Q2-2025,quarter,millions_usd,-957.0
+adjusted_net_income,Adjusted Net Income (Loss),Q3-2025,quarter,millions_usd,-1168.0
+adjusted_net_income,Adjusted Net Income (Loss),Q4-2025,quarter,millions_usd,-1544.0
+adjusted_net_income,Adjusted Net Income (Loss),Q1-2026,quarter,millions_usd,-312.0
+adjusted_net_income,Adjusted Net Income (Loss),Q2-2026,quarter,millions_usd,2736.0
+adjusted_net_income,Adjusted Net Income (Loss),Q3-2026,quarter,millions_usd,3167.0

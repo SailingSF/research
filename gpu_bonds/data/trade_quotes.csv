@@ -1,0 +1,13 @@
+as_of,bond_id,price,yield_pct,source_url,note
+2026-10-30,CRWV_9.25_2030,85.062,14.76,https://www.finra.org/finra-data/fixed-income/bond?symbol=CRWV6083302&bondType=CORP,"FINRA TRACE End-of-Day Prices and Yields (dataset EndOfDayPriceYield), CUSIP 21873SAB4, read Nov 2"
+2026-10-30,SPCX_5.350_2031,93.204,7.06,https://www.finra.org/finra-data/fixed-income/bond?symbol=SPCX6434760&bondType=CORP,"FINRA TRACE End-of-Day Prices and Yields (dataset EndOfDayPriceYield), CUSIP 84615QAA1, read Nov 2"
+2026-10-30,SPCX_6.650_2056,82.2517,8.25,https://www.finra.org/finra-data/fixed-income/bond?symbol=SPCX6434763&bondType=CORP,"FINRA TRACE End-of-Day Prices and Yields (dataset EndOfDayPriceYield), CUSIP 84615QAJ2, read Nov 2"
+2026-11-02,CRWV_9.25_2030,84.9265,14.82,https://www.finra.org/finra-data/fixed-income/bond?symbol=CRWV6083302&bondType=CORP,"FINRA TRACE End-of-Day Prices and Yields (dataset EndOfDayPriceYield), CUSIP 21873SAB4, read Nov 3"
+2026-11-02,SPCX_5.350_2031,92.914,7.14,https://www.finra.org/finra-data/fixed-income/bond?symbol=SPCX6434760&bondType=CORP,"FINRA TRACE End-of-Day Prices and Yields (dataset EndOfDayPriceYield), CUSIP 84615QAA1, read Nov 3"
+2026-11-02,SPCX_6.650_2056,82.288,8.25,https://www.finra.org/finra-data/fixed-income/bond?symbol=SPCX6434763&bondType=CORP,"FINRA TRACE End-of-Day Prices and Yields (dataset EndOfDayPriceYield), CUSIP 84615QAJ2, read Nov 3"
+2026-11-05,CRWV_9.25_2030,82.25,15.95,https://www.finra.org/finra-data/fixed-income/bond?symbol=CRWV6083302&bondType=CORP,"FINRA TRACE End-of-Day Price/Yield chart (dataset EndOfDayPriceYield), CUSIP 21873SAB4, read Nov 6"
+2026-11-05,SPCX_5.350_2031,93.2972,7.04,https://www.finra.org/finra-data/fixed-income/bond?symbol=SPCX6434760&bondType=CORP,"FINRA TRACE End-of-Day Price/Yield chart (dataset EndOfDayPriceYield), CUSIP 84615QAA1, read Nov 6"
+2026-11-05,SPCX_6.650_2056,83.814,8.1,https://www.finra.org/finra-data/fixed-income/bond?symbol=SPCX6434763&bondType=CORP,"FINRA TRACE End-of-Day Price/Yield chart (dataset EndOfDayPriceYield), CUSIP 84615QAJ2, read Nov 6; FINRA's yield field was blank (999999%), yield computed with common.ytm"
+2026-11-10,CRWV_9.25_2030,85.5,14.621223,https://www.finra.org/finra-data/fixed-income/bond?symbol=CRWV6083302&bondType=CORP,"FINRA bond page, last trade on Nov 10 2026 (read Nov 10)"
+2026-11-10,SPCX_5.350_2031,92.74,7.202951,https://www.finra.org/finra-data/fixed-income/bond?symbol=SPCX6434760&bondType=CORP,"FINRA bond page, last trade on Nov 10 2026 (read Nov 10)"
+2026-11-10,SPCX_6.650_2056,84.28,8.048,https://www.finra.org/finra-data/fixed-income/bond?symbol=SPCX6434763&bondType=CORP,"FINRA bond page, last trade on Nov 10 2026 (read Nov 10); yield computed from price (FINRA shows N/A)"

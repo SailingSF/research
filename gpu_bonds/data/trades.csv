@@ -1,0 +1,90 @@
+ticker,trade,scenario,pnl
+CRWV,Just the bond,Shortage lasts,3637.7642431349454
+CRWV,Just the bond,Dilution rescue,3262.5136445936437
+CRWV,Just the bond,Muddle through,2837.3123078673143
+CRWV,Just the bond,Slow squeeze,856.0175752549449
+CRWV,Just the bond,Glut and default,-2518.925393566051
+CRWV,R. Reader's bond: Treasuries + sell 10 $10/$5 put spreads,Shortage lasts,1880.2651439292003
+CRWV,R. Reader's bond: Treasuries + sell 10 $10/$5 put spreads,Dilution rescue,1880.2651439292003
+CRWV,R. Reader's bond: Treasuries + sell 10 $10/$5 put spreads,Muddle through,1880.2651439292003
+CRWV,R. Reader's bond: Treasuries + sell 10 $10/$5 put spreads,Slow squeeze,1880.2651439292003
+CRWV,R. Reader's bond: Treasuries + sell 10 $10/$5 put spreads,Glut and default,-3119.7348560707997
+CRWV,"1. Dilution, not default: bond + sell 1 $90 call",Shortage lasts,2082.7642431349454
+CRWV,"1. Dilution, not default: bond + sell 1 $90 call",Dilution rescue,4707.513644593644
+CRWV,"1. Dilution, not default: bond + sell 1 $90 call",Muddle through,4282.312307867314
+CRWV,"1. Dilution, not default: bond + sell 1 $90 call",Slow squeeze,2301.017575254945
+CRWV,"1. Dilution, not default: bond + sell 1 $90 call",Glut and default,-1073.9253935660508
+CRWV,1R. Iron condor: reader's bond + sell 2 $90/$135 call spreads,Shortage lasts,-3319.7348560707997
+CRWV,1R. Iron condor: reader's bond + sell 2 $90/$135 call spreads,Dilution rescue,2680.2651439292003
+CRWV,1R. Iron condor: reader's bond + sell 2 $90/$135 call spreads,Muddle through,2680.2651439292003
+CRWV,1R. Iron condor: reader's bond + sell 2 $90/$135 call spreads,Slow squeeze,2680.2651439292003
+CRWV,1R. Iron condor: reader's bond + sell 2 $90/$135 call spreads,Glut and default,-2319.7348560707997
+CRWV,"2. Dilution, insured: bond + buy 1 $20 put + sell 1 $90 call",Shortage lasts,1387.7642431349454
+CRWV,"2. Dilution, insured: bond + buy 1 $20 put + sell 1 $90 call",Dilution rescue,4012.5136445936437
+CRWV,"2. Dilution, insured: bond + buy 1 $20 put + sell 1 $90 call",Muddle through,3587.3123078673143
+CRWV,"2. Dilution, insured: bond + buy 1 $20 put + sell 1 $90 call",Slow squeeze,2406.017575254945
+CRWV,"2. Dilution, insured: bond + buy 1 $20 put + sell 1 $90 call",Glut and default,131.07460643394916
+CRWV,3. Default insurance (anyone): buy 5 $10 puts,Shortage lasts,-1150.0
+CRWV,3. Default insurance (anyone): buy 5 $10 puts,Dilution rescue,-1150.0
+CRWV,3. Default insurance (anyone): buy 5 $10 puts,Muddle through,-1150.0
+CRWV,3. Default insurance (anyone): buy 5 $10 puts,Slow squeeze,-1150.0
+CRWV,3. Default insurance (anyone): buy 5 $10 puts,Glut and default,3350.0
+CRWV,Dropped: short the bond,Shortage lasts,-4013.238575783816
+CRWV,Dropped: short the bond,Dilution rescue,-3637.9879772425143
+CRWV,Dropped: short the bond,Muddle through,-3212.786640516185
+CRWV,Dropped: short the bond,Slow squeeze,-1231.4919079038154
+CRWV,Dropped: short the bond,Glut and default,2143.4510609171803
+SPCX,Just the bond,AI wins,1752.6884761435085
+SPCX,Just the bond,AI wins on borrowed money,1104.1772515516327
+SPCX,Just the bond,Muddle through,1486.6702970014062
+SPCX,Just the bond,"Worth $350B, solvent",1421.566513137212
+SPCX,Just the bond,Primed,899.8831742162665
+SPCX,Just the bond,Distress,-4099.270362765229
+SPCX,4. Solvent but overvalued: bond + buy 1 $75 put + sell 1 $250 call,AI wins,-2112.3115238564915
+SPCX,4. Solvent but overvalued: bond + buy 1 $75 put + sell 1 $250 call,AI wins on borrowed money,2239.1772515516327
+SPCX,4. Solvent but overvalued: bond + buy 1 $75 put + sell 1 $250 call,Muddle through,2621.670297001406
+SPCX,4. Solvent but overvalued: bond + buy 1 $75 put + sell 1 $250 call,"Worth $350B, solvent",7479.5665131372125
+SPCX,4. Solvent but overvalued: bond + buy 1 $75 put + sell 1 $250 call,Primed,2034.8831742162665
+SPCX,4. Solvent but overvalued: bond + buy 1 $75 put + sell 1 $250 call,Distress,4035.729637234771
+SPCX,4R. Seagull: Treasuries + buy a $75/$25 put spread + sell a $250/$295 call spread,AI wins,-4005.1954450527014
+SPCX,4R. Seagull: Treasuries + buy a $75/$25 put spread + sell a $250/$295 call spread,AI wins on borrowed money,494.8045549472987
+SPCX,4R. Seagull: Treasuries + buy a $75/$25 put spread + sell a $250/$295 call spread,Muddle through,494.8045549472987
+SPCX,4R. Seagull: Treasuries + buy a $75/$25 put spread + sell a $250/$295 call spread,"Worth $350B, solvent",5417.804554947299
+SPCX,4R. Seagull: Treasuries + buy a $75/$25 put spread + sell a $250/$295 call spread,Primed,494.8045549472987
+SPCX,4R. Seagull: Treasuries + buy a $75/$25 put spread + sell a $250/$295 call spread,Distress,5494.804554947299
+SPCX,5. Let the bond buy your put: bond + buy 1 $100 put,AI wins,-7.3115238564917036
+SPCX,5. Let the bond buy your put: bond + buy 1 $100 put,AI wins on borrowed money,-655.8227484483675
+SPCX,5. Let the bond buy your put: bond + buy 1 $100 put,Muddle through,-273.32970299859403
+SPCX,5. Let the bond buy your put: bond + buy 1 $100 put,"Worth $350B, solvent",7084.566513137212
+SPCX,5. Let the bond buy your put: bond + buy 1 $100 put,Primed,139.8831742162664
+SPCX,5. Let the bond buy your put: bond + buy 1 $100 put,Distress,3640.729637234772
+SPCX,5R. Let Treasuries buy your put spread: Treasuries + buy a $100/$25 put spread,AI wins,-725.1954450527015
+SPCX,5R. Let Treasuries buy your put spread: Treasuries + buy a $100/$25 put spread,AI wins on borrowed money,-725.1954450527015
+SPCX,5R. Let Treasuries buy your put spread: Treasuries + buy a $100/$25 put spread,Muddle through,-725.1954450527015
+SPCX,5R. Let Treasuries buy your put spread: Treasuries + buy a $100/$25 put spread,"Worth $350B, solvent",6697.804554947299
+SPCX,5R. Let Treasuries buy your put spread: Treasuries + buy a $100/$25 put spread,Primed,274.8045549472986
+SPCX,5R. Let Treasuries buy your put spread: Treasuries + buy a $100/$25 put spread,Distress,6774.8045549473
+SPCX,"6. Bonds paid, stock stalls: bond + sell 1 $200 call",AI wins,-5167.3115238564915
+SPCX,"6. Bonds paid, stock stalls: bond + sell 1 $200 call",AI wins on borrowed money,-815.8227484483673
+SPCX,"6. Bonds paid, stock stalls: bond + sell 1 $200 call",Muddle through,4566.670297001407
+SPCX,"6. Bonds paid, stock stalls: bond + sell 1 $200 call","Worth $350B, solvent",4501.566513137212
+SPCX,"6. Bonds paid, stock stalls: bond + sell 1 $200 call",Primed,3979.8831742162665
+SPCX,"6. Bonds paid, stock stalls: bond + sell 1 $200 call",Distress,-1019.270362765229
+SPCX,7. Homemade convertible: bond + buy 1 $150 call,AI wins,12062.688476143509
+SPCX,7. Homemade convertible: bond + buy 1 $150 call,AI wins on borrowed money,6414.177251551633
+SPCX,7. Homemade convertible: bond + buy 1 $150 call,Muddle through,-3203.329702998594
+SPCX,7. Homemade convertible: bond + buy 1 $150 call,"Worth $350B, solvent",-3268.433486862788
+SPCX,7. Homemade convertible: bond + buy 1 $150 call,Primed,-3790.1168257837335
+SPCX,7. Homemade convertible: bond + buy 1 $150 call,Distress,-8789.27036276523
+SPCX,7R. Treasury convertible: Treasuries + buy a $150/$295 call spread,AI wins,12379.804554947299
+SPCX,7R. Treasury convertible: Treasuries + buy a $150/$295 call spread,AI wins on borrowed money,7879.804554947299
+SPCX,7R. Treasury convertible: Treasuries + buy a $150/$295 call spread,Muddle through,-2120.1954450527014
+SPCX,7R. Treasury convertible: Treasuries + buy a $150/$295 call spread,"Worth $350B, solvent",-2120.1954450527014
+SPCX,7R. Treasury convertible: Treasuries + buy a $150/$295 call spread,Primed,-2120.1954450527014
+SPCX,7R. Treasury convertible: Treasuries + buy a $150/$295 call spread,Distress,-2120.1954450527014
+SPCX,"Dropped: Musk maximalist, buy 1 $150 call + short the 2056 bonds",AI wins,6716.864373642833
+SPCX,"Dropped: Musk maximalist, buy 1 $150 call + short the 2056 bonds",AI wins on borrowed money,5654.10392521383
+SPCX,"Dropped: Musk maximalist, buy 1 $150 call + short the 2056 bonds",Muddle through,-6600.003632200815
+SPCX,"Dropped: Musk maximalist, buy 1 $150 call + short the 2056 bonds","Worth $350B, solvent",-6136.479676528612
+SPCX,"Dropped: Musk maximalist, buy 1 $150 call + short the 2056 bonds",Primed,-3814.8606539111233
+SPCX,"Dropped: Musk maximalist, buy 1 $150 call + short the 2056 bonds",Distress,-2092.2946475017106

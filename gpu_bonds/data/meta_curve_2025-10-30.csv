@@ -1,0 +1,9 @@
+# Meta Platforms senior unsecured notes priced Oct 30 2025 (two weeks after Beignet), from the term sheet (FWP).
+# Source: https://www.sec.gov/Archives/edgar/data/1326801/000119312525258837/d61769dfwp.htm (cached data/edgar/meta_fwp_d61769dfwp.htm). Yields are at issue; spreads are vs. the on-the-run benchmark, not our curve.
+as_of,maturity,coupon,yield_pct,spread_to_benchmark_bp,size_usd_bn
+2025-10-30,2030-11-15,4.200,4.226,50,4.0
+2025-10-30,2032-11-15,4.600,4.601,70,4.0
+2025-10-30,2035-11-15,4.875,4.877,78,6.5
+2025-10-30,2045-11-15,5.500,5.515,88,4.5
+2025-10-30,2055-11-15,5.625,5.637,98,6.5
+2025-10-30,2065-11-15,5.750,5.757,110,4.5

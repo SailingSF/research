@@ -1,0 +1,11 @@
+event,value,unit
+"Balance as of December 31, 2023",7.0,millions_usd
+Revenue recognized from deferred revenue at the beginning of the period,-7.0,millions_usd
+Amounts billed or received in advance and not recognized as revenue and other,28.0,millions_usd
+"Balance as of December 31, 2024",28.0,millions_usd
+Revenue recognized from deferred revenue at the beginning of the period,-28.0,millions_usd
+Amounts billed or received in advance and not recognized as revenue and other,269.0,millions_usd
+"Balance as of December 31, 2025",269.0,millions_usd
+Revenue recognized from deferred revenue at the beginning of the period,-236.0,millions_usd
+Amounts billed or received in advance and not recognized as revenue and other,1938.0,millions_usd
+"Balance as of September 30, 2026",1971.0,millions_usd

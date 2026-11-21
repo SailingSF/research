@@ -1,0 +1,22 @@
+item,value,unit,as_of,source_url,reliability,note
+opus_5_5_input,4.0,usd_per_m_tokens,2026-10-06,https://platform.claude.com/docs/en/about-claude/pricing,primary,
+opus_5_5_output,20.0,usd_per_m_tokens,2026-10-06,https://platform.claude.com/docs/en/about-claude/pricing,primary,
+opus_5_5_cache_read,0.2,usd_per_m_tokens,2026-10-06,https://platform.claude.com/docs/en/about-claude/pricing,primary,
+fable_5_1_input,10.0,usd_per_m_tokens,2026-10-06,https://platform.claude.com/docs/en/about-claude/pricing,primary,
+fable_5_1_output,50.0,usd_per_m_tokens,2026-10-06,https://platform.claude.com/docs/en/about-claude/pricing,primary,
+fable_5_1_cache_read,0.25,usd_per_m_tokens,2026-10-06,https://platform.claude.com/docs/en/about-claude/pricing,primary,
+sonnet_5_5_input,2.0,usd_per_m_tokens,2026-10-06,https://platform.claude.com/docs/en/about-claude/pricing,primary,
+sonnet_5_5_output,10.0,usd_per_m_tokens,2026-10-06,https://platform.claude.com/docs/en/about-claude/pricing,primary,
+sonnet_5_5_cache_read,0.2,usd_per_m_tokens,2026-10-06,https://platform.claude.com/docs/en/about-claude/pricing,primary,
+haiku_5_5_input,0.1,usd_per_m_tokens,2026-10-06,https://platform.claude.com/docs/en/about-claude/pricing,primary,prompts up to 100K tokens
+haiku_5_5_output,0.5,usd_per_m_tokens,2026-10-06,https://platform.claude.com/docs/en/about-claude/pricing,primary,prompts up to 100K tokens
+plan_pro_fee,20.0,usd_per_month,2026-11-08,https://sessionwatcher.com/news/claude-ultra-200-month-max-100-pricing-page,press,"Pro $20, Max $100, Ultra $200; Ultra is the renamed Max 20x (Oct 30, 2026)"
+plan_max_fee,100.0,usd_per_month,2026-11-08,https://sessionwatcher.com/news/claude-ultra-200-month-max-100-pricing-page,press,
+plan_ultra_fee,200.0,usd_per_month,2026-11-08,https://sessionwatcher.com/news/claude-ultra-200-month-max-100-pricing-page,press,
+pro_full_use_api_value,673.0,usd_per_month,2026-11-02,https://wokey.ai/claude-usage-limits,measured,"median $155/week ($146-173) at API list prices, ~92% cache reads; week of Oct 26-Nov 2 2026"
+ultra_full_use_api_value,6711.0,usd_per_month,2026-11-02,https://wokey.ai/claude-usage-limits,measured,"Max 20x (now Ultra): median $1,549/week ($1,216-1,697)"
+ultra_full_use_api_value_semianalysis,12000.0,usd_per_month,2026-10-07,https://finance.biggo.com/news/173039423dab79be,analyst,"SemiAnalysis (Kan, Megalaa): $200 plan ~ $12,000 of Opus 5.5 tokens at API rates"
+avg_subscriber_utilization,10.0,pct,2026-10-07,https://finance.biggo.com/news/173039423dab79be,analyst,"SemiAnalysis: ~10% average utilization, derived from leaked financials"
+subscription_gm_semianalysis_low,50.0,pct,2026-10-07,https://finance.biggo.com/news/173039423dab79be,analyst,$200 plan blended gross margin 50-60%
+subscription_gm_semianalysis_high,60.0,pct,2026-10-07,https://finance.biggo.com/news/173039423dab79be,analyst,
+api_gm_semianalysis,90.0,pct,2026-10-07,https://finance.biggo.com/news/173039423dab79be,analyst,"blended API gross margin ""over 90%"""

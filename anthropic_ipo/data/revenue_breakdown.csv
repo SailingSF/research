@@ -1,0 +1,31 @@
+dimension,line_item,period,period_type,unit,value
+geography,United States,FY2023,year,millions_usd,34.0
+geography,United States,FY2024,year,millions_usd,263.0
+geography,United States,FY2025,year,millions_usd,3362.0
+geography,United States,9M-2025,ytd_9m,millions_usd,1810.0
+geography,United States,9M-2026,ytd_9m,millions_usd,23470.0
+geography,International,FY2023,year,millions_usd,7.0
+geography,International,FY2024,year,millions_usd,123.0
+geography,International,FY2025,year,millions_usd,1223.0
+geography,International,9M-2025,ytd_9m,millions_usd,735.0
+geography,International,9M-2026,ytd_9m,millions_usd,9772.0
+geography,Total,FY2023,year,millions_usd,41.0
+geography,Total,FY2024,year,millions_usd,386.0
+geography,Total,FY2025,year,millions_usd,4585.0
+geography,Total,9M-2025,ytd_9m,millions_usd,2545.0
+geography,Total,9M-2026,ytd_9m,millions_usd,33242.0
+pricing_model,Consumption-based,FY2023,year,millions_usd,39.0
+pricing_model,Consumption-based,FY2024,year,millions_usd,288.0
+pricing_model,Consumption-based,FY2025,year,millions_usd,3796.0
+pricing_model,Consumption-based,9M-2025,ytd_9m,millions_usd,2125.0
+pricing_model,Consumption-based,9M-2026,ytd_9m,millions_usd,26306.0
+pricing_model,Subscription-based,FY2023,year,millions_usd,2.0
+pricing_model,Subscription-based,FY2024,year,millions_usd,98.0
+pricing_model,Subscription-based,FY2025,year,millions_usd,789.0
+pricing_model,Subscription-based,9M-2025,ytd_9m,millions_usd,420.0
+pricing_model,Subscription-based,9M-2026,ytd_9m,millions_usd,6936.0
+pricing_model,Total,FY2023,year,millions_usd,41.0
+pricing_model,Total,FY2024,year,millions_usd,386.0
+pricing_model,Total,FY2025,year,millions_usd,4585.0
+pricing_model,Total,9M-2025,ytd_9m,millions_usd,2545.0
+pricing_model,Total,9M-2026,ytd_9m,millions_usd,33242.0

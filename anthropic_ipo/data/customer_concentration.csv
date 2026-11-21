@@ -1,0 +1,27 @@
+metric,customer,period,period_type,unit,value
+share_of_revenue,Customer A,FY2023,year,pct,
+share_of_revenue,Customer A,FY2024,year,pct,
+share_of_revenue,Customer A,FY2025,year,pct,12.0
+share_of_revenue,Customer A,9M-2025,ytd_9m,pct,11.0
+share_of_revenue,Customer A,9M-2026,ytd_9m,pct,
+share_of_revenue,Customer B,FY2023,year,pct,
+share_of_revenue,Customer B,FY2024,year,pct,
+share_of_revenue,Customer B,FY2025,year,pct,12.0
+share_of_revenue,Customer B,9M-2025,ytd_9m,pct,14.0
+share_of_revenue,Customer B,9M-2026,ytd_9m,pct,
+share_of_revenue,Customer C,FY2023,year,pct,43.0
+share_of_revenue,Customer C,FY2024,year,pct,
+share_of_revenue,Customer C,FY2025,year,pct,
+share_of_revenue,Customer C,9M-2025,ytd_9m,pct,
+share_of_revenue,Customer C,9M-2026,ytd_9m,pct,
+share_of_revenue,Customer D,FY2023,year,pct,11.0
+share_of_revenue,Customer D,FY2024,year,pct,
+share_of_revenue,Customer D,FY2025,year,pct,
+share_of_revenue,Customer D,9M-2025,ytd_9m,pct,
+share_of_revenue,Customer D,9M-2026,ytd_9m,pct,
+share_of_receivables,Customer A,2024-12-31,instant,pct,
+share_of_receivables,Customer A,2025-12-31,instant,pct,13.0
+share_of_receivables,Customer A,2026-09-30,instant,pct,
+share_of_receivables,Customer E,2024-12-31,instant,pct,
+share_of_receivables,Customer E,2025-12-31,instant,pct,
+share_of_receivables,Customer E,2026-09-30,instant,pct,13.0

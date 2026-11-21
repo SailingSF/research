@@ -1,0 +1,17 @@
+# Secrets / env
+.env
+.venv/
+venv/
+
+# Python / Jupyter / OS junk
+__pycache__/
+.ipynb_checkpoints/
+.mplconfig/
+.DS_Store
+
+# Blog post drafts, outlines and final posts (kept locally, not published)
+**/post*.md
+**/draft*.md
+**/outline*.md
+**/blog_post*.md
+**/BLOG_*.md

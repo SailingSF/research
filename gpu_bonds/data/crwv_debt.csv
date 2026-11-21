@@ -1,0 +1,19 @@
+facility,kind,amount_bn,as_of,maturity,rate,repaid_from,source_url,note
+DDTL 1.0,recourse,1.3,2026-06-30,2028-03-31,0.15,contracts,https://www.sec.gov/Archives/edgar/data/1769628/000176962826000366/crwv-20260630.htm,Delayed draw term loan; amortizes from customer contracts. 10-Q Note 10
+DDTL 2.0,recourse,3.19,2026-06-30,2030-08-31,0.11,contracts,https://www.sec.gov/Archives/edgar/data/1769628/000176962826000366/crwv-20260630.htm,10-Q Note 10
+DDTL 2.1,recourse,3.0,2026-06-30,2031-03-31,0.09,contracts,https://www.sec.gov/Archives/edgar/data/1769628/000176962826000366/crwv-20260630.htm,10-Q Note 10
+DDTL 3.0,recourse,2.215,2026-06-30,2030-08-31,0.09,contracts,https://www.sec.gov/Archives/edgar/data/1769628/000176962826000366/crwv-20260630.htm,10-Q Note 10
+DDTL 5.0,recourse,1.101,2026-06-30,2031-11-30,0.09,contracts,https://www.sec.gov/Archives/edgar/data/1769628/000176962826000366/crwv-20260630.htm,10-Q Note 10
+DDTL 4.0,non-recourse,2.837,2026-06-30,2032-03-31,0.07,contracts,https://www.sec.gov/Archives/edgar/data/1769628/000176962826000366/crwv-20260630.htm,Meta-backed SPV loan. 10-Q Note 10
+DDTL 5.5 (facility size),recourse,2.6,2026-08-10,2031-09-01,0.0938,contracts then re-lease,https://investors.coreweave.com/news/news-details/2026/CoreWeave-Closes-2-6-Billion-Loan-Facility-Expanding-Financing-Flexibility-for-AI-Infrastructure/default.aspx,~3-year contracts against ~5-year debt. Facility size; drawn amount not yet disclosed
+2030 Senior Notes 9.25%,holding-company bullet,2.0,2026-06-30,2030-06-01,0.0925,refinance,https://www.sec.gov/Archives/edgar/data/1769628/000176962826000366/crwv-20260630.htm,Unsecured
+2031 Senior Notes 9.00%,holding-company bullet,1.75,2026-06-30,2031-02-01,0.09,refinance,https://www.sec.gov/Archives/edgar/data/1769628/000176962826000366/crwv-20260630.htm,Unsecured
+2031 Senior Notes 9.75%,holding-company bullet,2.75,2026-06-30,2031-10-01,0.0975,refinance,https://www.sec.gov/Archives/edgar/data/1769628/000176962826000366/crwv-20260630.htm,Unsecured
+2032 Senior Notes 9.625%,holding-company bullet,1.25,2026-06-30,2032-07-15,0.09625,refinance,https://www.sec.gov/Archives/edgar/data/1769628/000176962826000366/crwv-20260630.htm,Unsecured
+2032 EUR Senior Notes,holding-company bullet,2.279,2026-06-30,2032-07-15,0.09,refinance,https://www.sec.gov/Archives/edgar/data/1769628/000176962826000366/crwv-20260630.htm,Unsecured; USD equivalent at Jun 30
+2031 Convertible Notes 1.75%,holding-company bullet,2.588,2026-06-30,2031-12-15,0.0175,refinance or convert,https://www.sec.gov/Archives/edgar/data/1769628/000176962826000366/crwv-20260630.htm,Issued Dec 2025
+2032 Convertible Notes 1.75%,holding-company bullet,4.0,2026-06-30,2032-10-15,0.0175,refinance or convert,https://www.sec.gov/Archives/edgar/data/1769628/000176962826000366/crwv-20260630.htm,Issued Apr 2026; conversion price $119.60 (press)
+2033 Convertible Notes 2.875%,holding-company bullet,4.2,2026-09-22,2033-04-01,0.02875,refinance or convert,https://www.lw.com/en/news/2026/09/latham-advises-on-coreweave-upsized-convertible-senior-notes-offering,"Issued Sep 2026 ($3.7B + $0.5B option). ~42.9M underlying shares per a secondary source, i.e. ~$98/share"
+OEM and software financing,recourse,4.22,2026-06-30,2030-07-31,0.11,vendor terms,https://www.sec.gov/Archives/edgar/data/1769628/000176962826000366/crwv-20260630.htm,Dec 2026 - Jul 2030 maturities; ~11%
+OEM and software financing (non-recourse),non-recourse,0.882,2026-06-30,2028-08-31,0.09,vendor terms,https://www.sec.gov/Archives/edgar/data/1769628/000176962826000366/crwv-20260630.htm,Aug 2026 - Aug 2028
+Magnetar loan,recourse,0.189,2026-06-30,2029-01-31,0.12,refinance,https://www.sec.gov/Archives/edgar/data/1769628/000176962826000366/crwv-20260630.htm,~12%

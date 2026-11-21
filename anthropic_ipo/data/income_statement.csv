@@ -1,0 +1,86 @@
+section,line_item,period,period_type,unit,value
+,Revenue,FY2023,year,millions_usd,41.0
+,Revenue,FY2024,year,millions_usd,386.0
+,Revenue,FY2025,year,millions_usd,4585.0
+,Revenue,9M-2025,ytd_9m,millions_usd,2545.0
+,Revenue,9M-2026,ytd_9m,millions_usd,33242.0
+Operating expenses,Compute and infrastructure,FY2023,year,millions_usd,433.0
+Operating expenses,Compute and infrastructure,FY2024,year,millions_usd,2522.0
+Operating expenses,Compute and infrastructure,FY2025,year,millions_usd,7326.0
+Operating expenses,Compute and infrastructure,9M-2025,ytd_9m,millions_usd,4381.0
+Operating expenses,Compute and infrastructure,9M-2026,ytd_9m,millions_usd,18808.0
+Operating expenses,Personnel,FY2023,year,millions_usd,95.0
+Operating expenses,Personnel,FY2024,year,millions_usd,454.0
+Operating expenses,Personnel,FY2025,year,millions_usd,1839.0
+Operating expenses,Personnel,9M-2025,ytd_9m,millions_usd,1027.0
+Operating expenses,Personnel,9M-2026,ytd_9m,millions_usd,4863.0
+Operating expenses,Bartz settlement,FY2023,year,millions_usd,0.0
+Operating expenses,Bartz settlement,FY2024,year,millions_usd,0.0
+Operating expenses,Bartz settlement,FY2025,year,millions_usd,1500.0
+Operating expenses,Bartz settlement,9M-2025,ytd_9m,millions_usd,1500.0
+Operating expenses,Bartz settlement,9M-2026,ytd_9m,millions_usd,0.0
+Operating expenses,"Sales, marketing, and partnerships",FY2023,year,millions_usd,2.0
+Operating expenses,"Sales, marketing, and partnerships",FY2024,year,millions_usd,43.0
+Operating expenses,"Sales, marketing, and partnerships",FY2025,year,millions_usd,568.0
+Operating expenses,"Sales, marketing, and partnerships",9M-2025,ytd_9m,millions_usd,322.0
+Operating expenses,"Sales, marketing, and partnerships",9M-2026,ytd_9m,millions_usd,5529.0
+Operating expenses,Other operating and administrative,FY2023,year,millions_usd,62.0
+Operating expenses,Other operating and administrative,FY2024,year,millions_usd,347.0
+Operating expenses,Other operating and administrative,FY2025,year,millions_usd,1412.0
+Operating expenses,Other operating and administrative,9M-2025,ytd_9m,millions_usd,539.0
+Operating expenses,Other operating and administrative,9M-2026,ytd_9m,millions_usd,5302.0
+Operating expenses,Total operating expenses,FY2023,year,millions_usd,592.0
+Operating expenses,Total operating expenses,FY2024,year,millions_usd,3366.0
+Operating expenses,Total operating expenses,FY2025,year,millions_usd,12645.0
+Operating expenses,Total operating expenses,9M-2025,ytd_9m,millions_usd,7769.0
+Operating expenses,Total operating expenses,9M-2026,ytd_9m,millions_usd,34502.0
+Operating expenses,Operating loss,FY2023,year,millions_usd,-551.0
+Operating expenses,Operating loss,FY2024,year,millions_usd,-2980.0
+Operating expenses,Operating loss,FY2025,year,millions_usd,-8060.0
+Operating expenses,Operating loss,9M-2025,ytd_9m,millions_usd,-5224.0
+Operating expenses,Operating loss,9M-2026,ytd_9m,millions_usd,-1260.0
+Operating expenses,Interest income,FY2023,year,millions_usd,69.0
+Operating expenses,Interest income,FY2024,year,millions_usd,106.0
+Operating expenses,Interest income,FY2025,year,millions_usd,431.0
+Operating expenses,Interest income,9M-2025,ytd_9m,millions_usd,239.0
+Operating expenses,Interest income,9M-2026,ytd_9m,millions_usd,2359.0
+Operating expenses,"Change in fair value of convertible notes, derivative liabilities, and SAFEs",FY2023,year,millions_usd,-1045.0
+Operating expenses,"Change in fair value of convertible notes, derivative liabilities, and SAFEs",FY2024,year,millions_usd,-5434.0
+Operating expenses,"Change in fair value of convertible notes, derivative liabilities, and SAFEs",FY2025,year,millions_usd,-34308.0
+Operating expenses,"Change in fair value of convertible notes, derivative liabilities, and SAFEs",9M-2025,ytd_9m,millions_usd,-20107.0
+Operating expenses,"Change in fair value of convertible notes, derivative liabilities, and SAFEs",9M-2026,ytd_9m,millions_usd,-94324.0
+Operating expenses,"Other income (expense), net",FY2023,year,millions_usd,-2.0
+Operating expenses,"Other income (expense), net",FY2024,year,millions_usd,0.0
+Operating expenses,"Other income (expense), net",FY2025,year,millions_usd,-8.0
+Operating expenses,"Other income (expense), net",9M-2025,ytd_9m,millions_usd,-3.0
+Operating expenses,"Other income (expense), net",9M-2026,ytd_9m,millions_usd,-10397.0
+Operating expenses,"Total other income (expense), net",FY2023,year,millions_usd,-978.0
+Operating expenses,"Total other income (expense), net",FY2024,year,millions_usd,-5328.0
+Operating expenses,"Total other income (expense), net",FY2025,year,millions_usd,-33885.0
+Operating expenses,"Total other income (expense), net",9M-2025,ytd_9m,millions_usd,-19871.0
+Operating expenses,"Total other income (expense), net",9M-2026,ytd_9m,millions_usd,-102362.0
+Operating expenses,Loss before provision for income taxes,FY2023,year,millions_usd,-1529.0
+Operating expenses,Loss before provision for income taxes,FY2024,year,millions_usd,-8308.0
+Operating expenses,Loss before provision for income taxes,FY2025,year,millions_usd,-41945.0
+Operating expenses,Loss before provision for income taxes,9M-2025,ytd_9m,millions_usd,-25095.0
+Operating expenses,Loss before provision for income taxes,9M-2026,ytd_9m,millions_usd,-103622.0
+Operating expenses,Provision for income taxes,FY2023,year,millions_usd,2.0
+Operating expenses,Provision for income taxes,FY2024,year,millions_usd,1.0
+Operating expenses,Provision for income taxes,FY2025,year,millions_usd,20.0
+Operating expenses,Provision for income taxes,9M-2025,ytd_9m,millions_usd,12.0
+Operating expenses,Provision for income taxes,9M-2026,ytd_9m,millions_usd,417.0
+Operating expenses,Net loss,FY2023,year,millions_usd,-1531.0
+Operating expenses,Net loss,FY2024,year,millions_usd,-8309.0
+Operating expenses,Net loss,FY2025,year,millions_usd,-41965.0
+Operating expenses,Net loss,9M-2025,ytd_9m,millions_usd,-25107.0
+Operating expenses,Net loss,9M-2026,ytd_9m,millions_usd,-104039.0
+Operating expenses,"Net loss per share attributable to common stockholders, basic and diluted",FY2023,year,usd_per_share,-1.42
+Operating expenses,"Net loss per share attributable to common stockholders, basic and diluted",FY2024,year,usd_per_share,-5.43
+Operating expenses,"Net loss per share attributable to common stockholders, basic and diluted",FY2025,year,usd_per_share,-23.04
+Operating expenses,"Net loss per share attributable to common stockholders, basic and diluted",9M-2025,ytd_9m,usd_per_share,-13.9
+Operating expenses,"Net loss per share attributable to common stockholders, basic and diluted",9M-2026,ytd_9m,usd_per_share,-50.1
+Operating expenses,"Weighted-average shares outstanding, basic and diluted",FY2023,year,thousands_shares,1076881.0
+Operating expenses,"Weighted-average shares outstanding, basic and diluted",FY2024,year,thousands_shares,1528995.0
+Operating expenses,"Weighted-average shares outstanding, basic and diluted",FY2025,year,thousands_shares,1821085.0
+Operating expenses,"Weighted-average shares outstanding, basic and diluted",9M-2025,ytd_9m,thousands_shares,1806803.0
+Operating expenses,"Weighted-average shares outstanding, basic and diluted",9M-2026,ytd_9m,thousands_shares,2076810.0

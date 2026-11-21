@@ -1,0 +1,39 @@
+item,value,unit,as_of,source_url,reliability,note
+price,143.5,usd_per_share,2026-11-18,https://www.heygotrade.com/en/news/spacex-spcx-stock-news-november-19-2026/,market,"Nov 18 close, the day Anthropic priced at $83 (same-day comparison); $1.949T market cap. Nov 19 intraday ~$137-139 (-3 to -5%)"
+ipo_price,135.0,usd_per_share,2026-06-03,https://www.cnbc.com/2026/06/03/spacex-ipo-stock-price-roadshow-musk.html,press,"priced Jun 3 2026, $1.77T"
+shares_outstanding,13581.063709,millions_shares,2026-10-15,https://www.sec.gov/Archives/edgar/data/1181412/000162828026066880/spcx-20260930.htm,primary,"10-Q cover: Class A 8,246,541,218 + Class B 5,334,522,491"
+cash,51294.0,millions_usd,2026-09-30,https://www.sec.gov/Archives/edgar/data/1181412/000162828026066880/spcx-20260930.htm,primary,cash and cash equivalents
+marketable_securities,38561.0,millions_usd,2026-09-30,https://www.sec.gov/Archives/edgar/data/1181412/000162828026066880/spcx-20260930.htm,primary,current; mostly government securities
+debt,38844.0,millions_usd,2026-09-30,https://www.sec.gov/Archives/edgar/data/1181412/000162828026066880/spcx-20260930.htm,primary,"long-term debt and finance leases, incl. current portion"
+revenue_q3_2026,14575.0,millions_usd,2026-09-30,https://www.sec.gov/Archives/edgar/data/1181412/000162828026066880/spcx-20260930.htm,primary,includes xAI (merged Feb 2 2026) and Cursor (from Aug 14 2026)
+revenue_q3_2025,5576.0,millions_usd,2025-09-30,https://www.sec.gov/Archives/edgar/data/1181412/000162828026066880/spcx-20260930.htm,primary,comparative column
+revenue_si_q3_2026,7560.0,millions_usd,2026-09-30,https://www.sec.gov/Archives/edgar/data/1181412/000162828026066880/spcx-20260930.htm,primary,SI (formerly AI) segment
+revenue_si_q3_2025,813.0,millions_usd,2025-09-30,https://www.sec.gov/Archives/edgar/data/1181412/000162828026066880/spcx-20260930.htm,primary,SI (formerly AI) segment
+revenue_si_advertising_q3_2026,538.0,millions_usd,2026-09-30,https://www.sec.gov/Archives/edgar/data/1181412/000162828026066880/spcx-20260930.htm,primary,SI segment: Advertising (X)
+revenue_si_solutions_q3_2026,7022.0,millions_usd,2026-09-30,https://www.sec.gov/Archives/edgar/data/1181412/000162828026066880/spcx-20260930.htm,primary,"SI Solutions & Infrastructure: Grok, Cursor and X subscriptions, data licensing, Grok API, and the sale of cloud services"
+customer_b_pct_q3_2026,34.5,pct,2026-09-30,https://www.sec.gov/Archives/edgar/data/1181412/000162828026066880/spcx-20260930.htm,primary,"Concentration of risk: Customer B 34.5% of consolidated Q3 revenue (24.2% of 9M; <10% in 2025), all in the SI segment. Unnamed; our inference: Anthropic (SpaceXAI compute, S-1 ~$3.1B/month at full capacity)"
+revenue_connectivity_q3_2026,5248.0,millions_usd,2026-09-30,https://www.sec.gov/Archives/edgar/data/1181412/000162828026066880/spcx-20260930.htm,primary,Starlink
+revenue_connectivity_q3_2025,3097.0,millions_usd,2025-09-30,https://www.sec.gov/Archives/edgar/data/1181412/000162828026066880/spcx-20260930.htm,primary,Starlink
+revenue_9m_2026,27083.0,millions_usd,2026-09-30,https://www.sec.gov/Archives/edgar/data/1181412/000162828026066880/spcx-20260930.htm,primary,
+revenue_9m_2025,13714.0,millions_usd,2025-09-30,https://www.sec.gov/Archives/edgar/data/1181412/000162828026066880/spcx-20260930.htm,primary,
+revenue_fy2025,18674.0,millions_usd,2025-12-31,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001181412&type=S-1,primary,
+cfo_9m_2026,13097.0,millions_usd,2026-09-30,https://www.sec.gov/Archives/edgar/data/1181412/000162828026066880/spcx-20260930.htm,primary,net cash from operating activities
+cfo_9m_2025,4120.0,millions_usd,2025-09-30,https://www.sec.gov/Archives/edgar/data/1181412/000162828026066880/spcx-20260930.htm,primary,
+cfo_fy2025,6785.0,millions_usd,2025-12-31,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001181412&type=S-1,primary,
+capex_9m_2026,48069.0,millions_usd,2026-09-30,https://www.sec.gov/Archives/edgar/data/1181412/000162828026066880/spcx-20260930.htm,primary,"purchases of property, plant and equipment"
+capex_9m_2025,13846.0,millions_usd,2025-09-30,https://www.sec.gov/Archives/edgar/data/1181412/000162828026066880/spcx-20260930.htm,primary,
+capex_fy2025,20737.0,millions_usd,2025-12-31,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001181412&type=S-1,primary,
+sbc_9m_2026,3833.0,millions_usd,2026-09-30,https://www.sec.gov/Archives/edgar/data/1181412/000162828026066880/spcx-20260930.htm,primary,share-based compensation (cash flow statement)
+sbc_9m_2025,1044.0,millions_usd,2025-09-30,https://www.sec.gov/Archives/edgar/data/1181412/000162828026066880/spcx-20260930.htm,primary,
+sbc_fy2025,1947.0,millions_usd,2025-12-31,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001181412&type=S-1,primary,
+interest_income_9m_2026,1426.0,millions_usd,2026-09-30,https://www.sec.gov/Archives/edgar/data/1181412/000162828026066880/spcx-20260930.htm,primary,interest income on cash and securities
+interest_income_9m_2025,370.0,millions_usd,2025-09-30,https://www.sec.gov/Archives/edgar/data/1181412/000162828026066880/spcx-20260930.htm,primary,
+interest_income_fy2025,492.0,millions_usd,2025-12-31,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001181412&type=S-1,primary,
+lease_principal_9m_2026,270.0,millions_usd,2026-09-30,https://www.sec.gov/Archives/edgar/data/1181412/000162828026066880/spcx-20260930.htm,primary,principal repayments on finance leases
+lease_principal_9m_2025,213.0,millions_usd,2025-09-30,https://www.sec.gov/Archives/edgar/data/1181412/000162828026066880/spcx-20260930.htm,primary,
+lease_principal_fy2025,295.0,millions_usd,2025-12-31,https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001181412&type=S-1,primary,
+cursor_deal_value,60000.0,millions_usd,2026-08-14,https://www.sec.gov/Archives/edgar/data/1181412/000162828026056945/spcx-20260814.htm,primary,"389,289,254 Class A shares at an implied $60B equity value; all stock, closed Aug 14 2026"
+beta_aerospace_defense,0.87,x,2026-01-01,https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/Betas.html,primary,"Damodaran, Aerospace/Defense, 79 firms, unlevered beta corrected for cash"
+beta_telecom_wireless,0.39,x,2026-01-01,https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/Betas.html,primary,"Damodaran, Telecom (Wireless), 12 firms, unlevered beta corrected for cash"
+dcf_base,7.23,usd_per_share,2026-06-03,goodatinvesting.com SpaceX IPO post (~/Documents/spacex_s1/blog_post.md),ours,"base case: 12% WACC, 12.5B pro-forma shares"
+dcf_base_with_floor,11.87,usd_per_share,2026-06-03,goodatinvesting.com SpaceX IPO post (~/Documents/spacex_s1/blog_post.md),ours,"base case, AI segment floored at zero (it can be shut down)"
